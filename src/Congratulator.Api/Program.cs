@@ -1,10 +1,13 @@
 ﻿using System.Reflection;
 using System.Text.Json.Serialization;
 using Congratulator.Core.Configurations;
+using Congratulator.Core.Validators;
 using Congratulator.Infrastructure.Configurations;
 using Congratulator.Infrastructure.Data;
 using Congratulator.Infrastructure.Extensions;
 using Congratulator.Infrastructure.Middleware;
+using FluentValidation;
+using FluentValidation.AspNetCore;
 using Microsoft.OpenApi;
 using Serilog;
 
@@ -37,9 +40,9 @@ builder.Services.AddControllers()
         options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter()); // Convert numbers to string for enum
     });
 
-//builder.Services.AddFluentValidationAutoValidation()
-//    .AddFluentValidationClientsideAdapters();
-//builder.Services.AddValidatorsFromAssemblyContaining<SendMessageValidator>();
+builder.Services.AddFluentValidationAutoValidation()
+    .AddFluentValidationClientsideAdapters();
+builder.Services.AddValidatorsFromAssemblyContaining<CreatePersonValidator>();
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(options =>

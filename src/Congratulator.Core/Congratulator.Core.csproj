@@ -12,13 +12,14 @@
 
     <ItemGroup>
       <PackageReference Include="AutoMapper" Version="14.0.0" />
+      <PackageReference Include="FluentValidation" Version="12.1.1" />
+      <PackageReference Include="FluentValidation.AspNetCore" Version="11.3.1" />
       <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="9.0.7" />
       <PackageReference Include="Microsoft.Extensions.Configuration" Version="10.0.1" />
     </ItemGroup>
 
     <ItemGroup>
       <Folder Include="AutoMapperProfiles\" />
-      <Folder Include="Validators\" />
     </ItemGroup>
 
 </Project>

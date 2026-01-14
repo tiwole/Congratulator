@@ -36,4 +36,29 @@ public class PersonsController : Controller
         var result = await service.RunAsync(personId, request);
         return Ok(result);
     }
+    
+    /// <summary>
+    /// Delete person
+    /// </summary>
+    [HttpDelete]
+    [Route("{personId}")]
+    public async Task<IActionResult> DeletePersonAsync(
+        [FromRoute] Guid personId, 
+        [FromServices] DeletePersonService service)
+    {
+        await service.RunAsync(personId);
+        return NoContent();
+    }
+    
+    /// <summary>
+    /// Get paginated list of persons
+    /// </summary>
+    [HttpGet]
+    public async Task<IActionResult> GetPersonsAsync( 
+        [FromServices] GetPersonsService service,
+        [FromQuery] GetPersonsRequest request)
+    {
+        var result = await service.RunAsync(request);
+        return Ok(result);
+    }
 }
