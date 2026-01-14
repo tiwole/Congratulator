@@ -1,6 +1,7 @@
 ﻿using Congratulator.SharedKernel.Contracts.Models.Requests;
 using Congratulator.SharedKernel.Contracts.Models.Responses;
 using Congratulator.SharedKernel.Entities;
+using Congratulator.SharedKernel.Enums;
 using Congratulator.SharedKernel.Interfaces.Repositories;
 
 namespace Congratulator.Core.Services;
@@ -14,7 +15,7 @@ public class CreatePersonService(IPersonRepository personRepository)
             FirstName = request.FirstName,
             LastName = request.LastName,
             BirthDate = request.BirthDate,
-            RelationshipType = request.RelationshipType
+            RelationshipType = request.RelationshipType ?? RelationshipType.Unknown
         };
 
         await personRepository.CreatePersonAsync(person);

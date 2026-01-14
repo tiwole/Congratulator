@@ -4,6 +4,6 @@ public enum RelationshipType
 {
     Unknown,
     Friend,
-    Acquaintance,
-    Colleague
+    Mate,
+    Coworker
 }

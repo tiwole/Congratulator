@@ -5,4 +5,6 @@ namespace Congratulator.SharedKernel.Interfaces.Repositories;
 public interface IPersonRepository
 {
     public Task CreatePersonAsync(Person person);
+    public Task<Person?> GetPersonByIdAsync(Guid id);
+    public Task UpdatePersonAsync(Person person);
 }

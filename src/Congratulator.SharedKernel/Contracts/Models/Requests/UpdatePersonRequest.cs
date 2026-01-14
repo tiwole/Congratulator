@@ -2,10 +2,10 @@
 
 namespace Congratulator.SharedKernel.Contracts.Models.Requests;
 
-public class CreatePersonRequest
+public class UpdatePersonRequest
 {
-    public string FirstName { get; set; }
+    public string? FirstName { get; set; }
     public string? LastName { get; set; }
-    public DateOnly BirthDate { get; set; }
+    public DateOnly? BirthDate { get; set; }
     public RelationshipType? RelationshipType { get; set; }
 }

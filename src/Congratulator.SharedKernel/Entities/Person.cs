@@ -9,5 +9,5 @@ public class Person : IUniqueIdentifier
     public string FirstName { get; set; }
     public string? LastName { get; set; }
     public DateOnly BirthDate { get; set; }
-    public RelationshipType RelationshipType { get; set; } = RelationshipType.Unknown;
+    public RelationshipType RelationshipType { get; set; }
 }

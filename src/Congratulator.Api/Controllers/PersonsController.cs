@@ -15,9 +15,25 @@ public class PersonsController : Controller
     /// Create person
     /// </summary>
     [HttpPost]
-    public async Task<IActionResult> CreatePersonAsync([FromServices] CreatePersonService service, [FromBody] CreatePersonRequest request)
+    public async Task<IActionResult> CreatePersonAsync(
+        [FromServices] CreatePersonService service, 
+        [FromBody] CreatePersonRequest request)
     {
         var result = await service.RunAsync(request);
+        return Ok(result);
+    }
+    
+    /// <summary>
+    /// Update person
+    /// </summary>
+    [HttpPut]
+    [Route("{personId}")]
+    public async Task<IActionResult> UpdatePersonAsync(
+        [FromRoute] Guid personId, 
+        [FromServices] UpdatePersonService service, 
+        [FromBody] UpdatePersonRequest request)
+    {
+        var result = await service.RunAsync(personId, request);
         return Ok(result);
     }
 }

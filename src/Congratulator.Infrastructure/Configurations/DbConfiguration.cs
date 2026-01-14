@@ -1,4 +1,5 @@
 ﻿using System.Reflection;
+using Congratulator.Infrastructure.Exceptions;
 using Congratulator.Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -13,7 +14,7 @@ public static class DbConfiguration
     {
         if (string.IsNullOrEmpty(connectionString) || !connectionString.Contains("Host="))
         {
-            throw new ArgumentNullException("Connection string is null or invalid.");
+            throw new InvalidConnectionStringException("Connection string is null or invalid.");
         }
 
         var migrationsAssembly = typeof(TContext).Assembly.FullName;
