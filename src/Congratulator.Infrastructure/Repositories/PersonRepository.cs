@@ -1,6 +1,7 @@
 ﻿using Congratulator.Infrastructure.Data;
 using Congratulator.SharedKernel.Contracts.Models;
 using Congratulator.SharedKernel.Contracts.Models.Requests;
+using Congratulator.SharedKernel.Contracts.Models.Responses;
 using Congratulator.SharedKernel.Entities;
 using Congratulator.SharedKernel.Interfaces.Repositories;
 using Microsoft.EntityFrameworkCore;
@@ -34,31 +35,27 @@ public class PersonRepository(CongratulatorDbContext context) : IPersonRepositor
         await context.SaveChangesAsync();
     }
     
-    public async Task<GetPersonsResults> GetPersonsAsync(GetPersonsRequest request)
+    public async Task<GetPersonsResponse> GetPersonsAsync(GetPersonsRequest request)
     {
-        var query = context.Persons
-            .AsNoTracking()
-            .Where(x => x.BirthDate < request.Cursor);
-        
-        // Sorting.
-        var persons = await query
-            .OrderByDescending(x => x.BirthDate)
-            .ThenBy(x => x.Id)
-            .Take(request.PageSize + 1)
-            .ToListAsync();
-        
-        // Paging.
-        bool hasMore = persons.Count > request.PageSize;
+        var today = DateOnly.FromDateTime(DateTime.Today);
 
-        if (hasMore)
-        {
-            persons.RemoveAt(persons.Count - 1);
-        }
+        // Sort birthdays upcoming first MMDD method.
+        var query = context.Persons
+            .OrderBy(x => 
+                x.BirthDate.Month * 100 + x.BirthDate.Day >= today.Month * 100 + today.Day
+                    ? x.BirthDate.Month * 100 + x.BirthDate.Day
+                    : x.BirthDate.Month * 100 + x.BirthDate.Day + 1200)
+            .ThenBy(p => p.BirthDate.Year)
+            .AsNoTracking();
         
-        return new GetPersonsResults
+        var persons = await query
+            .Take(request.Size)
+            .ToListAsync();
+
+        return new GetPersonsResponse
         {
-            Data = persons,
-            HasMore = hasMore
+            TodayBirthdays = persons.Where(x => x.BirthDate.Day == today.Day && x.BirthDate.Month == today.Month).ToList(),
+            UpcomingBirthdays = persons.Where(x => x.BirthDate.Day != today.Day || x.BirthDate.Month != today.Month).ToList()
         };
     }
 }
