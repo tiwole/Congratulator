@@ -22,11 +22,12 @@ builder.Host.UseSerilog((context, services, configuration) =>
 });
 
 var authContextConnectionString = builder.Configuration.GetConnectionString("IdentityConnectionString");
-builder.Services.AddDbConfiguration<CongratulatorDbContext>(builder.Configuration, authContextConnectionString);
+builder.Services.AddDbConfiguration<CongratulatorDbContext>(builder.Configuration, authContextConnectionString!);
 
 builder.Services.AddInfrastructure(builder.Configuration);
 builder.Services.AddCoreServices();
 
+builder.Services.AddExceptionHandler<ExceptionHandler>();
 builder.Services.AddProblemDetails();
 
 builder.Services.AddControllers()
