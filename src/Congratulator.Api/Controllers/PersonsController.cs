@@ -51,8 +51,12 @@ public class PersonsController : Controller
     }
     
     /// <summary>
-    /// Get paginated list of persons
+    /// Get list of persons by paramethers
     /// </summary>
+    /// <param name="upcoming">Limits data response to a set number of days</param>
+    /// <param name="status">Filter by status</param>
+    /// <param name="search">Search by first name or last name, removes the limit on upcoming days</param>
+    /// <param name="all">If true, returns all persons regardless of upcoming days limit</param>
     [HttpGet]
     public async Task<IActionResult> GetPersonsAsync( 
         [FromServices] GetPersonsService service,
