@@ -1,5 +1,4 @@
 ﻿using Congratulator.Infrastructure.Data;
-using Congratulator.SharedKernel.Contracts.Models;
 using Congratulator.SharedKernel.Contracts.Models.Requests;
 using Congratulator.SharedKernel.Contracts.Models.Responses;
 using Congratulator.SharedKernel.Entities;
@@ -38,24 +37,58 @@ public class PersonRepository(CongratulatorDbContext context) : IPersonRepositor
     public async Task<GetPersonsResponse> GetPersonsAsync(GetPersonsRequest request)
     {
         var today = DateOnly.FromDateTime(DateTime.Today);
+        var upcomingDays = request.Upcoming ?? 3;
+        var startMmdd = today.Month * 100 + today.Day;
+        var endMmdd = today.AddDays(upcomingDays).Month * 100 + today.AddDays(upcomingDays).Day;
+        
+        var query = context.Persons.AsNoTracking();
+
+        // Filter by status.
+        if (request.Status.HasValue)
+        {
+            query = query.Where(p => p.RelationshipType == request.Status.Value);
+        }
+
+        // Search by first/last name.
+        if (!string.IsNullOrWhiteSpace(request.Search))
+        {
+            var searchTerm = request.Search.Trim().ToLower();
+            query = query.Where(p => (EF.Functions.Like(p.FirstName.ToLower(), $"%{searchTerm}%")) ||
+                                     (!string.IsNullOrEmpty(p.LastName) && EF.Functions.Like(p.LastName.ToLower(), $"%{searchTerm}%")));
+            
+        }
+        
+        // Filter by upcoming days.
+        if (string.IsNullOrWhiteSpace(request.Search) && request.All != true)
+        {
+            if (endMmdd >= startMmdd)
+            {
+                query = query.Where(p =>
+                    p.BirthDate.Month * 100 + p.BirthDate.Day >= startMmdd &&
+                    p.BirthDate.Month * 100 + p.BirthDate.Day <= endMmdd);
+            }
+            else
+            {
+                // New year case.
+                query = query.Where(p =>
+                    p.BirthDate.Month * 100 + p.BirthDate.Day >= startMmdd ||
+                    p.BirthDate.Month * 100 + p.BirthDate.Day <= endMmdd);
+            }
+        }
 
         // Sort birthdays upcoming first MMDD method.
-        var query = context.Persons
-            .OrderBy(x => 
-                x.BirthDate.Month * 100 + x.BirthDate.Day >= today.Month * 100 + today.Day
+        var persons = await query
+            .OrderBy(x =>
+                x.BirthDate.Month * 100 + x.BirthDate.Day >= startMmdd
                     ? x.BirthDate.Month * 100 + x.BirthDate.Day
                     : x.BirthDate.Month * 100 + x.BirthDate.Day + 1200)
             .ThenBy(p => p.BirthDate.Year)
-            .AsNoTracking();
-        
-        var persons = await query
-            .Take(request.Size)
             .ToListAsync();
 
         return new GetPersonsResponse
         {
             TodayBirthdays = persons.Where(x => x.BirthDate.Day == today.Day && x.BirthDate.Month == today.Month).ToList(),
-            UpcomingBirthdays = persons.Where(x => x.BirthDate.Day != today.Day || x.BirthDate.Month != today.Month).ToList()
+            UpcomingBirthdays = persons.Where(x => !(x.BirthDate.Day == today.Day && x.BirthDate.Month == today.Month)).ToList()
         };
     }
 }

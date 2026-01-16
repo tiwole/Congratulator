@@ -1,6 +1,11 @@
-﻿namespace Congratulator.SharedKernel.Contracts.Models.Requests;
+﻿using Congratulator.SharedKernel.Enums;
+
+namespace Congratulator.SharedKernel.Contracts.Models.Requests;
 
 public class GetPersonsRequest
 {
-    public int Size { get; set; } = 64;
+    public int? Upcoming { get; set; } = 3;
+    public RelationshipType? Status { get; set; }
+    public string? Search { get; set; }
+    public bool? All { get; set; } = false;
 }
