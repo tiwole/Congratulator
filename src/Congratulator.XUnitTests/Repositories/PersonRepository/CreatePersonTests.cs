@@ -19,7 +19,7 @@ public class CreatePersonTests
             .Options;
 
         var context = new CongratulatorDbContext(options);
-        _repository = new Infrastructure.Repositories.PersonRepository(context);
+        //_repository = new Infrastructure.Repositories.PersonRepository(context);
     }
 
     [Fact]

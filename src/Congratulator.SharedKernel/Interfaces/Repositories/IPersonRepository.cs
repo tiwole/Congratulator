@@ -1,5 +1,4 @@
-﻿using Congratulator.SharedKernel.Contracts.Models;
-using Congratulator.SharedKernel.Contracts.Models.Requests;
+﻿using Congratulator.SharedKernel.Contracts.Models.Requests;
 using Congratulator.SharedKernel.Contracts.Models.Responses;
 using Congratulator.SharedKernel.Entities;
 

@@ -1,4 +1,4 @@
-﻿using Congratulator.SharedKernel.Enums;
+﻿using Congratulator.SharedKernel.Contracts.Enums;
 using Congratulator.SharedKernel.Interfaces;
 
 namespace Congratulator.SharedKernel.Entities;
@@ -10,4 +10,5 @@ public class Person : IUniqueIdentifier
     public string? LastName { get; set; }
     public DateOnly BirthDate { get; set; }
     public RelationshipType RelationshipType { get; set; }
+    // TODO: Photo path, contact
 }

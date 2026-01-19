@@ -10,6 +10,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Congratulator.XUnitTests", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Congratulator.Core", "src\Congratulator.Core\Congratulator.Core.csproj", "{4803EA59-7615-4A53-AAD7-26AD02FAF3A9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Congratulator.WebAssembly", "src\Congratulator.WebAssembly\Congratulator.WebAssembly.csproj", "{6F4F6AD2-3925-46C5-A693-824D17305B40}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Congratulator.SharedKernel.Contracts", "src\Congratulator.SharedKernel.Contracts\Congratulator.SharedKernel.Contracts.csproj", "{894C491D-E7A2-481C-8B73-DB613804EB2A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -36,5 +40,13 @@ Global
 		{4803EA59-7615-4A53-AAD7-26AD02FAF3A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4803EA59-7615-4A53-AAD7-26AD02FAF3A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4803EA59-7615-4A53-AAD7-26AD02FAF3A9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6F4F6AD2-3925-46C5-A693-824D17305B40}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6F4F6AD2-3925-46C5-A693-824D17305B40}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6F4F6AD2-3925-46C5-A693-824D17305B40}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6F4F6AD2-3925-46C5-A693-824D17305B40}.Release|Any CPU.Build.0 = Release|Any CPU
+		{894C491D-E7A2-481C-8B73-DB613804EB2A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{894C491D-E7A2-481C-8B73-DB613804EB2A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{894C491D-E7A2-481C-8B73-DB613804EB2A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{894C491D-E7A2-481C-8B73-DB613804EB2A}.Release|Any CPU.Build.0 = Release|Any CPUdo
 	EndGlobalSection
 EndGlobal

@@ -1,9 +1,0 @@
-﻿namespace Congratulator.SharedKernel.Enums;
-
-public enum RelationshipType
-{
-    Unknown,
-    Friend,
-    Mate,
-    Coworker
-}
