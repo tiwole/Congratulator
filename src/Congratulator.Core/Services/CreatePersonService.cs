@@ -1,7 +1,7 @@
-﻿using Congratulator.SharedKernel.Contracts.Models.Requests;
+﻿using Congratulator.SharedKernel.Contracts.Enums;
+using Congratulator.SharedKernel.Contracts.Models.Requests;
 using Congratulator.SharedKernel.Contracts.Models.Responses;
 using Congratulator.SharedKernel.Entities;
-using Congratulator.SharedKernel.Enums;
 using Congratulator.SharedKernel.Interfaces.Repositories;
 
 namespace Congratulator.Core.Services;

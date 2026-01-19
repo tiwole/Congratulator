@@ -15,8 +15,6 @@ public static class CoreConfiguration
         var coreServicesNamespace = typeof(CreatePersonService).Namespace;
         var sharedKernelInterfacesNamespace = typeof(IUniqueIdentifier).Namespace;
 
-        services.AddAutoMapper(coreAssembly);
-
         var serviceTypes = coreAssembly.GetTypes()
             .Where(type => type.Namespace == coreServicesNamespace &&
                            type.IsClass && !type.IsAbstract);

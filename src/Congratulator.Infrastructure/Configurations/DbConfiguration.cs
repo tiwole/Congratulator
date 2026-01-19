@@ -39,6 +39,7 @@ public static class DbConfiguration
                            type.IsClass && !type.IsAbstract);
 
         // Add exceptions here if needed.
+        services.AddAutoMapper(assembly);
 
         foreach (var implType in repositoryTypes)
         {

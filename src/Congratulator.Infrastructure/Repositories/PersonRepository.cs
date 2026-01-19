@@ -1,4 +1,6 @@
-﻿using Congratulator.Infrastructure.Data;
+﻿using AutoMapper;
+using Congratulator.Infrastructure.Data;
+using Congratulator.SharedKernel.Contracts.Models;
 using Congratulator.SharedKernel.Contracts.Models.Requests;
 using Congratulator.SharedKernel.Contracts.Models.Responses;
 using Congratulator.SharedKernel.Entities;
@@ -7,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Congratulator.Infrastructure.Repositories;
 
-public class PersonRepository(CongratulatorDbContext context) : IPersonRepository
+public class PersonRepository(CongratulatorDbContext context, IMapper mapper) : IPersonRepository
 {
     public async Task CreatePersonAsync(Person person)
     {
@@ -87,8 +89,8 @@ public class PersonRepository(CongratulatorDbContext context) : IPersonRepositor
 
         return new GetPersonsResponse
         {
-            TodayBirthdays = persons.Where(x => x.BirthDate.Day == today.Day && x.BirthDate.Month == today.Month).ToList(),
-            UpcomingBirthdays = persons.Where(x => !(x.BirthDate.Day == today.Day && x.BirthDate.Month == today.Month)).ToList()
+            TodayBirthdays = mapper.Map<List<PersonModel>>(persons.Where(x => x.BirthDate.Day == today.Day && x.BirthDate.Month == today.Month)),
+            UpcomingBirthdays = mapper.Map<List<PersonModel>>(persons.Where(x => !(x.BirthDate.Day == today.Day && x.BirthDate.Month == today.Month)))
         };
     }
 }
