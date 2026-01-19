@@ -30,6 +30,23 @@ builder.Services.AddCoreServices();
 builder.Services.AddExceptionHandler<ExceptionHandler>();
 builder.Services.AddProblemDetails();
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowBlazor", policy =>
+    {
+        policy.WithOrigins(
+                "https://localhost:8081",
+                "https://api:80",
+                "http://localhost:8081",
+                "http://api:80",
+                "https://localhost:7272", //temp
+                "http://localhost:7272" //temp
+            ) // Allowing requests from the Blazor app
+            .AllowAnyMethod() // Allow GET, POST, OPTIONS, etc.
+            .AllowAnyHeader();
+    });
+});
+
 builder.Services.AddControllers()
     .AddJsonOptions(options =>
     {
@@ -60,6 +77,8 @@ builder.Services.AddControllers();
 var app = builder.Build();
 
 app.EnsureMigration<CongratulatorDbContext>(builder.Configuration);
+
+app.UseCors("AllowBlazor");
 
 if (app.Environment.IsDevelopment())
 {

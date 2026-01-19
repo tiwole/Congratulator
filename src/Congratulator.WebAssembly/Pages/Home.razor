@@ -5,3 +5,26 @@
 <h1>Hello, world!</h1>
 
 Welcome to your new app.
+
+@if (Persons != null)
+{
+    <div class="space-y-4">
+        Today birthdays:
+        @foreach (var person in Persons.TodayBirthdays)
+        {
+            <div class="p-2 border rounded flex justify-between w-25">
+                <span>@person.FirstName @person.LastName</span>
+                <span>@person.BirthDate.ToShortDateString()</span>
+            </div>
+        }
+
+        Upcoming Birthdays:
+        @foreach (var person in Persons.UpcomingBirthdays)
+        {
+            <div class="p-2 border rounded flex justify-between w-25">
+                <span>@person.FirstName @person.LastName</span>
+                <span>@person.BirthDate.ToShortDateString()</span>
+            </div>
+        }
+    </div>
+}

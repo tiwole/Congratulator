@@ -1,4 +1,6 @@
-﻿namespace Congratulator.SharedKernel.Contracts.Models.Responses;
+﻿using System.Collections;
+
+namespace Congratulator.SharedKernel.Contracts.Models.Responses;
 
 public class GetPersonsResponse
 {
