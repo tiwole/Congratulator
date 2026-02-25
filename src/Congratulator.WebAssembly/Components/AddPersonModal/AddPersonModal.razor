@@ -1,0 +1,115 @@
+﻿@using Congratulator.SharedKernel.Contracts.Enums
+
+@if (IsVisible)
+{
+    <div class="modal-overlay" @onclick="OnOverlayClick">
+        <div class="modal-container" @onclick:stopPropagation="true">
+
+            <div class="modal-header">
+                <h2 class="modal-title">New Person</h2>
+                <button class="modal-close" @onclick="Close" aria-label="Close">
+                    <i class="bi bi-x-lg"></i>
+                </button>
+            </div>
+
+            <div class="modal-body">
+
+                <!-- Photo preview + URL input -->
+                <div class="form-group photo-group">
+                    <div class="photo-container">
+                        <label class="photo-preview" style="cursor: pointer;">
+                            <InputFile OnChange="HandleFileSelected" style="display: none;" accept="image/*"/>
+                            @if (SelectedFile != null)
+                            {
+                                <img src="@PhotoUrl" alt="Preview" class="photo-img"/>
+                            }
+                            else
+                            {
+                                <i class="bi bi-image"></i>
+                            }
+                        </label>
+                    </div>
+
+                    <!-- First Name -->
+                    <div class="form-group">
+                        <label class="form-label">
+                            First Name <span class="required">*</span>
+                        </label>
+                        <input type="text"
+                               class="form-input @(HasError(nameof(FirstName)) ? "input-error" : "")"
+                               placeholder="Enter first name"
+                               @bind="FirstName"
+                               @bind:event="oninput"
+                               @onfocus="() => ClearError(nameof(FirstName))"/>
+                        @if (HasError(nameof(FirstName)))
+                        {
+                            <span class="error-text">@GetError(nameof(FirstName))</span>
+                        }
+                    </div>
+
+                    <!-- Last Name -->
+                    <div class="form-group">
+                        <label class="form-label">
+                            Last Name
+                        </label>
+                        <input type="text"
+                               class="form-input @(HasError(nameof(LastName)) ? "input-error" : "")"
+                               placeholder="Enter last name"
+                               @bind="LastName"
+                               @bind:event="oninput"
+                               @onfocus="() => ClearError(nameof(LastName))"/>
+                        @if (HasError(nameof(LastName)))
+                        {
+                            <span class="error-text">@GetError(nameof(LastName))</span>
+                        }
+                    </div>
+
+                    <!-- Date of Birth -->
+                    <div class="form-group">
+                        <label class="form-label">
+                            Date of Birth <span class="required">*</span>
+                        </label>
+                        <input type="date"
+                               class="form-input @(HasError(nameof(BirthDate)) ? "input-error" : "")"
+                               @bind="BirthDate"
+                               max="@DateTime.Today.ToString("yyyy-MM-dd")"
+                               @onfocus="() => ClearError(nameof(BirthDate))"/>
+                        @if (HasError(nameof(BirthDate)))
+                        {
+                            <span class="error-text">@GetError(nameof(BirthDate))</span>
+                        }
+                    </div>
+
+                    <!-- Relationship Type -->
+                    <div class="form-group">
+                        <label class="form-label">
+                            Relationship <span class="required">*</span>
+                        </label>
+                        <select
+                            class="form-input form-select @(HasError(nameof(SelectedRelationship)) ? "input-error" : "")"
+                            @bind="SelectedRelationship"
+                            @onfocus="() => ClearError(nameof(SelectedRelationship))">
+                            <option value="" disabled selected>Select relationship</option>
+                            @foreach (var rel in Enum.GetValues<RelationshipType>())
+                            {
+                                <option value="@rel">@rel.ToString()</option>
+                            }
+                        </select>
+                        @if (HasError(nameof(SelectedRelationship)))
+                        {
+                            <span class="error-text">@GetError(nameof(SelectedRelationship))</span>
+                        }
+                    </div>
+
+                </div>
+
+                <div class="modal-footer align-self-center">
+                    <button class="btn btn-submit" @onclick="OnSubmit">
+                        <i class="bi bi-plus-lg"></i>
+                        Create
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+}

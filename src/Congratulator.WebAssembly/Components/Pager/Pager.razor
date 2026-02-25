@@ -1,0 +1,30 @@
+﻿<nav aria-label="Page navigation" @attributes="AdditionalAttributes">
+    <ul class="pagination">
+        <li class="page-item @(CurrentPage <= 1 ? "disabled" : "")">
+            <button class="page-link" @onclick="() => OnPageChanged.InvokeAsync(CurrentPage - 1)">
+                <i class="bi bi-arrow-left"></i>
+            </button>
+        </li>
+
+        @foreach (var p in GetPageNumbers())
+        {
+            if (p == -1)
+            {
+                <li class="page-item disabled"><span class="page-link">...</span></li>
+            }
+            else
+            {
+                var pageNumber = p;
+                <li class="page-item @(CurrentPage == pageNumber ? "active" : "")">
+                    <button class="page-link" @onclick="() => OnPageChanged.InvokeAsync(pageNumber)">@pageNumber</button>
+                </li>
+            }
+        }
+        
+        <li class="page-item @(CurrentPage >= TotalPages ? "disabled" : "")">
+            <button class="page-link" @onclick="() => OnPageChanged.InvokeAsync(CurrentPage + 1)">
+                <i class="bi bi-arrow-right"></i>
+            </button>
+        </li>
+    </ul>
+</nav>

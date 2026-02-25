@@ -1,0 +1,146 @@
+@using Congratulator.WebAssembly.Components.AddPersonModal
+@using Congratulator.WebAssembly.Components.Pager
+
+@inherits BasePageComponent
+
+@attribute [Route(Routes.Pages.All)]
+
+<div class="page-container">
+
+    <div class="page-header">
+        <h1 class="page-title">People</h1>
+        <button class="btn btn-add" @onclick="OnAddClick">
+            <i class="bi bi-person-plus-fill"></i>
+            Add
+        </button>
+    </div>
+
+    <div class="toolbar">
+        <div class="sort-group">
+            <label class="toolbar-label">Sort by:</label>
+            <select class="sort-select" value="@CurrentSort" @onchange="OnSortChanged">
+                <option value="birthday">Birthday</option>
+                <option value="name">Name</option>
+                <option value="age">Age</option>
+            </select>
+        </div>
+        
+        <div class="switch-group">
+            <label class="toolbar-label">Desc:</label>
+            <div class="toggle-switch @(IsDescending ? "toggle-on" : "")" @onclick="OnToggleDescending">
+                <div class="toggle-thumb"></div>
+            </div>
+        </div>
+
+        <div class="filter-group">
+            <label class="toolbar-label">Tags:</label>
+            <div class="tag-filters">
+                @foreach (var tag in AvailableRelationshipTypes)
+                {
+                    var isActive = ActiveRelationshipTypes.Contains(tag);
+                    <button class="tag-chip @(isActive ? "tag-active" : "")"
+                            @onclick="() => ToggleTag(tag)">
+                        @tag
+                    </button>
+                }
+            </div>
+        </div>
+
+        <div class="search-group">
+            <input type="text" class="search-input" placeholder="Search by name..."
+                   @bind="SearchQuery" @bind:event="oninput" />
+        </div>
+    </div>
+
+    @* If remove this, the page will toggle exception *@
+    @* ReSharper disable once ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract *@
+    @if (People.Data == null)
+    {
+        <div class="loading-state">
+            <p>Loading...</p> 
+        </div>
+    }
+    else if (!People.Data.Any())
+    {
+        <div class="empty-state">
+            <p>No people found matching.</p>
+        </div>
+    }
+    else
+    {
+        <div class="table-wrapper">
+            <table class="people-table">
+                <thead>
+                <tr>
+                    <th class="col-photo"></th>
+                    <th class="col-name">Full Name</th>
+                    <th class="col-dob">Date of Birth</th>
+                    <th class="col-age">Age</th>
+                    <th class="col-next">Next Birthday</th>
+                    <th class="col-days">Days Left</th>
+                    <th class="col-tags">Tags</th>
+                    <th class="col-actions">Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                @foreach (var person in People.Data)
+                {
+                    <tr class="@GetRowClass(person)">
+                        <td class="col-photo">
+                            <img src="@person.PhotoPath" alt="@($"{person.FirstName} {person.LastName}")" class="avatar" />
+                        </td>
+                        <td class="col-name">@($"{person.FirstName} {person.LastName}")</td>
+                        <td class="col-dob">@person.BirthDate.ToString("dd.MM.yyyy")</td>
+                        <td class="col-age">@person.Age @GetAgeWord(person.Age)</td>
+                        <td class="col-next">@person.NextBirthday.ToString("dd.MM.yyyy")</td>
+                        <td class="col-days">
+                            <span class="days-badge @GetDaysBadgeClass(person.DaysUntilBirthday)">
+                                @if (person.DaysUntilBirthday == 0)
+                                {
+                                    <span>Today!</span>
+                                }
+                                else
+                                {
+                                    <span>@person.DaysUntilBirthday @GetDaysWord(person.DaysUntilBirthday)</span>
+                                }
+                            </span>
+                        </td>
+                        <td class="col-tags">
+                            <div class="tag-list">
+                                <span class="tag tag-@(person.RelationshipType.ToString().ToLowerInvariant())">
+                                    @person.RelationshipType
+                                </span>
+                            </div>
+                        </td>
+                        <td class="col-actions">
+                            <div class="action-buttons">
+                                <button class="btn btn-edit" @onclick="() => OnEditClick(person)">
+                                    <i class="ri-edit-box-line"></i>
+                                </button>
+
+                                <button class="btn btn-delete" @onclick="() => OnDeleteClick(person)">
+                                    <i class="ri-delete-bin-line"></i>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                }
+                </tbody>
+            </table>
+        </div>
+
+        <div class="table-footer">
+            <div class="pager">
+                <Pager
+                    CurrentPage="@CurrentPage"
+                    TotalPages="@(People.TotalCount / 8)"
+                    OnPageChanged="@OnPageChanged"></Pager>
+            </div>
+
+            <span class="result-count">Showing @People.Data.Count of @People.TotalCount</span>
+        </div>
+    }
+
+</div>
+
+<AddPersonModal @bind-IsVisible="IsAddModalVisible" OnPersonAdded="OnPersonAdded" />

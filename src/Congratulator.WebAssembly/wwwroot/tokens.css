@@ -1,0 +1,578 @@
+:root {
+    /* Text Colors */
+    --color-text-primary: rgba(20, 21, 26, 1);
+    --color-text-secondary: rgba(15, 19, 36, 0.6);
+    --color-text-tertiary: rgba(13, 17, 38, 0.4);
+    --color-text-quaternary: rgba(10, 15, 41, 0.25);
+    --color-text-placeholder: rgba(13, 17, 38, 0.4);
+    --color-text-disabled: rgba(10, 15, 41, 0.6);
+    --color-text-destructive: rgba(230, 72, 61, 1);
+    --color-text-inverted: rgba(255, 255, 255, 1);
+    --color-text-info: rgba(71, 120, 245, 1);
+
+    /* Background Colors */
+    --color-bg-surface-default: rgba(255, 255, 255, 1);
+    --color-bg-surface-inverted: rgba(11, 12, 14, 1);
+    --color-bg-surface-neutral: rgba(247, 247, 248, 1);
+    --color-bg-surface-neutral-subtle: rgba(233, 234, 236, 1);
+    --color-bg-surface-destructive: rgba(253, 242, 241, 1);
+    --color-bg-surface-destructive-subtle: rgba(252, 229, 228, 1);
+    --color-bg-surface-destructive-accent: rgba(230, 72, 61, 1);
+    --color-bg-surface-warning: rgba(254, 244, 236, 1);
+    --color-bg-surface-warning-subtle: rgba(253, 234, 216, 1);
+    --color-bg-surface-warning-accent: rgba(244, 142, 47, 1);
+    --color-bg-surface-success: rgba(237, 253, 244, 1);
+    --color-bg-surface-success-subtle: rgba(209, 250, 228, 1);
+    --color-bg-surface-success-accent: rgba(38, 189, 108, 1);
+    --color-bg-surface-info: rgba(240, 244, 254, 1);
+    --color-bg-surface-info-subtle: rgba(227, 234, 253, 1);
+    --color-bg-surface-info-accent: rgba(71, 120, 245, 1);
+    --color-bg-accent-blue: rgba(71, 120, 245, 1);
+
+    /* Button Backgrounds */
+    --color-bg-button-primary: rgba(20, 21, 26, 1);
+    --color-bg-button-primary-hover: rgba(31, 34, 40, 1);
+    --color-bg-button-primary-disabled: rgba(233, 234, 236, 1);
+    --color-bg-button-secondary: rgba(255, 255, 255, 1);
+    --color-bg-button-secondary-hover: rgba(247, 247, 248, 1);
+    --color-bg-button-secondary-disabled: rgba(255, 255, 255, 1);
+    --color-bg-button-tertiary: rgba(10, 15, 41, 0.04);
+    --color-bg-button-tertiary-hover: rgba(10, 15, 41, 0.08);
+    --color-bg-button-tertiary-disabled: rgba(10, 15, 41, 0.04);
+    --color-bg-button-ghost: rgba(255, 255, 255, 0);
+    --color-bg-button-ghost-hover: rgba(10, 15, 41, 0.04);
+    --color-bg-button-ghost-disabled: rgba(255, 255, 255, 0);
+    --color-bg-button-destructive: rgba(230, 72, 61, 1);
+    --color-bg-button-destructive-hover: rgba(217, 40, 28, 1);
+    --color-bg-button-destructive-disabled: rgba(252, 229, 228, 1);
+
+    /* Input Backgrounds */
+    --color-bg-input-normal: rgba(255, 255, 255, 1);
+    --color-bg-input-hover: rgba(255, 255, 255, 1);
+    --color-bg-input-focus: rgba(255, 255, 255, 1);
+    --color-bg-input-disabled: rgba(255, 255, 255, 1);
+
+    /* Component Backgrounds */
+    --color-bg-badge-gray: rgba(233, 234, 236, 1);
+    --color-bg-badge-gray-accent: rgba(94, 99, 110, 1);
+    --color-bg-badge-blue: rgba(227, 234, 253, 1);
+    --color-bg-badge-blue-accent: rgba(71, 120, 245, 1);
+    --color-bg-badge-green: rgba(209, 250, 228, 1);
+    --color-bg-badge-green-accent: rgba(38, 189, 108, 1);
+    --color-bg-badge-orange: rgba(253, 234, 216, 1);
+    --color-bg-badge-orange-accent: rgba(244, 142, 47, 1);
+    --color-bg-badge-red: rgba(252, 229, 228, 1);
+    --color-bg-badge-red-accent: rgba(230, 72, 61, 1);
+    --color-bg-badge-purple: rgba(236, 223, 251, 1);
+    --color-bg-badge-purple-accent: var(--color-purple-8);
+    --color-bg-badge-white: rgba(255, 255, 255, 1);
+    --color-bg-chip-primary: rgba(255, 255, 255, 1);
+    --color-bg-chip-primary-hover: rgba(247, 247, 248, 1);
+    --color-bg-chip-primary-active: rgba(255, 255, 255, 1);
+    --color-bg-chip-primary-disabled: rgba(255, 255, 255, 1);
+    --color-bg-chip-secondary: rgba(10, 15, 41, 0.04);
+    --color-bg-chip-secondary-hover: rgba(10, 15, 41, 0.08);
+    --color-bg-chip-secondary-active: rgba(10, 15, 41, 0.04);
+    --color-bg-chip-secondary-disabled: rgba(10, 15, 41, 0.04);
+    --color-bg-checkbox-default: rgba(255, 255, 255, 1);
+    --color-bg-checkbox-checked: var(--color-purple-8);
+    --color-bg-checkbox-disabled: rgba(222, 224, 227, 1);
+    --color-bg-toggle-handle: rgba(255, 255, 255, 1);
+    --color-bg-toggle-default: rgba(186, 189, 197, 1);
+    --color-bg-toggle-hover: rgba(158, 162, 173, 1);
+    --color-bg-toggle-handle-disabled: rgba(200, 202, 208, 1);
+    --color-bg-toggle-disabled: rgba(233, 234, 236, 1);
+    --color-bg-toggle-active: rgba(38, 189, 108, 1);
+    --color-bg-toggle-active-hover: rgba(33, 166, 94, 1);
+    --color-bg-toggle-active-disabled: rgba(195, 248, 220, 1);
+    --color-bg-overlay-normal: rgba(255, 255, 255, 0);
+    --color-bg-overlay-hover: rgba(10, 15, 41, 0.04);
+    --color-bg-overlay-active-normal: rgba(10, 15, 41, 0.04);
+    --color-bg-overlay-active-hover: rgba(10, 15, 41, 0.08);
+    --color-bg-overlay-custom: rgba(10, 15, 41, 0.08);
+    --color-bg-modal-default: rgba(255, 255, 255, 1);
+    --color-bg-modal-neutral: rgba(247, 247, 248, 1);
+
+    /* Border Colors */
+    --color-border-neutral: rgba(222, 224, 227, 1);
+    --color-border-neutral-subtle: rgba(200, 202, 208, 1);
+    --color-border-focus: var(--color-purple-8);
+    --color-border-focus-light: rgba(183, 138, 240, 1);
+    --color-border-alpha: rgba(10, 15, 41, 0.08);
+    --color-border-divider: rgba(233, 234, 236, 1);
+    --color-border-info: rgba(180, 199, 248, 1);
+    --color-border-success: rgba(154, 244, 195, 1);
+    --color-border-warning: rgba(250, 208, 169, 1);
+    --color-border-destructive: rgba(247, 195, 192, 1);
+    --color-border-brand: rgba(216, 192, 247, 1);
+    --color-border-alpha-white: rgba(255, 255, 255, 0.18);
+    --color-border-surface: rgba(255, 255, 255, 1);
+    --color-border-surface-neutral: rgba(247, 247, 248, 1);
+    --color-border-inverted: rgba(11, 12, 14, 1);
+
+    /* Border Action Colors */
+    --color-border-action-normal: rgba(222, 224, 227, 1);
+    --color-border-action-hover: rgba(200, 202, 208, 1);
+    --color-border-action-disabled: rgba(233, 234, 236, 1);
+    --color-border-action-focus: var(--color-purple-8);
+    --color-border-action-focus-light: rgba(183, 138, 240, 0.5);
+    --color-border-action-focus-destructive: rgba(230, 72, 61, 1);
+    --color-border-action-focus-destructive-light: rgba(240, 139, 133, 0.5);
+    --color-border-action-destructive: rgba(247, 195, 192, 1);
+    --color-border-action-destructive-hover: rgba(245, 178, 173, 1);
+    --color-border-action-destructive-disabled: rgba(230, 72, 61, 0.2);
+    --color-border-action-success: rgba(154, 244, 195, 1);
+    --color-border-action-success-hover: rgba(140, 232, 182, 1);
+    --color-border-action-warning: rgba(250, 208, 169, 1);
+    --color-border-action-warning-hover: rgba(249, 197, 148, 1);
+    --color-border-action-info: rgba(180, 199, 248, 1);
+    --color-border-action-info-hover: rgba(147, 175, 246, 1);
+
+    /* Input Border Colors */
+    --color-border-input-default: rgba(222, 224, 227, 1);
+    --color-border-input-hover: rgba(200, 202, 208, 1);
+    --color-border-input-focus: var(--color-purple-8);
+    --color-border-input-disabled: rgba(233, 234, 236, 1);
+    --color-border-input-destructive: rgba(247, 195, 192, 1);
+    --color-border-input-destructive-focus: rgba(230, 72, 61, 1);
+    --color-border-destructive-focus: rgba(240, 139, 133, 1);
+
+    /* Border Select Colors */
+    --color-border-select-primary: var(--color-purple-8);
+    --color-border-select-secondary: rgba(216, 192, 247, 1);
+    --color-border-select-destructive: rgba(230, 72, 61, 1);
+    --color-border-select-destructive-secondary: rgba(247, 195, 192, 1);
+
+    /* Border Accent Colors */
+    --color-border-accent-blue: rgba(147, 175, 246, 1);
+    --color-border-accent-blue-accent: rgba(71, 120, 245, 1);
+    --color-border-accent-green: rgba(140, 232, 182, 1);
+    --color-border-accent-green-accent: rgba(38, 189, 108, 1);
+    --color-border-accent-orange: rgba(249, 197, 148, 1);
+    --color-border-accent-orange-accent: rgba(244, 142, 47, 1);
+    --color-border-accent-red: rgba(245, 178, 173, 1);
+    --color-border-accent-red-accent: rgba(230, 72, 61, 1);
+    --color-border-accent-purple: rgba(205, 174, 244, 1);
+    --color-border-accent-purple-accent: var(--color-purple-8);
+
+    /* Icon Colors */
+    --color-icon-primary: rgba(20, 21, 26, 1);
+    --color-icon-secondary: rgba(15, 19, 36, 0.6);
+    --color-icon-tertiary: rgba(13, 17, 38, 0.4);
+    --color-icon-quaternary: rgba(10, 15, 41, 0.25);
+    --color-icon-inverted: rgba(255, 255, 255, 1);
+    --color-icon-inverted: rgba(255, 255, 255, 1);
+    --color-icon-inverted-secondary: rgba(255, 255, 255, 0.6);
+    --color-icon-inverted-tertiary: rgba(255, 255, 255, 0.46);
+    --color-icon-inverted-quaternary: rgba(255, 255, 255, 0.4);
+    --color-icon-static-dark: rgba(20, 21, 26, 1);
+    --color-icon-static-dark-secondary: rgba(15, 19, 36, 0.6);
+    --color-icon-static-dark-tertiary: rgba(13, 17, 38, 0.4);
+    --color-icon-static-dark-quaternary: rgba(10, 15, 41, 0.25);
+    --color-icon-static-white: rgba(255, 255, 255, 1);
+    --color-icon-static-white-secondary: rgba(255, 255, 255, 0.6);
+    --color-icon-static-white-tertiary: rgba(255, 255, 255, 0.46);
+    --color-icon-static-white-quaternary: rgba(255, 255, 255, 0.32);
+
+    /* Icon Status Colors */
+    --color-icon-destructive: rgba(230, 72, 61, 1);
+    --color-icon-destructive-secondary: rgba(230, 72, 61, 0.7);
+    --color-icon-destructive-tertiary: rgba(230, 72, 61, 0.3);
+    --color-icon-success: rgba(38, 189, 108, 1);
+    --color-icon-success-secondary: rgba(38, 189, 108, 0.6);
+    --color-icon-success-tertiary: rgba(38, 189, 108, 0.3);
+    --color-icon-warning: rgba(244, 142, 47, 1);
+    --color-icon-warning-secondary: rgba(244, 142, 47, 0.6);
+    --color-icon-warning-tertiary: rgba(244, 142, 47, 0.3);
+    --color-icon-info: rgba(71, 120, 245, 1);
+    --color-icon-info-secondary: rgba(51, 104, 240, 0.6);
+    --color-icon-info-tertiary: rgba(51, 104, 240, 0.3);
+
+    /* Icon Accent Colors */
+    --color-icon-blue: rgba(19, 58, 154, 1);
+    --color-icon-blue-accent: rgba(71, 120, 245, 1);
+    --color-icon-blue-secondary: rgba(51, 104, 240, 0.5);
+    --color-icon-blue-tertiary: rgba(51, 104, 240, 0.3);
+    --color-icon-green: rgba(22, 110, 63, 1);
+    --color-icon-green-accent: rgba(38, 189, 108, 1);
+    --color-icon-green-secondary: rgba(38, 189, 108, 0.5);
+    --color-icon-green-tertiary: rgba(38, 189, 108, 0.3);
+    --color-icon-orange: rgba(174, 89, 10, 1);
+    --color-icon-orange-accent: rgba(244, 142, 47, 1);
+    --color-icon-orange-secondary: rgba(244, 142, 47, 0.5);
+    --color-icon-orange-tertiary: rgba(244, 142, 47, 0.3);
+    --color-icon-red: rgba(154, 28, 19, 1);
+    --color-icon-red-accent: rgba(230, 72, 61, 1);
+    --color-icon-red-secondary: rgba(230, 72, 61, 0.5);
+    --color-icon-red-tertiary: rgba(230, 72, 61, 0.3);
+    --color-icon-purple: rgba(83, 20, 163, 1);
+    --color-icon-purple-accent: var(--color-purple-8);
+    --color-icon-purple-secondary: rgba(135, 61, 230, 0.5);
+    --color-icon-purple-tertiary: rgba(135, 61, 230, 0.3);
+
+    /* Text Accent Colors */
+    --color-text-purple-accent: var(--color-purple-8);
+
+    /* Color Palette */
+    --color-blue-1: rgba(240, 244, 254, 1);
+    --color-blue-8: rgba(71, 120, 245, 1);
+    --color-blue-9: rgba(29, 84, 226, 1);
+    --color-green-1: rgba(237, 253, 244, 1);
+    --color-green-8: rgba(38, 189, 108, 1);
+    --color-green-9: rgba(33, 166, 94, 1);
+    --color-orange-1: rgba(254, 244, 236, 1);
+    --color-orange-8: rgba(244, 142, 47, 1);
+    --color-orange-9: rgba(233, 118, 12, 1);
+    --color-red-1: rgba(253, 242, 241, 1);
+    --color-red-8: rgba(230, 72, 61, 1);
+    --color-red-9: rgba(217, 40, 28, 1);
+    --color-purple-1: rgba(247, 241, 253, 1);
+    --color-purple-8: rgba(146, 79, 232, 1);
+    --color-purple-9: rgba(116, 29, 226, 1);
+    --color-gray-1: rgba(247, 247, 248, 1);
+    --color-gray-2: rgba(233, 234, 236, 1);
+    --color-gray-3: rgba(222, 224, 227, 1);
+    --color-gray-13: rgba(20, 21, 26, 1);
+
+    /* Typography */
+    --font-family-inter: "Inter";
+    --font-weight-light: 300;
+    --font-weight-regular: 400;
+    --font-weight-medium: 500;
+    --font-weight-semi-bold: 600;
+    --font-weight-bold: 700;
+    --font-weight-extra-bold: 800;
+    --font-weight-black: 900;
+
+    /* Font Sizes */
+    --font-size-display: 6rem;
+    --font-size-h1: 4.5rem;
+    --font-size-h2: 4rem;
+    --font-size-h3: 3rem;
+    --font-size-h4: 2.25rem;
+    --font-size-h5: 1.875rem;
+    --font-size-h6: 1.5rem;
+    --font-size-body-l: 1.25rem;
+    --font-size-body-m: 1.125rem;
+    --font-size-body-s: 1rem;
+    --font-size-caption-l: 0.875rem;
+    --font-size-caption-m: 0.75rem;
+    --font-size-caption-s: 0.625rem;
+
+    /* Line Heights */
+    --line-height-display: 6.25rem;
+    --line-height-h1: 5rem;
+    --line-height-h2: 4.5rem;
+    --line-height-h3: 3.5rem;
+    --line-height-h4: 2.75rem;
+    --line-height-h5: 2.25rem;
+    --line-height-h6: 2rem;
+    --line-height-body-l: 1.75rem;
+    --line-height-body-m: 1.625rem;
+    --line-height-body-s: 1.5rem;
+    --line-height-caption-l: 1.25rem;
+    --line-height-caption-m: 1rem;
+    --line-height-caption-s: 0.875rem;
+
+    /* Letter Spacing */
+    --letter-spacing-display: -0.225rem;
+    --letter-spacing-h1: -0.1375rem;
+    --letter-spacing-h2: -0.10625rem;
+    --letter-spacing-h3: -0.0625rem;
+    --letter-spacing-h4: -0.04375rem;
+    --letter-spacing-h5: -0.03125rem;
+    --letter-spacing-h6: -0.01875rem;
+    --letter-spacing-body-l: -0.0125rem;
+    --letter-spacing-body-m: -0.0125rem;
+    --letter-spacing-body-s: -0.0125rem;
+    --letter-spacing-caption-l: -0.00625rem;
+    --letter-spacing-caption-m: 0rem;
+    --letter-spacing-caption-s: 0rem;
+
+    /* Spacing */
+    --space-0: 0rem;
+    --space-1: 0.0625rem;
+    --space-2: 0.125rem;
+    --space-3: 0.1875rem;
+    --space-4: 0.25rem;
+    --space-6: 0.375rem;
+    --space-8: 0.5rem;
+    --space-10: 0.625rem;
+    --space-12: 0.75rem;
+    --space-14: 0.875rem;
+    --space-16: 1rem;
+    --space-24: 1.5rem;
+    --space-32: 2rem;
+    --space-80: 5rem;
+
+    /* Gap */
+    --gap-0: 0rem;
+    --gap-4: 0.25rem;
+    --gap-6: 0.375rem;
+    --gap-8: 0.5rem;
+    --gap-10: 0.625rem;
+    --gap-12: 0.75rem;
+    --gap-14: 0.875rem;
+    --gap-24: 1.5rem;
+    --gap-120: 7.5rem;
+
+    /* Border Radius */
+    --radius-0: 0rem;
+    --radius-sm: 0.375rem;
+    --radius-md: 0.5rem;
+    --radius-lg: 0.625rem;
+    --radius-xl: 0.75rem;
+    --radius-xxl: 1rem;
+    --radius-full: 62.4375rem;
+
+    /* Numbers */
+    --number-0: 0;
+    --number-2: 2;
+    --number-4: 4;
+    --number-6: 6;
+    --number-8: 8;
+    --number-10: 10;
+    --number-12: 12;
+    --number-14: 14;
+    --number-16: 16;
+    --number-18: 18;
+    --number-20: 20;
+    --number-24: 24;
+    --number-30: 30;
+    --number-32: 32;
+    --number-36: 36;
+    --number-48: 48;
+    --number-64: 64;
+    --number-72: 72;
+    --number-80: 80;
+    --number-96: 96;
+    --number-120: 120;
+
+    /* Transitions */
+    --transition-duration: 0.2s;
+
+    /* Icon Button Variables */
+    --icon-button-border-radius: 0.5rem;
+    --icon-button-transition-duration: 0.2s;
+    --icon-button-border-width: 0.0625rem;
+
+    /* Icon Button Sizes */
+    --icon-button-size-xxs: 1.5rem;
+    --icon-button-size-xs: 1.75rem;
+    --icon-button-size-sm: 2rem;
+    --icon-button-size-md: 2.5rem;
+    --icon-button-size-lg: 3rem;
+
+    /* Icon Button Icon Sizes */
+    --icon-button-icon-size-xxs: 1rem;
+    --icon-button-icon-size-xs: 1.125rem;
+    --icon-button-icon-size-sm: 1.25rem;
+    --icon-button-icon-size-md: 1.5rem;
+    --icon-button-icon-size-lg: 1.75rem;
+
+    /* Icon Button Primary Colors */
+    --color-bg-icon-button-primary-default: rgba(71, 120, 245, 1);
+    --color-bg-icon-button-primary-hover: rgba(29, 84, 226, 1);
+    --color-bg-icon-button-primary-focus: rgba(71, 120, 245, 1);
+    --color-bg-icon-button-primary-disabled: rgba(233, 234, 236, 1);
+    --color-text-icon-button-primary-default: rgba(255, 255, 255, 1);
+    --color-text-icon-button-primary-hover: rgba(255, 255, 255, 1);
+    --color-text-icon-button-primary-focus: rgba(255, 255, 255, 1);
+    --color-text-icon-button-primary-disabled: rgba(158, 162, 173, 1);
+
+    /* Icon Button Secondary Colors */
+    --color-bg-icon-button-secondary-default: rgba(255, 255, 255, 1);
+    --color-bg-icon-button-secondary-hover: rgba(247, 247, 248, 1);
+    --color-bg-icon-button-secondary-focus: rgba(255, 255, 255, 1);
+    --color-bg-icon-button-secondary-disabled: rgba(255, 255, 255, 1);
+    --color-text-icon-button-secondary-default: rgba(94, 99, 110, 1);
+    --color-text-icon-button-secondary-hover: rgba(20, 21, 26, 1);
+    --color-text-icon-button-secondary-focus: rgba(94, 99, 110, 1);
+    --color-text-icon-button-secondary-disabled: rgba(158, 162, 173, 1);
+    --color-border-icon-button-secondary-default: rgba(222, 224, 227, 1);
+    --color-border-icon-button-secondary-hover: rgba(200, 202, 208, 1);
+    --color-border-icon-button-secondary-focus: rgba(71, 120, 245, 1);
+    --color-border-icon-button-secondary-disabled: rgba(233, 234, 236, 1);
+
+    /* Icon Button Tertiary Colors */
+    --color-bg-icon-button-tertiary-default: rgba(255, 255, 255, 0);
+    --color-bg-icon-button-tertiary-hover: rgba(240, 244, 254, 1);
+    --color-bg-icon-button-tertiary-focus: rgba(255, 255, 255, 0);
+    --color-bg-icon-button-tertiary-disabled: rgba(255, 255, 255, 0);
+    --color-text-icon-button-tertiary-default: rgba(71, 120, 245, 1);
+    --color-text-icon-button-tertiary-hover: rgba(29, 84, 226, 1);
+    --color-text-icon-button-tertiary-focus: rgba(71, 120, 245, 1);
+    --color-text-icon-button-tertiary-disabled: rgba(158, 162, 173, 1);
+    --color-border-icon-button-tertiary-default: rgba(71, 120, 245, 1);
+    --color-border-icon-button-tertiary-hover: rgba(29, 84, 226, 1);
+    --color-border-icon-button-tertiary-focus: rgba(71, 120, 245, 1);
+    --color-border-icon-button-tertiary-disabled: rgba(233, 234, 236, 1);
+
+    /* Icon Button Ghost Colors */
+    --color-bg-icon-button-ghost-default: rgba(255, 255, 255, 0);
+    --color-bg-icon-button-ghost-hover: rgba(247, 247, 248, 1);
+    --color-bg-icon-button-ghost-focus: rgba(255, 255, 255, 0);
+    --color-bg-icon-button-ghost-disabled: rgba(255, 255, 255, 0);
+    --color-text-icon-button-ghost-default: rgba(94, 99, 110, 1);
+    --color-text-icon-button-ghost-hover: rgba(20, 21, 26, 1);
+    --color-text-icon-button-ghost-focus: rgba(94, 99, 110, 1);
+    --color-text-icon-button-ghost-disabled: rgba(158, 162, 173, 1);
+
+    /* Icon Button Focus Shadows */
+    --icon-button-focus-shadow-primary: 0 0 0 0.125rem rgba(71, 120, 245, 0.3);
+    --icon-button-focus-shadow-secondary: 0 0 0 0.125rem rgba(71, 120, 245, 0.3);
+    --icon-button-focus-shadow-tertiary: 0 0 0 0.125rem rgba(71, 120, 245, 0.3);
+    --icon-button-focus-shadow-ghost: 0 0 0 0.125rem rgba(94, 99, 110, 0.3);
+
+    /* Button Group Variables */
+    --button-group-gap: 0.5rem;
+    --button-group-gap-xs: 0.25rem;
+    --button-group-gap-sm: 0.375rem;
+    --button-group-gap-md: 0.5rem;
+    --button-group-gap-lg: 0.75rem;
+    --button-group-transition-duration: 0.2s;
+
+    /* Button Variables */
+    --btn-gap: 0.25rem;
+    --btn-border-radius: 0.75rem;
+    --btn-transition: all 0.2s ease-in-out;
+
+    /* Button Sizes */
+    --btn-height-lg: 3rem;
+    --btn-padding-lg: 0.75rem 1rem;
+    --btn-font-size-lg: 1rem;
+    --btn-line-height-lg: 1.5rem;
+    --btn-letter-spacing-lg: -0.0125rem;
+
+    --btn-height-md: 2.5rem;
+    --btn-padding-md: 0.625rem 0.875rem;
+    --btn-font-size-md: 0.875rem;
+    --btn-line-height-md: 1.25rem;
+    --btn-letter-spacing-md: -0.00625rem;
+
+    --btn-height-sm: 2rem;
+    --btn-padding-sm: 0.5rem 0.75rem;
+    --btn-font-size-sm: 0.875rem;
+    --btn-line-height-sm: 1.25rem;
+    --btn-letter-spacing-sm: -0.00625rem;
+
+    --btn-height-xs: 1.75rem;
+    --btn-padding-xs: 0.375rem 0.625rem;
+    --btn-font-size-xs: 0.75rem;
+    --btn-line-height-xs: 1rem;
+    --btn-letter-spacing-xs: 0rem;
+
+    --btn-height-xxs: 1.5rem;
+    --btn-padding-xxs: 0.25rem 0.5rem;
+    --btn-font-size-xxs: 0.75rem;
+    --btn-line-height-xxs: 1rem;
+    --btn-letter-spacing-xxs: 0rem;
+
+    /* Button Icon Sizes */
+    --btn-icon-size-lg: 1.25rem;
+    --btn-icon-size-md: 1.25rem;
+    --btn-icon-size-sm: 1rem;
+    --btn-icon-size-xs: 0.875rem;
+    --btn-icon-size-xxs: 0.875rem;
+
+    /* Button Badge Variables */
+    --btn-badge-bg: var(--color-bg-badge-gray);
+    --btn-badge-text: var(--color-text-secondary);
+    --btn-badge-border: rgba(10, 15, 41, 0.08);
+    --btn-badge-radius: 0.5rem;
+    --btn-badge-padding: 0.125rem 0.25rem;
+    --btn-badge-font-size: 0.875rem;
+    --btn-badge-line-height: 1.25rem;
+    --btn-badge-letter-spacing: -0.00625rem;
+
+    /* Button Icon Only Variables */
+    --btn-icon-only-padding: 0.75rem;
+    --btn-icon-only-size: 3rem;
+
+    --btn-icon-only-size-lg: 3rem;
+    --btn-icon-only-padding-lg: 0.75rem;
+
+    --btn-icon-only-size-md: 2.5rem;
+    --btn-icon-only-padding-md: 0.625rem;
+
+    --btn-icon-only-size-sm: 2rem;
+    --btn-icon-only-padding-sm: 0.5rem;
+
+    --btn-icon-only-size-xs: 1.75rem;
+    --btn-icon-only-padding-xs: 0.375rem;
+
+    --btn-icon-only-size-xxs: 1.5rem;
+    --btn-icon-only-padding-xxs: 0.25rem;
+
+    /* Button Destructive Variables */
+    --color-bg-button-primary-destructive: rgba(230, 72, 61, 1);
+    --color-bg-button-primary-destructive-hover: rgba(217, 40, 28, 1);
+    --color-bg-button-secondary-destructive-hover: rgba(253, 242, 241, 1);
+    --color-bg-button-tertiary-destructive-hover: rgba(253, 242, 241, 1);
+    --color-bg-button-ghost-destructive-hover: rgba(253, 242, 241, 1);
+    --color-border-destructive-hover: rgba(245, 178, 173, 1);
+
+    /* Checkbox Specific Variables */
+    --checkbox-sm-size: 1rem;
+    --checkbox-md-size: 1.25rem;
+    --checkbox-icon-size: 0.5rem;
+    --checkbox-transition-duration: 0.2s;
+    --checkbox-icon-disabled-opacity: 0.5;
+    --checkbox-focus-shadow: rgba(200, 178, 255, 0.6);
+    --checkbox-gap-sm: 0.5rem;
+    --checkbox-gap-md: 0.75rem;
+
+    /* Pagination Variables */
+    --pagination-gap: 0.25rem;
+    --pagination-btn-padding: 0.625rem;
+    --pagination-btn-border-radius: 0.75rem;
+    --pagination-btn-font-size: 1rem;
+    --pagination-btn-line-height: 1.5rem;
+    --pagination-btn-letter-spacing: -0.0125rem;
+    --pagination-number-size: 2.5rem;
+    --pagination-icon-size: 1.25rem;
+    --pagination-transition-duration: 0.2s;
+
+
+
+    /* ContentLoader Variables */
+    --content-loader-padding: 2rem;
+    --content-loader-min-height: 12.5rem;
+    --content-loader-spinner-color: var(--color-icon-blue-accent);
+    --content-loader-spinner-size: 3rem;
+    --content-loader-animation-duration: 1s;
+    --content-loader-text-spacing: 1rem;
+    --content-loader-text-color: var(--color-text-secondary);
+    --content-loader-text-size: 1rem;
+    --content-loader-text-weight: var(--font-weight-regular);
+
+    /* Semantic Tokens */
+    --text-base-primary: var(--color-text-primary);
+    --text-base-secondary: var(--color-text-secondary);
+    --text-base-tertiary: var(--color-text-tertiary);
+    --background-input-normal: var(--color-bg-input-normal);
+    --background-badge-gray: var(--color-bg-badge-gray);
+    --border-action-normal: var(--color-border-action-normal);
+
+    /* SelectListDropdown Variables */
+    --select-list-dropdown-filter-padding: 0.5rem;
+    --select-list-dropdown-filter-gap: 0.5rem;
+    --select-list-dropdown-filter-border-bottom: 0.0625rem solid var(--color-border-divider);
+    --select-list-dropdown-filter-input-padding: 0.25rem 0.5rem;
+    --select-list-dropdown-filter-input-border: 0.0625rem solid var(--color-border-input-default);
+    --select-list-dropdown-filter-input-border-radius: 0.25rem;
+    --select-list-dropdown-filter-input-font-size: 0.875rem;
+    --select-list-dropdown-filter-input-focus-border-color: var(--color-border-input-focus);
+    --select-list-dropdown-filter-clear-padding: 0.25rem;
+    --select-list-dropdown-filter-clear-background: transparent;
+    --select-list-dropdown-filter-clear-color: var(--color-icon-secondary);
+    --select-list-dropdown-filter-clear-border-radius: 0.25rem;
+    --select-list-dropdown-filter-clear-hover-background: var(--color-bg-overlay-hover);
+    --select-list-dropdown-filter-clear-hover-color: var(--color-text-primary);
+    --select-list-dropdown-empty-padding: 1rem;
+    --select-list-dropdown-empty-color: var(--color-text-secondary);
+    --select-list-dropdown-empty-font-size: 0.875rem;
+
+    /* Dropdown Menu Variables */
+    --dropdown-item-height: 2.5rem;
+}

@@ -1,0 +1,31 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net9.0</TargetFramework>
+        <LangVersion>latest</LangVersion>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <IsPackable>false</IsPackable>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="AutoMapper" Version="14.0.0" />
+        <PackageReference Include="coverlet.collector" Version="6.0.2"/>
+        <PackageReference Include="FluentValidation" Version="12.1.1" />
+        <PackageReference Include="FluentValidation.AspNetCore" Version="11.3.1" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="9.0.12" />
+        <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.12.0"/>
+        <PackageReference Include="xunit" Version="2.6.6"/>
+        <PackageReference Include="xunit.runner.visualstudio" Version="2.5.6">
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+            <PrivateAssets>all</PrivateAssets>
+        </PackageReference>
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Congratulator.Core\Congratulator.Core.csproj" />
+      <ProjectReference Include="..\Congratulator.Infrastructure\Congratulator.Infrastructure.csproj" />
+      <ProjectReference Include="..\Congratulator.SharedKernel\Congratulator.SharedKernel.csproj" />
+    </ItemGroup>
+
+</Project>

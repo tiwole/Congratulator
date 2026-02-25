@@ -1,0 +1,98 @@
+﻿.birthday-card {
+    width: 280px;
+    height: 280px;
+    max-width: 100%;
+    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+    border-radius: 20px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.birthday-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.10);
+}
+
+.photo-container {
+    width: 100%;
+    height: 120px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 16px;
+}
+
+.photo {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #e9ecef;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.card-content {
+    padding: 12px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    flex: 1;
+}
+
+.full-name {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 600;
+    color: #212529;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.info-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12px;
+}
+
+.label {
+    color: #6c757d;
+}
+
+.value {
+    color: #495057;
+    font-weight: 500;
+}
+
+.birthday-status {
+    margin-top: auto;
+    padding: 8px 12px;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 11px;
+}
+
+.status-today {
+    background: linear-gradient(135deg, #ffd700 0%, #ffb347 100%);
+    color: #5c4d00;
+}
+
+.status-today .today {
+    font-weight: 600;
+    font-size: 13px;
+}
+
+.status-soon {
+    background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+    color: #2e7d32;
+}
+
+.status-normal {
+    background: #f1f3f4;
+    color: #5f6368;
+}
