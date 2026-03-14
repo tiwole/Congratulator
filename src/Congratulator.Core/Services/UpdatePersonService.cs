@@ -14,16 +14,16 @@ public class UpdatePersonService(IPersonRepository personRepository)
 
         bool hasChanges = false;
 
-        if (request.FirstName is { } fn && fn != person.FirstName) 
+        if (request.FirstName is { } fn && fn != person.FirstName)
             (person.FirstName, hasChanges) = (fn, true);
 
-        if (request.LastName is { } ln && ln != person.LastName) 
+        if (request.LastName is { } ln && ln != person.LastName)
             (person.LastName, hasChanges) = (ln, true);
 
-        if (request.BirthDate is { } bd && bd != person.BirthDate) 
+        if (request.BirthDate is { } bd && bd != person.BirthDate)
             (person.BirthDate, hasChanges) = (bd, true);
 
-        if (request.RelationshipType is { } rt && rt != person.RelationshipType) 
+        if (request.RelationshipType is { } rt && rt != person.RelationshipType)
             (person.RelationshipType, hasChanges) = (rt, true);
 
         if (hasChanges)

@@ -1,54 +1,53 @@
 using Congratulator.Infrastructure.Data;
 using Congratulator.SharedKernel.Entities;
-using Congratulator.XUnitTests.TestHelpers;
+using Congratulator.SharedKernel.Interfaces;
+using AutoMapper;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
+using NSubstitute;
 using Xunit;
+using PersonRepo = global::Congratulator.Infrastructure.Repositories.PersonRepository;
 
 namespace Congratulator.XUnitTests.Repositories.PersonRepository;
 
-public class GetPersonByIdTests
+public class GetPersonByIdTests : IDisposable
 {
-    private readonly Infrastructure.Repositories.PersonRepository _repository;
-    private readonly List<Person> _testPersons;
+    private readonly CongratulatorDbContext _context;
+    private readonly PersonRepo _repository;
 
     public GetPersonByIdTests()
     {
-        _testPersons = TestData.GetTestPersons();
-        
         var options = new DbContextOptionsBuilder<CongratulatorDbContext>()
             .UseInMemoryDatabase(Guid.NewGuid().ToString())
             .Options;
-
-        var context = new CongratulatorDbContext(options);
-        //_repository = new Infrastructure.Repositories.PersonRepository(context);
+        _context = new CongratulatorDbContext(options);
+        var mapper = Substitute.For<IMapper>();
+        var dateTimeProvider = Substitute.For<IDateTimeProvider>();
+        var logger = Substitute.For<ILogger<PersonRepo>>();
+        _repository = new PersonRepo(_context, mapper, dateTimeProvider, logger);
     }
 
     [Fact]
-    public async Task GetPersonByIdAsync_ExistingId_ShouldReturnPerson()
+    public async Task GetPersonByIdAsync_ExistingId_ReturnsPerson()
     {
-        // Arrange
-        var expectedPerson = _testPersons[0];
-        await _repository.CreatePersonAsync(expectedPerson);
-        
-        // Act
-        var result = await _repository.GetPersonByIdAsync(expectedPerson.Id);
-        
-        // Assert
+        var person = new Person { FirstName = "John", BirthDate = new DateOnly(1990, 1, 1) };
+        _context.Persons.Add(person);
+        await _context.SaveChangesAsync();
+
+        var result = await _repository.GetPersonByIdAsync(person.Id);
+
         Assert.NotNull(result);
-        Assert.Equal(expectedPerson.Id, result.Id);
-        Assert.Equal(expectedPerson.FirstName, result.FirstName);
+        Assert.Equal(person.Id, result.Id);
+        Assert.Equal("John", result.FirstName);
     }
 
     [Fact]
-    public async Task GetPersonByIdAsync_NonExistingId_ShouldReturnNull()
+    public async Task GetPersonByIdAsync_NonExistingId_ReturnsNull()
     {
-        // Arrange
-        var nonExistingId = Guid.NewGuid();
-        
-        // Act
-        var result = await _repository.GetPersonByIdAsync(nonExistingId);
-        
-        // Assert
+        var result = await _repository.GetPersonByIdAsync(Guid.NewGuid());
+
         Assert.Null(result);
     }
+
+    public void Dispose() => _context.Dispose();
 }

@@ -7,3 +7,5 @@ riderModule.iml
 appsettings.json
 appsettings.*.json
 launchSettings.json
+
+logs/

@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Congratulator.Infrastructure.Data;
 using Congratulator.SharedKernel.Contracts.Enums;
+using Congratulator.SharedKernel.Interfaces;
 using Congratulator.SharedKernel.Contracts.Models;
 using Congratulator.SharedKernel.Contracts.Models.Requests;
 using Congratulator.SharedKernel.Contracts.Models.Responses;
@@ -8,39 +9,43 @@ using Congratulator.SharedKernel.Contracts.Models.Results;
 using Congratulator.SharedKernel.Entities;
 using Congratulator.SharedKernel.Interfaces.Repositories;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 
 namespace Congratulator.Infrastructure.Repositories;
 
-public class PersonRepository(CongratulatorDbContext context, IMapper mapper) : IPersonRepository
+public class PersonRepository(CongratulatorDbContext context, IMapper mapper, IDateTimeProvider dateTimeProvider, ILogger<PersonRepository> logger) : IPersonRepository
 {
     public async Task CreatePersonAsync(Person person)
     {
         context.Persons.Add(person);
         await context.SaveChangesAsync();
+        logger.LogInformation("Person {PersonId} created: {FirstName}", person.Id, person.FirstName);
     }
-    
+
     public async Task<Person?> GetPersonByIdAsync(Guid id)
     {
         return await context.Persons
             .AsNoTracking()
             .FirstOrDefaultAsync(x => x.Id == id);
     }
-    
+
     public async Task UpdatePersonAsync(Person person)
     {
         context.Persons.Update(person);
         await context.SaveChangesAsync();
+        logger.LogInformation("Person {PersonId} updated", person.Id);
     }
-    
+
     public async Task DeletePersonAsync(Person person)
     {
         context.Persons.Remove(person);
         await context.SaveChangesAsync();
+        logger.LogInformation("Person {PersonId} deleted", person.Id);
     }
     
     public async Task<GetPersonsResponse> GetPersonsAsync(GetPersonsRequest request)
     {
-        var today = DateOnly.FromDateTime(DateTime.Today);
+        var today = dateTimeProvider.Today;
         var upcomingDays = request.Upcoming ?? 3;
         var startMmdd = today.Month * 100 + today.Day;
         var endMmdd = today.AddDays(upcomingDays).Month * 100 + today.AddDays(upcomingDays).Day;
@@ -74,11 +79,11 @@ public class PersonRepository(CongratulatorDbContext context, IMapper mapper) : 
         var totalCount = await query.CountAsync();
 
         var persons = await query
-            .Skip((request.Page - 1) * 8)
-            .Take(9)
+            .Skip((request.Page - 1) * request.PageSize)
+            .Take(request.PageSize + 1)
             .ToListAsync();
 
-        bool hasNext = persons.Count > 8;
+        bool hasNext = persons.Count > request.PageSize;
 
         if (hasNext)
         {
