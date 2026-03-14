@@ -10,25 +10,7 @@ public class PersonModel
     public DateOnly BirthDate { get; set; }
     public RelationshipType RelationshipType { get; set; }
     public string? PhotoPath { get; set; }
-    public int Age => DateTime.Today.Year - BirthDate.Year - (DateTime.Today.DayOfYear < BirthDate.DayOfYear ? 1 : 0);
-    public DateOnly NextBirthday
-    {
-        get
-        {
-            var today = DateOnly.FromDateTime(DateTime.Today);
-            var birthdayThisYear = BirthDate.AddYears(today.Year - BirthDate.Year);
-            
-            return birthdayThisYear < today 
-                ? birthdayThisYear.AddYears(1) 
-                : birthdayThisYear;
-        }
-    }
-    public int DaysUntilBirthday
-    {
-        get
-        {
-            var today = DateOnly.FromDateTime(DateTime.Today);
-            return NextBirthday.DayNumber - today.DayNumber;
-        }
-    }
+    public int Age { get; set; }
+    public DateOnly NextBirthday { get; set; }
+    public int DaysUntilBirthday { get; set; }
 }

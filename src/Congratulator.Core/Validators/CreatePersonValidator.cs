@@ -1,11 +1,12 @@
-﻿using Congratulator.SharedKernel.Contracts.Models.Requests;
+using Congratulator.SharedKernel.Interfaces;
+using Congratulator.SharedKernel.Contracts.Models.Requests;
 using FluentValidation;
 
 namespace Congratulator.Core.Validators;
 
-public class CreatePersonValidator :AbstractValidator<CreatePersonRequest>
+public class CreatePersonValidator : AbstractValidator<CreatePersonRequest>
 {
-    public CreatePersonValidator()
+    public CreatePersonValidator(IDateTimeProvider dateTimeProvider)
     {
         RuleFor(x => x.FirstName)
             .NotEmpty()
@@ -13,10 +14,10 @@ public class CreatePersonValidator :AbstractValidator<CreatePersonRequest>
 
         RuleFor(x => x.LastName)
             .MaximumLength(64);
-        
+
         RuleFor(x => x.BirthDate)
             .NotEmpty()
-            .LessThan(DateOnly.FromDateTime(DateTime.Today.AddDays(1)))
-            .GreaterThan(DateOnly.FromDateTime(DateTime.UtcNow.AddYears(-120)));
+            .LessThan(DateOnly.FromDateTime(dateTimeProvider.UtcNow.AddDays(1)))
+            .GreaterThan(DateOnly.FromDateTime(dateTimeProvider.UtcNow.AddYears(-120)));
     }
 }

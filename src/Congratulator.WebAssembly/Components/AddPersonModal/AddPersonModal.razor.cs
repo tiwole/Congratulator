@@ -1,6 +1,7 @@
 ﻿using System.Net.Http.Json;
 using Congratulator.SharedKernel.Contracts.Enums;
 using Congratulator.SharedKernel.Contracts.Models.Requests;
+using Congratulator.WebAssembly.Services;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Forms;
 
@@ -9,8 +10,11 @@ namespace Congratulator.WebAssembly.Components.AddPersonModal;
 public partial class AddPersonModal : ComponentBase
 {
     #region Injected Services
-    [Inject] 
+    [Inject]
     public IHttpClientFactory HttpClientFactory { get; set; } = null!;
+
+    [Inject]
+    public DateTimeProvider DateTimeProvider { get; set; } = null!;
     #endregion
     
     #region Parameters
@@ -55,9 +59,9 @@ public partial class AddPersonModal : ComponentBase
 
         if (BirthDate is null)
             Errors[nameof(BirthDate)] = "Date of birth is required";
-        else if (BirthDate.Value > DateOnly.FromDateTime(DateTime.Today.AddDays(1)))
+        else if (BirthDate.Value > DateOnly.FromDateTime(DateTimeProvider.UtcNow.AddDays(1)))
             Errors[nameof(BirthDate)] = "Date of birth cannot be in the future";
-        else if (BirthDate.Value < DateOnly.FromDateTime(DateTime.UtcNow.AddYears(-120)))
+        else if (BirthDate.Value < DateOnly.FromDateTime(DateTimeProvider.UtcNow.AddYears(-120)))
             Errors[nameof(BirthDate)] = "Please enter a valid date";
 
         return Errors.Count == 0;

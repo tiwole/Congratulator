@@ -1,40 +1,58 @@
 using Congratulator.Infrastructure.Data;
 using Congratulator.SharedKernel.Entities;
-using Congratulator.XUnitTests.TestHelpers;
+using Congratulator.SharedKernel.Interfaces;
+using AutoMapper;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
+using NSubstitute;
 using Xunit;
+using PersonRepo = global::Congratulator.Infrastructure.Repositories.PersonRepository;
 
 namespace Congratulator.XUnitTests.Repositories.PersonRepository;
 
-public class DeletePersonTests
+public class DeletePersonTests : IDisposable
 {
-    private readonly Infrastructure.Repositories.PersonRepository _repository;
-    private readonly List<Person> _testPersons;
+    private readonly CongratulatorDbContext _context;
+    private readonly PersonRepo _repository;
 
     public DeletePersonTests()
     {
-        _testPersons = TestData.GetTestPersons();
-        
         var options = new DbContextOptionsBuilder<CongratulatorDbContext>()
             .UseInMemoryDatabase(Guid.NewGuid().ToString())
             .Options;
-
-        var context = new CongratulatorDbContext(options);
-        //_repository = new Infrastructure.Repositories.PersonRepository(context);
+        _context = new CongratulatorDbContext(options);
+        var mapper = Substitute.For<IMapper>();
+        var dateTimeProvider = Substitute.For<IDateTimeProvider>();
+        var logger = Substitute.For<ILogger<PersonRepo>>();
+        _repository = new PersonRepo(_context, mapper, dateTimeProvider, logger);
     }
 
     [Fact]
-    public async Task DeletePersonAsync_ShouldRemovePerson()
+    public async Task DeletePersonAsync_RemovesPersonFromDatabase()
     {
-        // Arrange
-        var person = _testPersons[0];
-        await _repository.CreatePersonAsync(person);
+        var person = new Person { FirstName = "John", BirthDate = new DateOnly(1990, 1, 1) };
+        _context.Persons.Add(person);
+        await _context.SaveChangesAsync();
 
-        // Act
         await _repository.DeletePersonAsync(person);
 
-        // Assert
-        var result = await _repository.GetPersonByIdAsync(person.Id);
-        Assert.Null(result);
+        var deleted = await _context.Persons.FirstOrDefaultAsync(p => p.Id == person.Id);
+        Assert.Null(deleted);
     }
+
+    [Fact]
+    public async Task DeletePersonAsync_DoesNotAffectOtherPersons()
+    {
+        var person1 = new Person { FirstName = "John", BirthDate = new DateOnly(1990, 1, 1) };
+        var person2 = new Person { FirstName = "Jane", BirthDate = new DateOnly(1995, 5, 15) };
+        _context.Persons.AddRange(person1, person2);
+        await _context.SaveChangesAsync();
+
+        await _repository.DeletePersonAsync(person1);
+
+        Assert.Equal(1, await _context.Persons.CountAsync());
+        Assert.NotNull(await _context.Persons.FirstOrDefaultAsync(p => p.Id == person2.Id));
+    }
+
+    public void Dispose() => _context.Dispose();
 }

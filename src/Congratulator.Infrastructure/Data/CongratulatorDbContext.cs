@@ -5,13 +5,9 @@ using DateOnlyConverter = Congratulator.Infrastructure.Data.ValueConverters.Date
 
 namespace Congratulator.Infrastructure.Data;
 
-public class CongratulatorDbContext : DbContext
+public class CongratulatorDbContext(DbContextOptions<CongratulatorDbContext> options) : DbContext(options)
 {
     public DbSet<Person> Persons { get; set; }
-
-    public CongratulatorDbContext(DbContextOptions<CongratulatorDbContext> options) : base(options)
-    {
-    }
 
     protected override void ConfigureConventions(ModelConfigurationBuilder configurationBuilder)
     {
