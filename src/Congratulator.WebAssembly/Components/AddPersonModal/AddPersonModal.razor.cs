@@ -1,6 +1,7 @@
 ﻿using System.Net.Http.Json;
 using Congratulator.SharedKernel.Contracts.Enums;
 using Congratulator.SharedKernel.Contracts.Models.Requests;
+using Congratulator.WebAssembly.Services;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Forms;
 
@@ -9,8 +10,11 @@ namespace Congratulator.WebAssembly.Components.AddPersonModal;
 public partial class AddPersonModal : ComponentBase
 {
     #region Injected Services
-    [Inject] 
+    [Inject]
     public IHttpClientFactory HttpClientFactory { get; set; } = null!;
+
+    [Inject]
+    public DateTimeProvider DateTimeProvider { get; set; } = null!;
     #endregion
     
     #region Parameters

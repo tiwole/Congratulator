@@ -1,0 +1,26 @@
+@using LumexUI.Common
+
+<LumexNavbar Bordered="true">
+    <LumexNavbarBrand>
+        <p class="font-bold text-xl">@Title</p>
+    </LumexNavbarBrand>
+
+    <LumexNavbarContent Align="@Align.Center">
+        @foreach (var item in Items)
+        {
+            <LumexNavbarItem>
+                <LumexLink Href="@item.Href" Match="@item.Match">
+                    <i class="@item.Icon navbar-icon"></i> @item.Title
+                </LumexLink>
+            </LumexNavbarItem>
+        }
+    </LumexNavbarContent>
+
+    <LumexNavbarContent Align="@Align.End">
+        <LumexNavbarItem>
+            <LumexLink Href="https://github.com/tiwole/Congratulator">
+                <i class="ri-code-s-slash-line navbar-icon"></i> About
+            </LumexLink>
+        </LumexNavbarItem>
+    </LumexNavbarContent>
+</LumexNavbar>

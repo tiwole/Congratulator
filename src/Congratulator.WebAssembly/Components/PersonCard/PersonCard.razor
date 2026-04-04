@@ -1,0 +1,52 @@
+@using LumexUI.Common
+<div class="person-card @(IsBirthdayToday ? "person-card--today" : "")">
+    @if (IsBirthdayToday)
+    {
+        <div class="confetti-strip">
+            <i class="ri-sparkling-2-fill"></i>
+            <i class="ri-sparkling-2-fill"></i>
+            <i class="ri-sparkling-2-fill"></i>
+        </div>
+    }
+
+    <LumexCard Classes="@_cardClasses">
+        <LumexCardHeader Class="gap-3 pb-1">
+            <LumexAvatar Src="@Person.PhotoPath"
+                         Name="@FullName"
+                         Bordered="@true"
+                         Size="@Size.Large"
+                         Classes="@_avatarClasses"/>
+
+            <div class="person-info">
+                <h3 class="person-name">@FullName</h3>
+                <LumexChip Size="@Size.Small"
+                           Variant="@ChipVariant.Flat"
+                           Classes="@RelationshipChipClasses">
+                    <StartContent>
+                        <i class="@RelationshipIcon"></i>
+                    </StartContent>
+                    <ChildContent>@RelationshipLabel</ChildContent>
+                </LumexChip>
+            </div>
+        </LumexCardHeader>
+
+        <LumexCardBody Class="py-2 gap-1.5">
+            <div class="detail">
+                <i class="ri-cake-2-line detail-icon"></i>
+                <span class="detail-text">@FormattedBirthDate</span>
+            </div>
+
+            <div class="detail">
+                <i class="ri-timer-line detail-icon"></i>
+                <span class="detail-text">@AgeText</span>
+            </div>
+        </LumexCardBody>
+
+        <LumexCardFooter Class="pt-1">
+            <div class="countdown @CountdownModifier">
+                <i class="@(IsBirthdayToday ? "ri-gift-2-fill" : "ri-calendar-event-line") countdown-icon"></i>
+                <span class="countdown-text">@CountdownText</span>
+            </div>
+        </LumexCardFooter>
+    </LumexCard>
+</div>

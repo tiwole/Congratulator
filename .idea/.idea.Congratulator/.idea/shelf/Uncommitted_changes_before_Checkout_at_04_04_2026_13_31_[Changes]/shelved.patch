@@ -1,0 +1,26 @@
+Index: src/Congratulator.XUnitTests/Services/GetPagedPersonsServiceTests.cs
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>using Congratulator.Core.Services;\r\nusing Congratulator.SharedKernel.Contracts.Models;\r\nusing Congratulator.SharedKernel.Contracts.Models.Requests;\r\nusing Congratulator.SharedKernel.Contracts.Models.Results;\r\nusing Congratulator.SharedKernel.Interfaces.Repositories;\r\nusing NSubstitute;\r\nusing Xunit;\r\n\r\nnamespace Congratulator.XUnitTests.Services;\r\n\r\npublic class GetPagedPersonsServiceTests\r\n{\r\n    private readonly IPersonRepository _personRepository = Substitute.For<IPersonRepository>();\r\n    private readonly GetPagedPersonsService _service;\r\n\r\n    public GetPagedPersonsServiceTests()\r\n    {\r\n        _service = new GetPagedPersonsService(_personRepository);\r\n    }\r\n\r\n    [Fact]\r\n    public async Task RunAsync_MapsDataFromRepository()\r\n    {\r\n        var request = new GetPersonsRequest { Page = 2 };\r\n        var repoResult = new GetPagedPersonsResults\r\n        {\r\n            Data = [new PersonModel { FirstName = \"John\" }],\r\n            TotalCount = 10,\r\n            HasNext = true\r\n        };\r\n        _personRepository.GetPagedPersonsAsync(request).Returns(repoResult);\r\n\r\n        var result = await _service.RunAsync(request);\r\n\r\n        Assert.Equal(repoResult.Data, result.Data);\r\n        Assert.Equal(10, result.TotalCount);\r\n        Assert.True(result.HasNext);\r\n    }\r\n\r\n    [Fact]\r\n    public async Task RunAsync_SetsPageFromRequest()\r\n    {\r\n        var request = new GetPersonsRequest { Page = 3 };\r\n        _personRepository.GetPagedPersonsAsync(request).Returns(new GetPagedPersonsResults\r\n        {\r\n            Data = [],\r\n            TotalCount = 0,\r\n            HasNext = false\r\n        });\r\n\r\n        var result = await _service.RunAsync(request);\r\n\r\n        Assert.Equal(3, result.Page);\r\n    }\r\n\r\n    [Fact]\r\n    public async Task RunAsync_WhenNoResults_ReturnsEmptyWithCorrectPage()\r\n    {\r\n        var request = new GetPersonsRequest { Page = 1 };\r\n        _personRepository.GetPagedPersonsAsync(request).Returns(new GetPagedPersonsResults\r\n        {\r\n            Data = [],\r\n            TotalCount = 0,\r\n            HasNext = false\r\n        });\r\n\r\n        var result = await _service.RunAsync(request);\r\n\r\n        Assert.Empty(result.Data);\r\n        Assert.Equal(0, result.TotalCount);\r\n        Assert.False(result.HasNext);\r\n        Assert.Equal(1, result.Page);\r\n    }\r\n}
+===================================================================
+diff --git a/src/Congratulator.XUnitTests/Services/GetPagedPersonsServiceTests.cs b/src/Congratulator.XUnitTests/Services/GetPagedPersonsServiceTests.cs
+--- a/src/Congratulator.XUnitTests/Services/GetPagedPersonsServiceTests.cs	(revision 6560b7f12927c3d5e3761f4d59d4da6a72718005)
++++ b/src/Congratulator.XUnitTests/Services/GetPagedPersonsServiceTests.cs	(date 1775240902643)
+@@ -33,7 +33,7 @@
+         var result = await _service.RunAsync(request);
+ 
+         Assert.Equal(repoResult.Data, result.Data);
+-        Assert.Equal(10, result.TotalCount);
++        Assert.Equal(10, result.Count);
+         Assert.True(result.HasNext);
+     }
+ 
+@@ -67,7 +67,7 @@
+         var result = await _service.RunAsync(request);
+ 
+         Assert.Empty(result.Data);
+-        Assert.Equal(0, result.TotalCount);
++        Assert.Equal(0, result.Count);
+         Assert.False(result.HasNext);
+         Assert.Equal(1, result.Page);
+     }

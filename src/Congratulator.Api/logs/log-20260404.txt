@@ -1,0 +1,45 @@
+2026-04-04 13:38:12.053 +03:00 [INF] Now listening on: https://localhost:7228
+2026-04-04 13:38:12.102 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-04-04 13:38:12.105 +03:00 [INF] Hosting environment: Development
+2026-04-04 13:38:12.107 +03:00 [INF] Content root path: C:\Users\tiwole\RiderProjects\Congratulator\src\Congratulator.Api
+2026-04-04 13:41:19.424 +03:00 [INF] Application is shutting down...
+2026-04-04 13:45:08.555 +03:00 [INF] Now listening on: https://localhost:7228
+2026-04-04 13:45:08.596 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-04-04 13:45:08.598 +03:00 [INF] Hosting environment: Development
+2026-04-04 13:45:08.600 +03:00 [INF] Content root path: C:\Users\tiwole\RiderProjects\Congratulator\src\Congratulator.Api
+2026-04-04 13:46:01.453 +03:00 [INF] Application is shutting down...
+2026-04-04 13:46:07.361 +03:00 [INF] Now listening on: https://localhost:7228
+2026-04-04 13:46:07.407 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-04-04 13:46:07.409 +03:00 [INF] Hosting environment: Development
+2026-04-04 13:46:07.410 +03:00 [INF] Content root path: C:\Users\tiwole\RiderProjects\Congratulator\src\Congratulator.Api
+2026-04-04 13:50:06.970 +03:00 [INF] Application is shutting down...
+2026-04-04 13:50:52.552 +03:00 [INF] Now listening on: https://localhost:7228
+2026-04-04 13:50:52.602 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-04-04 13:50:52.605 +03:00 [INF] Hosting environment: Development
+2026-04-04 13:50:52.607 +03:00 [INF] Content root path: C:\Users\tiwole\RiderProjects\Congratulator\src\Congratulator.Api
+2026-04-04 13:51:26.567 +03:00 [INF] Application is shutting down...
+2026-04-04 13:51:33.047 +03:00 [INF] Now listening on: https://localhost:7228
+2026-04-04 13:51:33.086 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-04-04 13:51:33.088 +03:00 [INF] Hosting environment: Development
+2026-04-04 13:51:33.090 +03:00 [INF] Content root path: C:\Users\tiwole\RiderProjects\Congratulator\src\Congratulator.Api
+2026-04-04 13:52:41.316 +03:00 [INF] Application is shutting down...
+2026-04-04 13:52:48.947 +03:00 [INF] Now listening on: https://localhost:7228
+2026-04-04 13:52:48.992 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-04-04 13:52:48.994 +03:00 [INF] Hosting environment: Development
+2026-04-04 13:52:48.995 +03:00 [INF] Content root path: C:\Users\tiwole\RiderProjects\Congratulator\src\Congratulator.Api
+2026-04-04 13:55:15.361 +03:00 [INF] Application is shutting down...
+2026-04-04 13:55:23.755 +03:00 [INF] Now listening on: https://localhost:7228
+2026-04-04 13:55:23.803 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-04-04 13:55:23.804 +03:00 [INF] Hosting environment: Development
+2026-04-04 13:55:23.806 +03:00 [INF] Content root path: C:\Users\tiwole\RiderProjects\Congratulator\src\Congratulator.Api
+2026-04-04 13:55:43.764 +03:00 [INF] Application is shutting down...
+2026-04-04 13:56:02.920 +03:00 [INF] Now listening on: https://localhost:7228
+2026-04-04 13:56:02.980 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-04-04 13:56:02.994 +03:00 [INF] Hosting environment: Development
+2026-04-04 13:56:02.996 +03:00 [INF] Content root path: C:\Users\tiwole\RiderProjects\Congratulator\src\Congratulator.Api
+2026-04-04 14:02:57.444 +03:00 [INF] Application is shutting down...
+2026-04-04 14:05:36.468 +03:00 [INF] Now listening on: https://localhost:7228
+2026-04-04 14:05:36.512 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-04-04 14:05:36.513 +03:00 [INF] Hosting environment: Development
+2026-04-04 14:05:36.515 +03:00 [INF] Content root path: C:\Users\tiwole\RiderProjects\Congratulator\src\Congratulator.Api
+2026-04-04 14:08:00.484 +03:00 [INF] Application is shutting down...

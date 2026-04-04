@@ -1,4 +1,5 @@
 ﻿@using Congratulator.SharedKernel.Contracts.Enums
+@using Congratulator.WebAssembly.Services
 
 @if (IsVisible)
 {
@@ -72,7 +73,7 @@
                         <input type="date"
                                class="form-input @(HasError(nameof(BirthDate)) ? "input-error" : "")"
                                @bind="BirthDate"
-                               max="@DateTime.Today.ToString("yyyy-MM-dd")"
+                               max="@DateTimeProvider.Today.ToString("yyyy-MM-dd")"
                                @onfocus="() => ClearError(nameof(BirthDate))"/>
                         @if (HasError(nameof(BirthDate)))
                         {

@@ -2,6 +2,7 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 using Congratulator.WebAssembly;
 using Congratulator.WebAssembly.Services;
+using LumexUI.Extensions;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 
@@ -22,5 +23,7 @@ jsonOptions.Converters.Add(new JsonStringEnumConverter());
 builder.Services.AddSingleton(jsonOptions);
 
 builder.Services.AddSingleton<NotificationService>();
+
+builder.Services.AddLumexServices();
 
 await builder.Build().RunAsync();
