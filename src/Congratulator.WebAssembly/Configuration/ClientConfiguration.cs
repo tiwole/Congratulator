@@ -1,12 +1,14 @@
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using Blazor.Sonner.Extensions;
 using Congratulator.WebAssembly.Services;
+using LumexUI.Extensions;
 
 namespace Congratulator.WebAssembly.Configuration;
 
 public static class ClientConfiguration
 {
-    public static IServiceCollection AddServices(this IServiceCollection services)
+    public static void AddServices(this IServiceCollection services)
     {
         var jsonOptions = new JsonSerializerOptions
         {
@@ -16,8 +18,8 @@ public static class ClientConfiguration
         services.AddSingleton(jsonOptions);
         
         services.AddSingleton<DateTimeProvider>();
-        services.AddSingleton<NotificationService>();
-
-        return services;
+        
+        services.AddSonner();
+        services.AddLumexServices();
     }
 }

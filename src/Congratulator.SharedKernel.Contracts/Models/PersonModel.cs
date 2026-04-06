@@ -10,7 +10,7 @@ public class PersonModel
     public DateOnly BirthDate { get; set; }
     public RelationshipType RelationshipType { get; set; }
     public string? PhotoPath { get; set; }
-    public int Age => DateTime.Today.Year - BirthDate.Year - (DateTime.Today.DayOfYear < BirthDate.DayOfYear ? 1 : 0);
+    public int Age => DateTime.Today.Year - BirthDate.Year - (DateTime.Today.DayOfYear < BirthDate.DayOfYear ? 1 : 0); // TODO: move it to mapping
     public DateOnly NextBirthday
     {
         get

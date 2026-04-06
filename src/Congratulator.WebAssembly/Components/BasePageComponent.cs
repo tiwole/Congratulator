@@ -1,6 +1,7 @@
-﻿using Congratulator.WebAssembly.Models;
-using Congratulator.WebAssembly.Services;
+﻿using Blazor.Sonner.Services;
+using Congratulator.WebAssembly.Models;
 using Microsoft.AspNetCore.Components;
+using Microsoft.JSInterop;
 
 namespace Congratulator.WebAssembly.Components;
 
@@ -13,55 +14,31 @@ public class BasePageComponent : ComponentBase
     /// <summary>
     /// Service for displaying toast notifications to the user.
     /// </summary>
+    [Inject] 
+    public ToastService NotificationService { get; set; } = null!;
+
     [Inject]
-    public NotificationService NotificationService { get; set; } = null!;
+    protected IJSRuntime JsRuntime { get; set; } = null!;
 
     /// <summary>
     /// Executes a delete operation and shows a success or failure notification.
     /// </summary>
     /// <param name="entityName">Display name of the entity being deleted.</param>
-    /// <param name="entityType">Type label shown in notifications (e.g. "Person").</param>
     /// <param name="deleteAction">Async function that performs the delete and returns an <see cref="OperationResult"/>.</param>
     /// <returns><c>true</c> if the deletion succeeded; otherwise <c>false</c>.</returns>
     protected async Task<bool> DeleteEntityWithConfirmation(
         string entityName,
-        string entityType,
         Func<Task<OperationResult>> deleteAction)
     {
         var result = await deleteAction();
 
         if (result.IsSuccessful)
         {
-            NotificationService.ShowSuccess("Deleted", $"{entityType} '{entityName}' has been deleted successfully.");
+            NotificationService.Success($"'{entityName}' has been deleted successfully.");
             return true;
         }
         
-        NotificationService.ShowDestructive("Delete Failed", result.Message);
-        return false;
-    }
-
-    /// <summary>
-    /// Executes a bulk delete of other entity versions and shows a success or failure notification.
-    /// </summary>
-    /// <param name="entityName">Display name of the entity whose versions are being deleted.</param>
-    /// <param name="entityType">Type label shown in notifications (e.g. "Config").</param>
-    /// <param name="deleteAction">Async function that performs the delete and returns an <see cref="OperationResult{T}"/> with the count of deleted versions.</param>
-    /// <returns><c>true</c> if the deletion succeeded; otherwise <c>false</c>.</returns>
-    protected async Task<bool> DeleteEntityOtherVersionsWithConfirmation(
-        string entityName,
-        string entityType,
-        Func<Task<OperationResult<int>>> deleteAction)
-    {
-        var result = await deleteAction();
-
-        if (result.IsSuccessful)
-        {
-            NotificationService.ShowSuccess("Deleted",
-                $"{result.Data} other version(s) of {entityType} '{entityName}' have been deleted successfully.");
-            return true;
-        }
-
-        NotificationService.ShowDestructive("Delete Failed", result.Message);
+        NotificationService.Error($"Delete Failed, {result.Message}");
         return false;
     }
 
@@ -73,11 +50,19 @@ public class BasePageComponent : ComponentBase
     {
         try
         {
-            NotificationService.ShowSuccess("Copied to clipboard", $"'{text}' copied to clipboard");
+            NotificationService.Success($"'{text}' copied to clipboard");
         }
         catch (Exception)
         {
-            NotificationService.ShowDestructive("Copy failed", "Failed to copy to clipboard");
+            NotificationService.Error("Failed to copy to clipboard");
         }
+    }
+    
+    /// <summary>
+    /// Opens URL in a new browser tab.
+    /// </summary>
+    protected async Task OpenInNewTab(string url)
+    {
+        await JsRuntime.InvokeVoidAsync("window.open", url, "_blank");
     }
 }

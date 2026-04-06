@@ -1,19 +1,9 @@
 @using LumexUI.Common
 <div class="person-card @(IsBirthdayToday ? "person-card--today" : "")">
-    @if (IsBirthdayToday)
-    {
-        <div class="confetti-strip">
-            <i class="ri-sparkling-2-fill"></i>
-            <i class="ri-sparkling-2-fill"></i>
-            <i class="ri-sparkling-2-fill"></i>
-        </div>
-    }
-
-    <LumexCard Classes="@_cardClasses">
+    <LumexCard Classes="@_cardClasses" >
         <LumexCardHeader Class="gap-3 pb-1">
             <LumexAvatar Src="@Person.PhotoPath"
                          Name="@FullName"
-                         Bordered="@true"
                          Size="@Size.Large"
                          Classes="@_avatarClasses"/>
 
@@ -23,11 +13,15 @@
                            Variant="@ChipVariant.Flat"
                            Classes="@RelationshipChipClasses">
                     <StartContent>
-                        <i class="@RelationshipIcon"></i>
+                        <i class="@RelationshipIcon person-card-icon"></i>
                     </StartContent>
-                    <ChildContent>@RelationshipLabel</ChildContent>
+                    <ChildContent>@Person.RelationshipType.ToString()</ChildContent>
                 </LumexChip>
             </div>
+            
+            <svg>
+                
+            </svg>
         </LumexCardHeader>
 
         <LumexCardBody Class="py-2 gap-1.5">

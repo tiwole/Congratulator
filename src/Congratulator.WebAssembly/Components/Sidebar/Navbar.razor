@@ -1,6 +1,9 @@
+@using Congratulator.WebAssembly.Components.ThemeColorToggle
+@inherits BasePageComponent
 @using LumexUI.Common
+@using LumexUI.Shared.Icons
 
-<LumexNavbar Bordered="true">
+<LumexNavbar Bordered="true" Sticky="true">
     <LumexNavbarBrand>
         <p class="font-bold text-xl">@Title</p>
     </LumexNavbarBrand>
@@ -9,7 +12,7 @@
         @foreach (var item in Items)
         {
             <LumexNavbarItem>
-                <LumexLink Href="@item.Href" Match="@item.Match">
+                <LumexLink Href="@item.Href" Match="@item.Match" Color="ThemeColor.None">
                     <i class="@item.Icon navbar-icon"></i> @item.Title
                 </LumexLink>
             </LumexNavbarItem>
@@ -18,8 +21,11 @@
 
     <LumexNavbarContent Align="@Align.End">
         <LumexNavbarItem>
-            <LumexLink Href="https://github.com/tiwole/Congratulator">
-                <i class="ri-code-s-slash-line navbar-icon"></i> About
+            <ThemeColorToggle />
+        </LumexNavbarItem>
+        <LumexNavbarItem>
+            <LumexLink @onclick="@(() => OpenInNewTab("https://github.com/tiwole/Congratulator"))" Color="ThemeColor.None">
+                <GithubIcon Size="16" /> <span class="about-label">About</span>
             </LumexLink>
         </LumexNavbarItem>
     </LumexNavbarContent>

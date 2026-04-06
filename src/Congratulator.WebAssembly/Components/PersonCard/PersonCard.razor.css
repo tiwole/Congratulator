@@ -17,6 +17,10 @@
     box-shadow: 0 0 0 0.125rem rgba(255, 183, 77, 0.35);
 }
 
+.person-card-icon {
+    padding: 0.1rem 0.2rem 0.1rem 0.3rem;
+}
+
 /* ── Confetti Strip (birthday) ── */
 .confetti-strip {
     display: flex;
@@ -30,8 +34,12 @@
 }
 
 @keyframes shimmer {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.7; }
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.7;
+    }
 }
 
 /* ── Person Info ── */

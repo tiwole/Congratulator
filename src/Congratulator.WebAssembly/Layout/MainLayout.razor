@@ -1,23 +1,25 @@
-@using Congratulator.WebAssembly.Components.NotificationContainer
 @using Congratulator.WebAssembly.Components.Sidebar
 
 @inherits LayoutComponentBase
 
-<Sidebar Title="Congratulator" Items="@NavItems" />
+<Navbar Title="Congratulator" Items="@NavItems" />
 
 <main>
-    <article class="content px-4">
+    <article class="content">
         @Body
     </article>
 </main>
 
-<NotificationContainer />
+<LumexThemeProvider />
+
+<LumexToastProvider />
 
 @code {
     private static readonly List<SidebarItem> NavItems =
     [
         new("Home", Routes.Pages.Home, "ri-home-fill", NavLinkMatch.All),
         new("All", Routes.Pages.All, "ri-list-check-2"),
-        new("Testing", Routes.Pages.Testing, "ri-test-tube-fill")
+        new("Testing", Routes.Pages.Testing, "ri-test-tube-fill"),
+        new("Icons", Routes.Pages.UiKitIcons, "ri-remixicon-line")
     ];
 }

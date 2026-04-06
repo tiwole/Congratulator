@@ -17,62 +17,40 @@
   <component name="ChangeListManager">
     <list default="true" id="ce1608e3-0518-47e1-bd09-6e6d2520bb04" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Congratulator/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Congratulator/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Congratulator.WebAssembly/Components/AddPersonModal/AddPersonModal.razor" beforeDir="false" afterPath="$PROJECT_DIR$/src/Congratulator.WebAssembly/Components/AddPersonModal/AddPersonModal.razor" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Congratulator.WebAssembly/Components/AddPersonModal/AddPersonModal.razor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Congratulator.WebAssembly/Components/AddPersonModal/AddPersonModal.razor.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Congratulator.sln.DotSettings.user" beforeDir="false" afterPath="$PROJECT_DIR$/Congratulator.sln.DotSettings.user" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Congratulator.Api/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Congratulator.Api/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Congratulator.Api/logs/log-20260404.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/Congratulator.Api/logs/log-20260404.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Congratulator.Core/Configurations/CoreConfiguration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Congratulator.Core/Configurations/CoreConfiguration.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Congratulator.Infrastructure/Configurations/DbConfiguration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Congratulator.Infrastructure/Configurations/DbConfiguration.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Congratulator.Infrastructure/Extensions/PhotoUrlResolver.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Congratulator.Infrastructure/Extensions/PhotoUrlResolver.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Congratulator.Infrastructure/Services/YandexS3Service.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Congratulator.Infrastructure/Services/YandexS3Service.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Congratulator.SharedKernel.Contracts/Models/PersonModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Congratulator.SharedKernel.Contracts/Models/PersonModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Congratulator.SharedKernel.Contracts/Options/YandexS3Options.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Congratulator.SharedKernel.Contracts/Options/YandexS3Options.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Congratulator.WebAssembly/Components/BasePageComponent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Congratulator.WebAssembly/Components/BasePageComponent.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Congratulator.WebAssembly/Components/NotificationContainer/NotificationContainer.razor" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Congratulator.WebAssembly/Components/NotificationContainer/NotificationContainer.razor.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Congratulator.WebAssembly/Components/NotificationContainer/NotificationContainer.razor.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Congratulator.WebAssembly/Components/PersonCard/PersonCard.razor" beforeDir="false" afterPath="$PROJECT_DIR$/src/Congratulator.WebAssembly/Components/PersonCard/PersonCard.razor" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Congratulator.WebAssembly/Components/PersonCard/PersonCard.razor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Congratulator.WebAssembly/Components/PersonCard/PersonCard.razor.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Congratulator.WebAssembly/Components/PersonCard/PersonCard.razor.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/Congratulator.WebAssembly/Components/PersonCard/PersonCard.razor.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Congratulator.WebAssembly/Components/Sidebar/Sidebar.razor" beforeDir="false" afterPath="$PROJECT_DIR$/src/Congratulator.WebAssembly/Components/Sidebar/Navbar.razor" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Congratulator.WebAssembly/Components/Sidebar/Sidebar.razor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Congratulator.WebAssembly/Components/Sidebar/Navbar.razor.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Congratulator.WebAssembly/Components/Sidebar/Sidebar.razor.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/Congratulator.WebAssembly/Components/Sidebar/Navbar.razor.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Congratulator.WebAssembly/Configuration/ClientConfiguration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Congratulator.WebAssembly/Configuration/ClientConfiguration.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Congratulator.WebAssembly/Congratulator.WebAssembly.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/src/Congratulator.WebAssembly/Congratulator.WebAssembly.csproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Congratulator.WebAssembly/Layout/MainLayout.razor" beforeDir="false" afterPath="$PROJECT_DIR$/src/Congratulator.WebAssembly/Layout/MainLayout.razor" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Congratulator.WebAssembly/Layout/MainLayout.razor.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/Congratulator.WebAssembly/Layout/MainLayout.razor.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Congratulator.WebAssembly/Layout/NavMenu.razor" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Congratulator.WebAssembly/Layout/NavMenu.razor.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Congratulator.WebAssembly/Models/NotificationMessage.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Congratulator.WebAssembly/Pages/All/All.razor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Congratulator.WebAssembly/Pages/All/All.razor.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Congratulator.WebAssembly/Pages/Home/Home.razor" beforeDir="false" afterPath="$PROJECT_DIR$/src/Congratulator.WebAssembly/Pages/Home/Home.razor" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Congratulator.WebAssembly/Pages/Testing/Testing.razor" beforeDir="false" afterPath="$PROJECT_DIR$/src/Congratulator.WebAssembly/Pages/Testing/Testing.razor" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Congratulator.WebAssembly/Pages/Testing/Testing.razor.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/Congratulator.WebAssembly/Pages/Testing/Testing.razor.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Congratulator.WebAssembly/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Congratulator.WebAssembly/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Congratulator.WebAssembly/_Imports.razor" beforeDir="false" afterPath="$PROJECT_DIR$/src/Congratulator.WebAssembly/_Imports.razor" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Congratulator.WebAssembly/Routes.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Congratulator.WebAssembly/Routes.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Congratulator.WebAssembly/Services/NotificationService.cs" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Congratulator.WebAssembly/wwwroot/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/Congratulator.WebAssembly/wwwroot/css/app.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Congratulator.WebAssembly/wwwroot/favicon.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Congratulator.WebAssembly/wwwroot/icon-192.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Congratulator.WebAssembly/wwwroot/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/Congratulator.WebAssembly/wwwroot/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Congratulator.WebAssembly/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Congratulator.WebAssembly/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Congratulator.WebAssembly/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Congratulator.WebAssembly/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.min.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Congratulator.WebAssembly/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.rtl.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Congratulator.WebAssembly/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.rtl.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Congratulator.WebAssembly/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.rtl.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Congratulator.WebAssembly/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.rtl.min.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Congratulator.WebAssembly/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Congratulator.WebAssembly/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Congratulator.WebAssembly/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Congratulator.WebAssembly/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.min.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Congratulator.WebAssembly/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.rtl.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Congratulator.WebAssembly/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.rtl.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Congratulator.WebAssembly/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.rtl.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Congratulator.WebAssembly/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.rtl.min.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Congratulator.WebAssembly/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Congratulator.WebAssembly/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Congratulator.WebAssembly/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Congratulator.WebAssembly/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.min.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Congratulator.WebAssembly/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.rtl.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Congratulator.WebAssembly/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.rtl.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Congratulator.WebAssembly/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.rtl.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Congratulator.WebAssembly/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.rtl.min.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Congratulator.WebAssembly/wwwroot/lib/bootstrap/dist/css/bootstrap.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Congratulator.WebAssembly/wwwroot/lib/bootstrap/dist/css/bootstrap.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Congratulator.WebAssembly/wwwroot/lib/bootstrap/dist/css/bootstrap.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Congratulator.WebAssembly/wwwroot/lib/bootstrap/dist/css/bootstrap.min.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Congratulator.WebAssembly/wwwroot/lib/bootstrap/dist/css/bootstrap.rtl.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Congratulator.WebAssembly/wwwroot/lib/bootstrap/dist/css/bootstrap.rtl.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Congratulator.WebAssembly/wwwroot/lib/bootstrap/dist/css/bootstrap.rtl.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Congratulator.WebAssembly/wwwroot/lib/bootstrap/dist/css/bootstrap.rtl.min.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Congratulator.WebAssembly/wwwroot/lib/bootstrap/dist/js/bootstrap.bundle.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Congratulator.WebAssembly/wwwroot/lib/bootstrap/dist/js/bootstrap.bundle.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Congratulator.WebAssembly/wwwroot/lib/bootstrap/dist/js/bootstrap.bundle.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Congratulator.WebAssembly/wwwroot/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Congratulator.WebAssembly/wwwroot/lib/bootstrap/dist/js/bootstrap.esm.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Congratulator.WebAssembly/wwwroot/lib/bootstrap/dist/js/bootstrap.esm.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Congratulator.WebAssembly/wwwroot/lib/bootstrap/dist/js/bootstrap.esm.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Congratulator.WebAssembly/wwwroot/lib/bootstrap/dist/js/bootstrap.esm.min.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Congratulator.WebAssembly/wwwroot/lib/bootstrap/dist/js/bootstrap.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Congratulator.WebAssembly/wwwroot/lib/bootstrap/dist/js/bootstrap.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Congratulator.WebAssembly/wwwroot/lib/bootstrap/dist/js/bootstrap.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Congratulator.WebAssembly/wwwroot/lib/bootstrap/dist/js/bootstrap.min.js.map" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -126,19 +104,33 @@
 }</component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$USER_HOME$/.nuget/packages/microsoft.codeanalysis.workspaces.msbuild/4.14.0/contentFiles/any/any/BuildHost-netcore/Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.deps.json" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/33fc0b23258d46cf980c183400b166ab12e00/4f/c0795636/UsersIcon.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/33fc0b23258d46cf980c183400b166ab12e00/57/f48bac5b/_Imports.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/33fc0b23258d46cf980c183400b166ab12e00/84/f9863377/SunIcon.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/a3cf1e87abb54394a9d5e908fa65f3836aa00/0d/b39d08ad/ThemeService.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/a3cf1e87abb54394a9d5e908fa65f3836aa00/2c/289df7a1/LumexNavbarBrand.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/a3cf1e87abb54394a9d5e908fa65f3836aa00/39/d8001c0a/ThemeColor.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/a3cf1e87abb54394a9d5e908fa65f3836aa00/48/dab75954/LumexSkeleton.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/a3cf1e87abb54394a9d5e908fa65f3836aa00/54/f5e6d5d4/LumexComponentBase.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/a3cf1e87abb54394a9d5e908fa65f3836aa00/ce/d929ae11/LumexLink.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/a3cf1e87abb54394a9d5e908fa65f3836aa00/f2/792f1fad/LumexThemeProvider.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/ff5357df3c164a869de2d1562e558a4f50920/fd/b7e5097d/HttpResponse.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/104f936cd0751a24fd4644e4de57e01909ae620ea8452a14e8d382bc0e9e6e/MudPagination.razor.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/4b25bdf4d6a654aeb1eaf951b8fe73f95f76e5725d9f6a635f6e5df45629865/DateOnlyConverter.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/7583c6ed1f8537b5efa81e795cdb2e81854f6337e8a066d77490d7fbbdc1a/InputFile.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/9a6b1457cbcf17db31a383ba49ef9bcc786cf3ef77146d997eee499b27a46d/Object.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/a0b45f29f34f594814a7b1fbc25fe5ef3c18257956ed4f4fbfa68717db58/DbContext.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/a1d83af254f0e3f1f710175085db7669e82f6944bbb3b88bb2b33d9b8edec688/NavLink.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/a6348aa6bc2acd868f7ceb2c42b9db3762360dda6a0c98bb148bb8a2feff/NavLinkMatch.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/b8c72cddc0263ccc13adf40f3b6beeff68b510f13694711289ebfdebb5a29/ConfigurationExtensions.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/b98ffa4787ff69c6f4e2cf53a5fe3c2b25734da623086104e51b50b1fef12a/JsonStringEnumConverter.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/bd1d5c50194fea68ff3559c160230b0ab50f5acf4ce3061bffd6d62958e2182/ExceptionDispatchInfo.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/c439425da351c75ac7d966a1cc8324b51a9c471865af79d2f2f3fcb65e392/HttpClient.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/cbbca3cf283a73de6a1ebf7d27a09d4099bc49d0cb80f06f83bdd9f5b48706a/IMemberConfigurationExpression.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/df2ec9905ce9c0863a428cc7cda845975cff03b569888677470161754588c22/IBrowserFile.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/.claude/settings.local.json" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/package-lock.json" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/package.json" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Congratulator.Api/Controllers/PersonsController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Congratulator.Api/Program.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Congratulator.Api/obj/project.packagespec.json" root0="FORCE_HIGHLIGHTING" />
@@ -183,21 +175,21 @@
     <setting file="file://$PROJECT_DIR$/src/Congratulator.SharedKernel/Interfaces/IUniqueIdentifier.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Congratulator.SharedKernel/Interfaces/Repositories/IPersonRepository.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Congratulator.SharedKernel/Interfaces/Services/IStorageService.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/tiwole/RiderProjects/Congratulator/src/Congratulator.WebAssembly/Components/AddPersonModal/AddPersonModal.razor" root0="SKIP_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/tiwole/RiderProjects/Congratulator/src/Congratulator.WebAssembly/Components/AddPersonModal/AddPersonModal.razor" root0="SKIP_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/tiwole/RiderProjects/Congratulator/src/Congratulator.WebAssembly/Components/AddPersonModal/AddPersonModal.razor" root0="SKIP_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Congratulator.WebAssembly/Components/AddPersonModal/AddPersonModal.razor" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Congratulator.WebAssembly/Components/AddPersonModal/AddPersonModal.razor.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Congratulator.WebAssembly/Components/BirthdayCard/BirthdayCard.razor" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Congratulator.WebAssembly/Components/BirthdayCard/BirthdayCard.razor.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Congratulator.WebAssembly/Components/Pager/Pager.razor" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Congratulator.WebAssembly/Components/Pager/Pager.razor.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Congratulator.WebAssembly/Components/ThemeColorToggle/ThemeColorToggle.razor" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Congratulator.WebAssembly/Components/ThemeColorToggle/ThemeColorToggle.razor.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Congratulator.WebAssembly/Pages/All/All.razor" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Congratulator.WebAssembly/Pages/All/All.razor.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Congratulator.WebAssembly/Pages/Home/Home.razor" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Congratulator.WebAssembly/Pages/Home/Home.razor.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Congratulator.WebAssembly/Pages/Testing/Testing.razor" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Congratulator.WebAssembly/Pages/Testing/Testing.razor.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Congratulator.WebAssembly/Pages/UiKitIcons/UiKitIcons.razor" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Congratulator.WebAssembly/Routes.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Congratulator.WebAssembly/obj/project.assets.json" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Congratulator.WebAssembly/obj/project.packagespec.json" root0="FORCE_HIGHLIGHTING" />
@@ -206,9 +198,6 @@
     <setting file="file://$PROJECT_DIR$/src/Congratulator.XUnitTests/Repositories/PersonRepository/GetPersonByIdTests.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Congratulator.XUnitTests/Repositories/PersonRepository/UpdatePersonTests.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Congratulator.XUnitTests/TestHelpers/TestData.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock://diff.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://diff.razor" root0="SKIP_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
-    <setting file="mock://diff.razor" root0="SKIP_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
   </component>
   <component name="HttpClientOnboardingState">{
   &quot;isOnboardingCommentShown&quot;: true
@@ -250,7 +239,7 @@
     &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;feature/refactor-ui&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;#7 on feature/refactor-ui&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -465,6 +454,10 @@
       <workItem from="1771765561602" duration="3647000" />
       <workItem from="1771848589388" duration="599000" />
       <workItem from="1772043959317" duration="1369000" />
+      <workItem from="1775300908202" duration="88000" />
+      <workItem from="1775313230278" duration="2717000" />
+      <workItem from="1775329931240" duration="4958000" />
+      <workItem from="1775500229599" duration="6010000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <option name="closed" value="true" />
@@ -682,7 +675,15 @@
       <option name="project" value="LOCAL" />
       <updated>1771679930401</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="add uikit, add new person card">
+      <option name="closed" value="true" />
+      <created>1775300985759</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1775300985759</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -703,7 +704,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="init" />
     <MESSAGE value="add core, infrastructure, shared, tests" />
     <MESSAGE value="add update person endpoint and custom exceptions" />
     <MESSAGE value="add delete and get endpoints" />
@@ -728,7 +728,8 @@
     <MESSAGE value="add token file, notification service and container, base page component" />
     <MESSAGE value="add uikit" />
     <MESSAGE value="add ui-kit" />
-    <option name="LAST_COMMIT_MESSAGE" value="add ui-kit" />
+    <MESSAGE value="add uikit, add new person card" />
+    <option name="LAST_COMMIT_MESSAGE" value="add uikit, add new person card" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -21,6 +21,7 @@
       <_ContentIncludedByDefault Remove="Components\Button\Button.razor" />
       <_ContentIncludedByDefault Remove="Components\ConfirmDialog\ConfirmDialog.razor" />
       <_ContentIncludedByDefault Remove="Components\PersonCard\PersonCard.razor" />
+      <_ContentIncludedByDefault Remove="Components\NotificationContainer\NotificationContainer.razor" />
     </ItemGroup>
 
     <ItemGroup>

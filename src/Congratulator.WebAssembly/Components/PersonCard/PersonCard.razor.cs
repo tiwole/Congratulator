@@ -26,22 +26,13 @@ public partial class PersonCard : ComponentBase
     private string FormattedBirthDate =>
         Person.BirthDate.ToString("dd MMM yyyy", System.Globalization.CultureInfo.CreateSpecificCulture("en-US"));
 
-    private string RelationshipLabel => Person.RelationshipType switch
-    {
-        RelationshipType.Friend => "Friend",
-        RelationshipType.Mate => "Mate",
-        RelationshipType.Coworker => "Coworker",
-        RelationshipType.Family => "Family",
-        _ => "Other"
-    };
-
     private string RelationshipIcon => Person.RelationshipType switch
     {
         RelationshipType.Friend => "ri-user-heart-line",
-        RelationshipType.Mate => "ri-hearts-line",
+        RelationshipType.Mate => "ri-user-line",
         RelationshipType.Coworker => "ri-briefcase-line",
         RelationshipType.Family => "ri-home-heart-line",
-        _ => "ri-user-line"
+        /* Unknown */ _ => "ri-question-line"
     };
 
     private ChipSlots RelationshipChipClasses => Person.RelationshipType switch

@@ -11,8 +11,7 @@ namespace Congratulator.Infrastructure.Configurations;
 
 public static class DbConfiguration
 {
-    public static IServiceCollection AddDbConfiguration<TContext>(this IServiceCollection services,
-        IConfiguration configuration, string connectionString) where TContext : DbContext
+    public static void AddDbConfiguration<TContext>(this IServiceCollection services, string connectionString) where TContext : DbContext
     {
         if (string.IsNullOrEmpty(connectionString) || !connectionString.Contains("Host="))
         {
@@ -26,13 +25,11 @@ public static class DbConfiguration
         {
             options.UseNpgsql(connectionString, x => x.MigrationsAssembly(migrationsAssembly));
         });
-
-        return services;
     }
 
-    public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
+    public static void AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
     {
-        Assembly assembly = typeof(DbContextFactory).Assembly;
+        var assembly = typeof(DbContextFactory).Assembly;
 
         var repositoriesNamespace = typeof(PersonRepository).Namespace;
 
@@ -54,7 +51,5 @@ public static class DbConfiguration
                 services.AddScoped(interfaceType, implType);
             }
         }
-
-        return services;
     }
 }

@@ -2,9 +2,9 @@
 
 public class YandexS3Options
 {
-    public string AccessKey { get; set; }
-    public string SecretKey { get; set; }
-    public string BucketName { get; set; }
-    public string ServiceURL { get; set; }
-    public string Region { get; set; }
+    public string AccessKey { get; set; } = null!;
+    public string SecretKey { get; set; } = null!;
+    public string BucketName { get; set; } = null!;
+    public string ServiceUrl { get; set; } = null!;
+    public string Region { get; set; } = null!;
 }
