@@ -1,0 +1,17 @@
+@using LumexUI.Common
+@using LumexUI.Shared.Icons
+
+<LumexSwitch Color="@ThemeColor.Default"
+             Size="@Size.Small"
+             Value="@ThemeService.IsDarkMode"
+             ValueChanged="@(() => ThemeService.ToggleThemeAsync())">
+    <StartContent>
+        <SunIcon />
+    </StartContent>
+    <ChildContent>
+        Theme
+    </ChildContent>
+    <EndContent>
+        <MoonIcon />
+    </EndContent>
+</LumexSwitch>
