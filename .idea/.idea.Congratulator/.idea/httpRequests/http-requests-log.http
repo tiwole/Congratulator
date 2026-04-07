@@ -1,0 +1,26 @@
+DELETE https://localhost:7228/api/Persons/a38e8228-d344-4fca-a563-b13725f96729
+User-Agent: IntelliJ HTTP Client/JetBrains Rider 2025.3.0.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+content-length: 0
+
+###
+
+GET https://localhost:7228/api/Persons
+User-Agent: IntelliJ HTTP Client/JetBrains Rider 2025.3.0.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+<> 2026-02-28T142354.200.json
+
+###
+
+GET https://localhost:7228/api/persons?all=true&search=dear
+User-Agent: IntelliJ HTTP Client/JetBrains Rider 2025.3.0.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+<> 2026-02-28T142233.200.json
+
+###
+

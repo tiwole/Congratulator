@@ -11,6 +11,6 @@ public class JsonCamelCaseWithDotsNamingPolicy : JsonNamingPolicy
         string[] source = name.Split('.');
         for (int index = 0; index < source.Length; ++index)
             source[index] = CamelCase.ConvertName(source[index]);
-        return !((IEnumerable<string>) source).Any<string>() ? source.ToString() : string.Join(".", source);
+        return (source.Length == 0 ? source.ToString() : string.Join(".", source))!;
     }
 }

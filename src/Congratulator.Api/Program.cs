@@ -1,5 +1,6 @@
 ﻿using System.Reflection;
 using System.Text.Json.Serialization;
+using Congratulator.Api.Configurations;
 using Congratulator.Core.Configurations;
 using Congratulator.Core.Validators;
 using Congratulator.Infrastructure.Configurations;
@@ -27,28 +28,13 @@ builder.Services.Configure<YandexS3Options>(builder.Configuration.GetSection("Ya
 var authContextConnectionString = builder.Configuration.GetConnectionString("IdentityConnectionString");
 builder.Services.AddDbConfiguration<CongratulatorDbContext>(authContextConnectionString!);
 
-builder.Services.AddInfrastructure(builder.Configuration);
+builder.Services.AddInfrastructure();
 builder.Services.AddCoreServices();
 
 builder.Services.AddExceptionHandler<ExceptionHandler>();
 builder.Services.AddProblemDetails();
 
-builder.Services.AddCors(options =>
-{
-    options.AddPolicy("AllowBlazor", policy =>
-    {
-        policy.WithOrigins(
-                "https://localhost:8081",
-                "https://api:80",
-                "http://localhost:8081",
-                "http://api:80",
-                "https://localhost:7272", //temp
-                "http://localhost:7272" //temp
-            ) // Allowing requests from the Blazor app
-            .AllowAnyMethod() // Allow GET, POST, OPTIONS, etc.
-            .AllowAnyHeader();
-    });
-});
+builder.Services.AddCorsConfiguration();
 
 builder.Services.AddControllers()
     .AddJsonOptions(options =>
@@ -75,7 +61,6 @@ builder.Services.AddSwaggerGen(options =>
 });
 
 builder.Services.AddAuthorization();
-builder.Services.AddControllers();
 
 var app = builder.Build();
 

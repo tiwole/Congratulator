@@ -51,6 +51,34 @@
       <change beforePath="$PROJECT_DIR$/src/Congratulator.WebAssembly/Services/NotificationService.cs" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Congratulator.WebAssembly/wwwroot/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/Congratulator.WebAssembly/wwwroot/css/app.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Congratulator.WebAssembly/wwwroot/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/Congratulator.WebAssembly/wwwroot/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Congratulator/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Congratulator/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Congratulator.Api/Congratulator.Api.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/src/Congratulator.Api/Congratulator.Api.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Congratulator.Api/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Congratulator.Api/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Congratulator.Core/Services/CreatePersonService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Congratulator.Core/Services/CreatePersonService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Congratulator.Core/Services/DeletePersonService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Congratulator.Core/Services/DeletePersonService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Congratulator.Core/Services/GetPagedPersonsService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Congratulator.Core/Services/GetPagedPersonsService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Congratulator.Core/Services/GetPersonsService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Congratulator.Core/Services/GetPersonsService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Congratulator.Core/Services/UpdatePersonService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Congratulator.Core/Services/UpdatePersonService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Congratulator.Core/Services/UploadFileService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Congratulator.Core/Services/UploadFileService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Congratulator.Core/Validators/CreatePersonValidator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Congratulator.Core/Validators/CreatePersonValidator.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Congratulator.Core/Validators/UpdatePersonValidator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Congratulator.Core/Validators/UpdatePersonValidator.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Congratulator.Infrastructure/AutoMapperProfiles/PersonMappingProfile.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Congratulator.Infrastructure/AutoMapperProfiles/PersonMappingProfile.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Congratulator.Infrastructure/Configurations/DbConfiguration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Congratulator.Infrastructure/Configurations/DbConfiguration.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Congratulator.Infrastructure/Data/CongratulatorDbContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Congratulator.Infrastructure/Data/CongratulatorDbContext.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Congratulator.Infrastructure/Extensions/JsonCamelCaseWithDotsNamingPolicy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Congratulator.Infrastructure/Extensions/JsonCamelCaseWithDotsNamingPolicy.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Congratulator.Infrastructure/Repositories/PersonRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Congratulator.Infrastructure/Repositories/PersonRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Congratulator.Infrastructure/Services/YandexS3Service.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Congratulator.Infrastructure/Services/YandexS3Service.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Congratulator.SharedKernel.Contracts/Models/PersonModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Congratulator.SharedKernel.Contracts/Models/PersonModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Congratulator.SharedKernel.Contracts/Models/Requests/PagedRequest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Congratulator.SharedKernel.Contracts/Models/Requests/PagedRequest.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Congratulator.WebAssembly/Components/AddPersonModal/AddPersonModal.razor" beforeDir="false" afterPath="$PROJECT_DIR$/src/Congratulator.WebAssembly/Components/AddPersonModal/AddPersonModal.razor" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Congratulator.WebAssembly/Components/AddPersonModal/AddPersonModal.razor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Congratulator.WebAssembly/Components/AddPersonModal/AddPersonModal.razor.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Congratulator.WebAssembly/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Congratulator.WebAssembly/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Congratulator.XUnitTests/Congratulator.XUnitTests.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/src/Congratulator.XUnitTests/Congratulator.XUnitTests.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Congratulator.XUnitTests/Repositories/PersonRepository/CreatePersonTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Congratulator.XUnitTests/Repositories/PersonRepository/CreatePersonTests.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Congratulator.XUnitTests/Repositories/PersonRepository/DeletePersonTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Congratulator.XUnitTests/Repositories/PersonRepository/DeletePersonTests.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Congratulator.XUnitTests/Repositories/PersonRepository/GetPersonByIdTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Congratulator.XUnitTests/Repositories/PersonRepository/GetPersonByIdTests.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Congratulator.XUnitTests/Repositories/PersonRepository/UpdatePersonTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Congratulator.XUnitTests/Repositories/PersonRepository/UpdatePersonTests.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -131,15 +159,21 @@
     <setting file="file://$PROJECT_DIR$/.claude/settings.local.json" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/package-lock.json" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/package.json" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/.idea/.idea.Congratulator/.idea/httpRequests/2026-02-28T142233.200.json" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/.idea/.idea.Congratulator/.idea/httpRequests/2026-02-28T142354.200.json" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Congratulator.Api/Controllers/PersonsController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/tiwole/RiderProjects/Congratulator/src/Congratulator.Api/Program.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Congratulator.Api/Program.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Congratulator.Api/obj/project.packagespec.json" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Congratulator.Core/Configurations/CoreConfiguration.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Congratulator.Core/Exceptions/CongratulatorException.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Congratulator.Core/Exceptions/ImageException.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Congratulator.Core/Exceptions/PersonNotFoundException.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Congratulator.Core/Services/CreatePersonService.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/tiwole/RiderProjects/Congratulator/src/Congratulator.Core/Services/CreatePersonService.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Congratulator.Core/Services/DeletePersonService.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Congratulator.Core/Services/GetPagedPersonsService.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/tiwole/RiderProjects/Congratulator/src/Congratulator.Core/Services/GetPagedPersonsService.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Congratulator.Core/Services/GetPersonsService.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Congratulator.Core/Services/UpdatePersonService.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Congratulator.Core/Services/UploadFileService.cs" root0="FORCE_HIGHLIGHTING" />
@@ -147,18 +181,23 @@
     <setting file="file://$PROJECT_DIR$/src/Congratulator.Core/Validators/UpdatePersonValidator.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Congratulator.Infrastructure/AutoMapperProfiles/PersonMappingProfile.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Congratulator.Infrastructure/Configurations/DbConfiguration.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Congratulator.Infrastructure/Configurations/InfrastructureConfiguration.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Congratulator.Infrastructure/Data/CongratulatorDbContext.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/tiwole/RiderProjects/Congratulator/src/Congratulator.Infrastructure/Data/CongratulatorDbContext.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Congratulator.Infrastructure/Data/Mappings/PersonMap.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Congratulator.Infrastructure/Data/ValueConverters/DateOnlyConverter.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Congratulator.Infrastructure/DbContextFactory.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Congratulator.Infrastructure/Exceptions/InvalidConnectionStringException.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Congratulator.Infrastructure/Exceptions/NoBucketNameException.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Congratulator.Infrastructure/Extensions/JsonCamelCaseWithDotsNamingPolicy.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/tiwole/RiderProjects/Congratulator/src/Congratulator.Infrastructure/Extensions/JsonCamelCaseWithDotsNamingPolicy.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Congratulator.Infrastructure/Extensions/PhotoUrlResolver.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Congratulator.Infrastructure/Middleware/EnsureMigration.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Congratulator.Infrastructure/Middleware/ExceptionHandler.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Congratulator.Infrastructure/Repositories/PersonRepository.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/tiwole/RiderProjects/Congratulator/src/Congratulator.Infrastructure/Services/YandexS3Service.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Congratulator.Infrastructure/Services/YandexS3Service.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/tiwole/RiderProjects/Congratulator/src/Congratulator.Infrastructure/Services/YandexS3Service.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Congratulator.SharedKernel.Contracts/Enums/RelationshipType.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Congratulator.SharedKernel.Contracts/Enums/SortVariants.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Congratulator.SharedKernel.Contracts/Models/PersonModel.cs" root0="FORCE_HIGHLIGHTING" />
@@ -175,7 +214,11 @@
     <setting file="file://$PROJECT_DIR$/src/Congratulator.SharedKernel/Interfaces/IUniqueIdentifier.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Congratulator.SharedKernel/Interfaces/Repositories/IPersonRepository.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Congratulator.SharedKernel/Interfaces/Services/IStorageService.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/tiwole/RiderProjects/Congratulator/src/Congratulator.WebAssembly/Components/AddPersonModal/AddPersonModal.razor" root0="SKIP_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/tiwole/RiderProjects/Congratulator/src/Congratulator.WebAssembly/Components/AddPersonModal/AddPersonModal.razor" root0="SKIP_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Congratulator.WebAssembly/Components/AddPersonModal/AddPersonModal.razor" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/tiwole/RiderProjects/Congratulator/src/Congratulator.WebAssembly/Components/AddPersonModal/AddPersonModal.razor.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/tiwole/RiderProjects/Congratulator/src/Congratulator.WebAssembly/Components/AddPersonModal/AddPersonModal.razor.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Congratulator.WebAssembly/Components/AddPersonModal/AddPersonModal.razor.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Congratulator.WebAssembly/Components/BirthdayCard/BirthdayCard.razor" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Congratulator.WebAssembly/Components/BirthdayCard/BirthdayCard.razor.cs" root0="FORCE_HIGHLIGHTING" />
@@ -183,6 +226,7 @@
     <setting file="file://$PROJECT_DIR$/src/Congratulator.WebAssembly/Components/Pager/Pager.razor.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Congratulator.WebAssembly/Components/ThemeColorToggle/ThemeColorToggle.razor" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Congratulator.WebAssembly/Components/ThemeColorToggle/ThemeColorToggle.razor.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Congratulator.WebAssembly/Configuration/ClientConfiguration.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Congratulator.WebAssembly/Pages/All/All.razor" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Congratulator.WebAssembly/Pages/All/All.razor.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Congratulator.WebAssembly/Pages/Home/Home.razor" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
@@ -195,9 +239,18 @@
     <setting file="file://$PROJECT_DIR$/src/Congratulator.WebAssembly/obj/project.packagespec.json" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Congratulator.XUnitTests/Repositories/PersonRepository/CreatePersonTests.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Congratulator.XUnitTests/Repositories/PersonRepository/DeletePersonTests.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/tiwole/RiderProjects/Congratulator/src/Congratulator.XUnitTests/Repositories/PersonRepository/GetPersonByIdTests.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Congratulator.XUnitTests/Repositories/PersonRepository/GetPersonByIdTests.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Congratulator.XUnitTests/Repositories/PersonRepository/UpdatePersonTests.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Congratulator.XUnitTests/TestHelpers/TestData.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://diff.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://diff.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://diff.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://diff.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://diff.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://diff.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://diff.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://diff.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="HttpClientOnboardingState">{
   &quot;isOnboardingCommentShown&quot;: true
@@ -230,6 +283,7 @@
     &quot;.NET Launch Settings Profile.Congratulator.WebAssembly: https.executor&quot;: &quot;Run&quot;,
     &quot;.NET Project.Congratulator.Api.executor&quot;: &quot;Run&quot;,
     &quot;.NET Project.Congratulator.WebAssembly.executor&quot;: &quot;Run&quot;,
+    &quot;HTTP Request.congratulator | get today upcoming bd.executor&quot;: &quot;Run&quot;,
     &quot;HTTP Request.congratulator | Обновить данные о человеке.executor&quot;: &quot;Run&quot;,
     &quot;HTTP Request.congratulator | Получить список людей.executor&quot;: &quot;Run&quot;,
     &quot;HTTP Request.congratulator | Создать человека.executor&quot;: &quot;Run&quot;,
@@ -240,6 +294,7 @@
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;#7 on feature/refactor-ui&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;feature/1-review-fixes&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -258,6 +313,21 @@
     ]
   }
 }</component>
+  <component name="RunDashboard">
+    <option name="configurationStatuses">
+      <map>
+        <entry key="HttpClient.HttpRequestRunConfigurationType">
+          <value>
+            <map>
+              <entry key="congratulator | get today upcoming bd" value="STOPPED" />
+              <entry key="congratulator | Получить список людей" value="STOPPED" />
+              <entry key="congratulator | Удалить человека" value="STOPPED" />
+            </map>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="RunManager" selected=".NET Launch Settings Profile.Congratulator.WebAssembly: https">
     <configuration name="Congratulator.WebAssembly.Client" type="DotNetProject" factoryName=".NET Project">
       <option name="EXE_PATH" value="" />
@@ -293,6 +363,9 @@
       <method v="2" />
     </configuration>
     <configuration name="congratulator | Создать человека" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$APPLICATION_CONFIG_DIR$/scratches/congratulator.http" executionIdentifier="Создать человека" runType="Run single request">
+      <method v="2" />
+    </configuration>
+    <configuration name="congratulator | get today upcoming bd" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$APPLICATION_CONFIG_DIR$/scratches/congratulator.http" executionIdentifier="get today upcoming bd" index="5" runType="Run single request">
       <method v="2" />
     </configuration>
     <configuration name="congratulator | Обновить данные о человеке" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$APPLICATION_CONFIG_DIR$/scratches/congratulator.http" executionIdentifier="Обновить данные о человеке" index="2" runType="Run single request">
@@ -386,6 +459,7 @@
       <item itemvalue=".NET Launch Settings Profile.Congratulator.Api: IIS Express" />
       <item itemvalue=".NET Launch Settings Profile.Congratulator.WebAssembly: https" />
       <item itemvalue=".NET Project.Congratulator.WebAssembly.Client" />
+      <item itemvalue="HTTP Request.congratulator | get today upcoming bd" />
       <item itemvalue="HTTP Request.congratulator | Обновить данные о человеке" />
       <item itemvalue="HTTP Request.congratulator | Получить список людей" />
       <item itemvalue="HTTP Request.congratulator | Удалить человека" />
@@ -393,10 +467,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="HTTP Request.congratulator | Удалить человека" />
+        <item itemvalue="HTTP Request.congratulator | get today upcoming bd" />
         <item itemvalue="HTTP Request.congratulator | Получить список людей" />
         <item itemvalue="HTTP Request.congratulator | Обновить данные о человеке" />
         <item itemvalue="HTTP Request.congratulator | Получить список людей" />
-        <item itemvalue="HTTP Request.congratulator | Удалить человека" />
       </list>
     </recent_temporary>
   </component>
@@ -458,6 +532,12 @@
       <workItem from="1775313230278" duration="2717000" />
       <workItem from="1775329931240" duration="4958000" />
       <workItem from="1775500229599" duration="6010000" />
+      <workItem from="1772045428395" duration="714000" />
+      <workItem from="1772095735220" duration="223000" />
+      <workItem from="1772219279923" duration="95000" />
+      <workItem from="1772219424280" duration="20000" />
+      <workItem from="1772275748456" duration="4937000" />
+      <workItem from="1773494591298" duration="2068000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <option name="closed" value="true" />
@@ -682,6 +762,13 @@
       <option name="presentableId" value="LOCAL-00028" />
       <option name="project" value="LOCAL" />
       <updated>1775300985759</updated>
+    <task id="LOCAL-00028" summary="init">
+      <option name="closed" value="true" />
+      <created>1772045564388</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1772045564388</updated>
     </task>
     <option name="localTasksCounter" value="29" />
     <servers />
@@ -730,6 +817,8 @@
     <MESSAGE value="add ui-kit" />
     <MESSAGE value="add uikit, add new person card" />
     <option name="LAST_COMMIT_MESSAGE" value="add uikit, add new person card" />
+    <MESSAGE value="init" />
+    <option name="LAST_COMMIT_MESSAGE" value="init" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

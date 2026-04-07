@@ -1,38 +1,55 @@
 using Congratulator.Infrastructure.Data;
+using Congratulator.SharedKernel.Contracts.Enums;
 using Congratulator.SharedKernel.Entities;
-using Congratulator.XUnitTests.TestHelpers;
+using Congratulator.SharedKernel.Interfaces;
+using AutoMapper;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
+using NSubstitute;
 using Xunit;
+using PersonRepo = global::Congratulator.Infrastructure.Repositories.PersonRepository;
 
 namespace Congratulator.XUnitTests.Repositories.PersonRepository;
 
-public class UpdatePersonTests
+public class UpdatePersonTests : IDisposable
 {
-    private readonly Infrastructure.Repositories.PersonRepository _repository;
-    private readonly List<Person> _testPersons;
+    private readonly CongratulatorDbContext _context;
+    private readonly PersonRepo _repository;
 
     public UpdatePersonTests()
     {
-        _testPersons = TestData.GetTestPersons();
-        
         var options = new DbContextOptionsBuilder<CongratulatorDbContext>()
             .UseInMemoryDatabase(Guid.NewGuid().ToString())
             .Options;
-
-        var context = new CongratulatorDbContext(options);
-        //_repository = new Infrastructure.Repositories.PersonRepository(context);
+        _context = new CongratulatorDbContext(options);
+        var mapper = Substitute.For<IMapper>();
+        var dateTimeProvider = Substitute.For<IDateTimeProvider>();
+        var logger = Substitute.For<ILogger<PersonRepo>>();
+        _repository = new PersonRepo(_context, mapper, dateTimeProvider, logger);
     }
 
     [Fact]
-    public async Task UpdatePersonAsync_ShouldUpdatePerson()
+    public async Task UpdatePersonAsync_UpdatesFieldsInDatabase()
     {
-        await _repository.CreatePersonAsync(_testPersons[0]);
-        
-        // Arrange
-        var personToUpdate = _testPersons[0];
-        personToUpdate.FirstName = "Updated";
-        
-        // Act
-        await _repository.UpdatePersonAsync(personToUpdate);
+        var person = new Person
+        {
+            FirstName = "John",
+            LastName = "Doe",
+            BirthDate = new DateOnly(1990, 1, 1),
+            RelationshipType = RelationshipType.Friend
+        };
+        _context.Persons.Add(person);
+        await _context.SaveChangesAsync();
+        _context.Entry(person).State = EntityState.Detached;
+
+        person.FirstName = "Jane";
+        person.LastName = "Smith";
+        await _repository.UpdatePersonAsync(person);
+
+        var updated = await _context.Persons.AsNoTracking().FirstAsync(p => p.Id == person.Id);
+        Assert.Equal("Jane", updated.FirstName);
+        Assert.Equal("Smith", updated.LastName);
     }
+
+    public void Dispose() => _context.Dispose();
 }

@@ -1,8 +1,4 @@
-﻿using System.Reflection;
-using Congratulator.Infrastructure.Exceptions;
-using Congratulator.Infrastructure.Repositories;
-using Congratulator.Infrastructure.Services;
-using Congratulator.SharedKernel.Interfaces.Services;
+﻿using Congratulator.Infrastructure.Exceptions;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
