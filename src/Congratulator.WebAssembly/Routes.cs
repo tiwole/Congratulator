@@ -11,7 +11,8 @@ public static class Routes
     public static class Pages
     {
         public const string Home = "/";
-        public const string All = "/all";
-        public const string Testing = "/testing";
+        public const string All = "/all/";
+        public const string Testing = "/testing/";
+        public const string UiKitIcons = "/icons/";
     }
 }

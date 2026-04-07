@@ -1,20 +1,25 @@
-﻿@inherits LayoutComponentBase
-<div class="page">
-    <div class="sidebar">
-        <NavMenu/>
-    </div>
+@using Congratulator.WebAssembly.Components.Sidebar
 
-    <main>
-        <div class="top-row px-4">
-            <a href="https://github.com/tiwole/Congratulator" target="_blank">
-                <i class="ri-code-s-slash-line"></i> About
-            </a>
-        </div>
+@inherits LayoutComponentBase
 
-        <article class="content px-4">
-            @Body
-        </article>
-    </main>
-</div>
+<Navbar Title="Congratulator" Items="@NavItems" />
 
-<Congratulator.WebAssembly.Components.NotificationContainer.NotificationContainer />
+<main>
+    <article class="content">
+        @Body
+    </article>
+</main>
+
+<LumexThemeProvider />
+
+<LumexToastProvider />
+
+@code {
+    private static readonly List<SidebarItem> NavItems =
+    [
+        new("Home", Routes.Pages.Home, "ri-home-fill", NavLinkMatch.All),
+        new("All", Routes.Pages.All, "ri-list-check-2"),
+        new("Testing", Routes.Pages.Testing, "ri-test-tube-fill"),
+        new("Icons", Routes.Pages.UiKitIcons, "ri-remixicon-line")
+    ];
+}

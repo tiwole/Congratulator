@@ -16,6 +16,6 @@ public class PhotoUrlResolver(IOptions<YandexS3Options> options) : IValueResolve
             throw new NoBucketNameException("Bucket name in appsettings.json is not specified");
         }
         
-        return $"{options.Value.ServiceURL}/{options.Value.BucketName}/{source.PhotoPath}";
+        return $"{options.Value.ServiceUrl}/{options.Value.BucketName}/{source.PhotoPath}";
     }
 }

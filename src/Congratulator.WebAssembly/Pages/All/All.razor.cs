@@ -162,7 +162,6 @@ public partial class All : BasePageComponent
 
         var deleted = await DeleteEntityWithConfirmation(
             $"{person.FirstName} {person.LastName}",
-            "Person",
             async () =>
             {
                 var response = await client.DeleteAsync($"{Routes.Api.Delete}/{person.Id}", CancellationToken.None);

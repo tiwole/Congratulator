@@ -7,10 +7,10 @@ namespace Congratulator.Core.Configurations;
 
 public static class CoreConfiguration
 {
-    public static IServiceCollection AddCoreServices(this IServiceCollection services)
+    public static void AddCoreServices(this IServiceCollection services)
     {
-        Assembly coreAssembly = typeof(CreatePersonService).Assembly;
-        Assembly sharedKernelAssembly = typeof(IUniqueIdentifier).Assembly;
+        var coreAssembly = typeof(CreatePersonService).Assembly;
+        var sharedKernelAssembly = typeof(IUniqueIdentifier).Assembly;
 
         var coreServicesNamespace = typeof(CreatePersonService).Namespace;
         var sharedKernelInterfacesNamespace = typeof(IUniqueIdentifier).Namespace;
@@ -37,7 +37,5 @@ public static class CoreConfiguration
         {
             services.AddScoped(serviceType);
         }
-
-        return services;
     }
 }

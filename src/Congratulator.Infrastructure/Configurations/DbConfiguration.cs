@@ -7,8 +7,7 @@ namespace Congratulator.Infrastructure.Configurations;
 
 public static class DbConfiguration
 {
-    public static IServiceCollection AddDbConfiguration<TContext>(this IServiceCollection services,
-        IConfiguration configuration, string connectionString) where TContext : DbContext
+    public static void AddDbConfiguration<TContext>(this IServiceCollection services, string connectionString) where TContext : DbContext
     {
         if (string.IsNullOrEmpty(connectionString) || !connectionString.Contains("Host="))
         {
@@ -22,7 +21,31 @@ public static class DbConfiguration
         {
             options.UseNpgsql(connectionString, x => x.MigrationsAssembly(migrationsAssembly));
         });
+    }
 
-        return services;
+    public static void AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
+    {
+        var assembly = typeof(DbContextFactory).Assembly;
+
+        var repositoriesNamespace = typeof(PersonRepository).Namespace;
+
+        var repositoryTypes = assembly.GetTypes()
+            .Where(type => type.Namespace == repositoriesNamespace &&
+                           type.IsClass && !type.IsAbstract);
+
+        // Add exceptions here if needed.
+        services.AddAutoMapper(assembly);
+        services.AddScoped<IStorageService, YandexS3Service>();
+
+        foreach (var implType in repositoryTypes)
+        {
+            var interfaceType = implType.GetInterfaces()
+                .FirstOrDefault(i => i.Name == $"I{implType.Name}");
+
+            if (interfaceType != null)
+            {
+                services.AddScoped(interfaceType, implType);
+            }
+        }
     }
 }

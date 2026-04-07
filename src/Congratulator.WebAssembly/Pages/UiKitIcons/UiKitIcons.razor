@@ -1,0 +1,28 @@
+@using System.Reflection
+@using LumexUI.Shared.Icons
+@inherits BasePageComponent
+@attribute [Route(Routes.Pages.UiKitIcons)]
+
+<ul class="flex flex-col gap-2">
+    @foreach (var iconType in IconTypes)
+    {
+        <li class="flex items-center gap-2">
+            <DynamicComponent Type="@iconType" Parameters="@IconParams" />
+            <span>@iconType.Name</span>
+        </li>
+    }
+</ul>
+
+@code {
+    private static readonly Dictionary<string, object> IconParams = new()
+    {
+        ["Size"] = "80"
+    };
+
+    private static readonly List<Type> IconTypes = Assembly
+        .GetAssembly(typeof(ActivityIcon))!
+        .GetTypes()
+        .Where(t => t.IsPublic && !t.IsAbstract && t.Name.EndsWith("Icon") && t != typeof(DynamicIcon))
+        .OrderBy(t => t.Name)
+        .ToList();
+}

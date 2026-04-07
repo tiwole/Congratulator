@@ -1,9 +1,49 @@
-﻿@inherits BasePageComponent
+@using Congratulator.WebAssembly.Components.PersonCard
+@using Congratulator.WebAssembly.Components.ThemeColorToggle
+
+@inherits BasePageComponent
 
 @attribute [Route(Routes.Pages.Testing)]
 
-<h3>Testing</h3>
+<h3 class="text-xl font-semibold mb-4">Testing</h3>
+
+<div class="flex flex-wrap gap-4">
+    @foreach (var person in _testPersons)
+    {
+        <PersonCard Person="@person" />
+    }
+</div>
+
+<ThemeColorToggle></ThemeColorToggle>
+
+<LumexSkeleton Class="skeleton"></LumexSkeleton>
 
 @code {
-    
+    private static readonly List<PersonModel> _testPersons =
+    [
+        new()
+        {
+            Id = Guid.NewGuid(),
+            FirstName = "Alice",
+            LastName = "Johnson",
+            BirthDate = DateOnly.FromDateTime(DateTime.Today),
+            PhotoPath = "default.png"
+        },
+        new()
+        {
+            Id = Guid.NewGuid(),
+            FirstName = "Bob",
+            LastName = "Smith",
+            BirthDate = DateOnly.FromDateTime(DateTime.Today.AddDays(3).AddYears(-30)),
+            PhotoPath = "default.png"
+        },
+        new()
+        {
+            Id = Guid.NewGuid(),
+            FirstName = "Charlie",
+            LastName = "Brown",
+            BirthDate = new DateOnly(1990, 12, 25),
+            PhotoPath = "default.png"
+        }
+    ];
 }

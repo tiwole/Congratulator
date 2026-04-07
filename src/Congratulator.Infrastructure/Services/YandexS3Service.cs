@@ -13,7 +13,7 @@ public class YandexS3Service(IOptions<YandexS3Options> options, ILogger<YandexS3
     {
         var config = new AmazonS3Config
         {
-            ServiceURL = options.Value.ServiceURL,
+            ServiceURL = options.Value.ServiceUrl,
             AuthenticationRegion = options.Value.Region
         };
 

@@ -26,7 +26,7 @@ builder.Host.UseSerilog((context, services, configuration) =>
 builder.Services.Configure<YandexS3Options>(builder.Configuration.GetSection("YandexS3"));
 
 var authContextConnectionString = builder.Configuration.GetConnectionString("IdentityConnectionString");
-builder.Services.AddDbConfiguration<CongratulatorDbContext>(builder.Configuration, authContextConnectionString!);
+builder.Services.AddDbConfiguration<CongratulatorDbContext>(authContextConnectionString!);
 
 builder.Services.AddInfrastructure();
 builder.Services.AddCoreServices();
