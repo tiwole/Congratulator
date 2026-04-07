@@ -2,3 +2,37 @@
     width: 20rem;
     height: 20rem;
 }
+
+.name-cell {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.person-grid {
+    width: 60%;
+}
+
+.person-page-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.grid-toolbar {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.grid-icon {
+    font-size: 1.1rem;
+}
+
+.actions-icon {
+    font-size: 0.8rem;
+}
+
+.grid-row {
+    cursor: pointer;
+}

@@ -1,49 +1,81 @@
-@using Congratulator.WebAssembly.Components.PersonCard
-@using Congratulator.WebAssembly.Components.ThemeColorToggle
+@using LumexUI.Common
+@using LumexUI.Shared.Icons
 
 @inherits BasePageComponent
 
 @attribute [Route(Routes.Pages.Testing)]
 
-<h3 class="text-xl font-semibold mb-4">Testing</h3>
-
-<div class="flex flex-wrap gap-4">
-    @foreach (var person in _testPersons)
-    {
-        <PersonCard Person="@person" />
-    }
+<div class="person-page-container">
+    <div class="person-grid">
+        <LumexDataGrid @ref="_grid"
+                       DataSource="@PeopleProvider"
+                       Loading="@IsLoading"
+                       Hoverable="@true">
+            <LoadingContent>
+                <LumexSpinner Size="@Size.Small" Class="p-3"/>
+                Fetching data...
+            </LoadingContent>
+            <ToolbarContent>
+                <div class="grid-toolbar">
+                    <LumexTextbox Placeholder="Search by name..."
+                                  Behavior="@InputBehavior.OnInput"
+                                  Class=""
+                                  @bind-Value="@_nameFilterInput"
+                                  @onkeydown="@KeyPressHandler">
+                        <StartContent>
+                            <SearchIcon Size="20"/>
+                        </StartContent>
+                    </LumexTextbox>
+                    <LumexButton OnClick="@SearchClick">
+                        Search
+                    </LumexButton>
+                    <LumexButton OnClick="@ResetGrid" IconOnly="@true" Variant="Variant.Flat">
+                        <i class="ri-refresh-line grid-icon"></i>
+                    </LumexButton>
+                </div>
+            </ToolbarContent>
+            <ChildContent>
+                <div class="grid-row">
+                    <TemplateColumn Title="Name" Sortable="@true"
+                                    SortBy="@(SortBuilder<PersonModel>.ByAscending(p => p.FirstName))">
+                        <div class="name-cell">
+                            <LumexAvatar Src="@context.PhotoPath" Size="Size.Small"/>
+                            <span>@context.FirstName @context.LastName</span>
+                        </div>
+                    </TemplateColumn>
+                    <TemplateColumn Title="Birth Date" Sortable="@true"
+                                    SortBy="@(SortBuilder<PersonModel>.ByAscending(p => p.BirthDate))">
+                        @context.BirthDate.ToString("dd.MM.yyyy")
+                    </TemplateColumn>
+                    <TemplateColumn Title="Age" Sortable="@true"
+                                    SortBy="@(SortBuilder<PersonModel>.ByAscending(p => p.Age))">
+                        @context.Age @GetAgeWord(context.Age)
+                    </TemplateColumn>
+                    <TemplateColumn Title="Days until birthday">
+                        @GetDaysCell(context)
+                    </TemplateColumn>
+                    <TemplateColumn Title="Relationship">
+                        <LumexChip Size="Size.Small"
+                                   Color="@GetChipColor(context.RelationshipType)"
+                                   Variant="ChipVariant.Outlined">
+                            @context.RelationshipType
+                        </LumexChip>
+                    </TemplateColumn>
+                    <TemplateColumn Title="Actions" Align="@Align.Center">
+                        <LumexButton IconOnly="@true"
+                                     Size="@Size.Small"
+                                     Variant="@Variant.Flat">
+                            <i class="ri-edit-line actions-icon"></i>
+                        </LumexButton>
+                        <LumexButton IconOnly="@true"
+                                     Size="@Size.Small"
+                                     Variant="@Variant.Flat"
+                                     OnClick="@(() => OnDeleteClick(context))">
+                            <i class="ri-delete-bin-line actions-icon"></i>
+                        </LumexButton>
+                    </TemplateColumn>
+                </div>
+            </ChildContent>
+        </LumexDataGrid>
+    </div>
 </div>
-
-<ThemeColorToggle></ThemeColorToggle>
-
-<LumexSkeleton Class="skeleton"></LumexSkeleton>
-
-@code {
-    private static readonly List<PersonModel> _testPersons =
-    [
-        new()
-        {
-            Id = Guid.NewGuid(),
-            FirstName = "Alice",
-            LastName = "Johnson",
-            BirthDate = DateOnly.FromDateTime(DateTime.Today),
-            PhotoPath = "default.png"
-        },
-        new()
-        {
-            Id = Guid.NewGuid(),
-            FirstName = "Bob",
-            LastName = "Smith",
-            BirthDate = DateOnly.FromDateTime(DateTime.Today.AddDays(3).AddYears(-30)),
-            PhotoPath = "default.png"
-        },
-        new()
-        {
-            Id = Guid.NewGuid(),
-            FirstName = "Charlie",
-            LastName = "Brown",
-            BirthDate = new DateOnly(1990, 12, 25),
-            PhotoPath = "default.png"
-        }
-    ];
-}

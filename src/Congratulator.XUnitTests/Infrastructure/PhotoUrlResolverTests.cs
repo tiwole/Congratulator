@@ -18,7 +18,7 @@ public class PhotoUrlResolverTests
         var options = Substitute.For<IOptions<YandexS3Options>>();
         options.Value.Returns(new YandexS3Options
         {
-            ServiceURL = "https://storage.yandexcloud.net",
+            ServiceUrl = "https://storage.yandexcloud.net",
             BucketName = "my-bucket",
             AccessKey = "key",
             SecretKey = "secret",

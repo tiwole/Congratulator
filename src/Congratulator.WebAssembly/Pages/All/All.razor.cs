@@ -13,14 +13,18 @@ namespace Congratulator.WebAssembly.Pages.All;
 public partial class All : BasePageComponent
 {
     #region Injected Services
+    
     [Inject] 
     public IHttpClientFactory HttpClientFactory { get; set; } = null!;
 
     [Inject] 
     private JsonSerializerOptions JsonOptions { get; set; } = null!;
+    
     #endregion
     
     #region State
+    
+    private bool IsLoading { get; set; }
     private int CurrentPage { get; set; } = 1;
     private string _searchQuery = string.Empty;
     private Timer? _debounceTimer;
@@ -44,13 +48,15 @@ public partial class All : BasePageComponent
     private HashSet<RelationshipType> ActiveRelationshipTypes { get; set; } = new();
     private bool IsDescending { get; set; }
     private bool IsAddModalVisible { get; set; }
+    
     #endregion
 
     #region Data
+    
     private PagedResponse<PersonModel> People { get; set; } = new();
-
     private static List<RelationshipType> AvailableRelationshipTypes 
         => Enum.GetValues<RelationshipType>().ToList();
+    
     #endregion
     
     #region Lifecycle
@@ -61,6 +67,8 @@ public partial class All : BasePageComponent
     
     private async Task LoadPeople()
     {
+        IsLoading = true;
+        
         var queryParams = new List<string>();
 
         // RelationshipTypes
@@ -95,6 +103,7 @@ public partial class All : BasePageComponent
         var client = HttpClientFactory.CreateClient("ApiClient");
         People = (await client.GetFromJsonAsync<PagedResponse<PersonModel>>(url, JsonOptions, CancellationToken.None))!;
 
+        IsLoading = false;
         StateHasChanged();
     }
     
@@ -160,7 +169,7 @@ public partial class All : BasePageComponent
     {
         var client = HttpClientFactory.CreateClient("ApiClient");
 
-        var deleted = await DeleteEntityWithConfirmation(
+        var deleted = await DeleteEntity(
             $"{person.FirstName} {person.LastName}",
             async () =>
             {
@@ -199,14 +208,18 @@ public partial class All : BasePageComponent
         };
     }
 
-    private static string GetAgeWord(int age)
-    {
-        return age == 1 ? "year old" : "years old";
-    }
+    private static string GetAgeWord(int age) 
+        => age == 1 ? "year old" : "years old";
 
-    private static string GetDaysWord(int days)
+    private static string GetDaysWord(int days) 
+        => days == 1 ? "day" : "days";
+
+    private static string GetDaysCell(PersonModel person)
     {
-        return days == 1 ? "day" : "days";
+        return person.DaysUntilBirthday == 0 
+            ? "Today!" 
+            : person.DaysUntilBirthday + " " + GetDaysWord(person.DaysUntilBirthday);
     }
+    
     #endregion
 }

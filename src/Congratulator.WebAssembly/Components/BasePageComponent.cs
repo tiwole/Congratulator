@@ -26,7 +26,7 @@ public class BasePageComponent : ComponentBase
     /// <param name="entityName">Display name of the entity being deleted.</param>
     /// <param name="deleteAction">Async function that performs the delete and returns an <see cref="OperationResult"/>.</param>
     /// <returns><c>true</c> if the deletion succeeded; otherwise <c>false</c>.</returns>
-    protected async Task<bool> DeleteEntityWithConfirmation(
+    protected async Task<bool> DeleteEntity(
         string entityName,
         Func<Task<OperationResult>> deleteAction)
     {
