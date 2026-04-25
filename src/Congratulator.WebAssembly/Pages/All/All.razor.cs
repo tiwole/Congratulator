@@ -71,6 +71,16 @@ public partial class All : BasePageComponent
             await ApplyFiltersAsync();
     }
 
+    private bool _isRefreshSpinning;
+
+    private async Task OnResetClick()
+    {
+        _isRefreshSpinning = true;
+        await ResetGrid();
+        await Task.Delay(1000);
+        _isRefreshSpinning = false;
+    }
+
     private async Task ResetGrid()
     {
         _nameFilter = null;

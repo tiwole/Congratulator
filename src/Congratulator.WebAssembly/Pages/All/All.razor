@@ -79,8 +79,8 @@
                             </LumexDropdownMenu>
                         </LumexDropdown>
 
-                        <LumexButton OnClick="@ResetGrid" IconOnly="@true" Variant="Variant.Flat">
-                            <i class="ri-refresh-line grid-icon"></i>
+                        <LumexButton OnClick="@OnResetClick" IconOnly="@true" Variant="Variant.Flat">
+                            <i class="ri-refresh-line grid-icon @(_isRefreshSpinning ? "grid-icon--spin" : "")"></i>
                         </LumexButton>
                     </div>
                 </ToolbarContent>

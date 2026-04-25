@@ -27,6 +27,15 @@
     font-size: 1.1rem;
 }
 
+@keyframes spin-once {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
+}
+
+.grid-icon--spin {
+    animation: spin-once 0.7s ease-out;
+}
+
 .actions-icon {
     font-size: 0.8rem;
 }
