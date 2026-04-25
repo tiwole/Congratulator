@@ -1,4 +1,4 @@
-@using Congratulator.WebAssembly.Components.Sidebar
+@using Congratulator.WebAssembly.Components.Navbar
 
 @inherits LayoutComponentBase
 
@@ -15,7 +15,7 @@
 <LumexToastProvider RichColors="@true"/>
 
 @code {
-    private static readonly List<SidebarItem> NavItems =
+    private static readonly List<NavbarItem> NavItems =
     [
         new("Home", Routes.Pages.Home, "ri-home-fill", NavLinkMatch.All),
         new("All", Routes.Pages.All, "ri-list-check-2"),
