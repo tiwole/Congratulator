@@ -55,7 +55,7 @@ XUnitTests (repository tests with InMemory EF provider)
 - **Infrastructure** — `CongratulatorDbContext` (PostgreSQL via Npgsql), `PersonRepository` with complex filtering/sorting, `YandexS3Service` for photo storage, AutoMapper profiles. Auto-registered via reflection in `AddInfrastructure`
 - **SharedKernel** — `Person` entity, repository/service interfaces
 - **SharedKernel.Contracts** — Request/response DTOs, `PersonModel` (with computed `Age`, `NextBirthday`, `DaysUntilBirthday`), enums (`RelationshipType`, `SortVariants`)
-- **WebAssembly** — Blazor WASM client with components (`AddPersonModal`, `BirthdayCard`, `Pager`), pages (`Home`, `All`)
+- **WebAssembly** — Blazor WASM client with components (`AddPersonModal`, `BirthdayCard`, `Pagination`, `PersonCard`), pages (`Home`, `All`, `Chart`, `Testing`, `UiKitIcons`)
 
 ## Key Technical Details
 
@@ -69,6 +69,8 @@ XUnitTests (repository tests with InMemory EF provider)
 - **Auto-migration** on startup controlled by `MigrateDbOnStartup` config flag
 - **Connection string** key: `ConnectionStrings:IdentityConnectionString`
 - **Swagger** available in Development at `/api/swagger`
+- **Fetch all persons** for aggregation: `GET /persons?all=true&page=1&pageSize=10000` — `GetPagedPersonsService` is used when `all=true`, no server-side cap on `pageSize`
+- **IBM Plex Mono** font loaded in `index.html` — use for numeric/monospace content in UI
 
 ## Configuration
 
@@ -122,8 +124,8 @@ Before writing code for ANY new component/service/function, ask yourself:
 - Example: `powershell -Command "Test-Path 'C:\path\to\file'"`
 
 ### Before Task Completion Checklist
-- [ ] Solution builds without errors (use `dotnet build -nowarn`)
-- [ ] Unit tests are green (use `dotnet test -nowarn`)
+- [ ] Solution builds without errors (`dotnet build` — bare `-nowarn` flag doesn't work, omit it)
+- [ ] Unit tests are green (`dotnet test`)
 - [ ] Files/folders checked for existence before creation
 
 ## 🚫 FORBIDDEN ACTIONS (NEVER DO)
@@ -151,6 +153,11 @@ Before writing code for ANY new component/service/function, ask yourself:
 
 ### 🔴 MANDATORY BLAZOR ACTIONS
 
+#### Hot Reload & Rebuilding
+- When the dev server is running, `dotnet build` will fail with a PDB lock error — this is expected
+- CSS and Razor changes are picked up by hot reload automatically — no rebuild needed
+- In you need to rebuild solution: use the `/rebuild` skill (runs `rebuild.ps1`)
+
 #### Component Structure
 - Always create 3 files: `Component.razor`, `Component.razor.cs`, `Component.razor.css`
 - Add `[Parameter]` properties for configuration
@@ -163,9 +170,15 @@ Before writing code for ANY new component/service/function, ask yourself:
 - Use **rem** units for CSS
 - Use `rgba()` format for all colors: `rgba(255, 255, 255, 1)`
 - Include `box-sizing: border-box` and appropriate `display` properties
-- Check if CSS variable exists before creating it in `tokens.css`
-- Update `wwwroot/css/tokens.css` with component-specific variables
+- LumexUI CSS variables (`--lumex-*`) come from `bin/lumexui/theme` — imported in `wwwroot/css/app.css`. There is no `tokens.css` for component variables; put custom tokens directly in the component's `.razor.css`
 - **For scrollable elements**: Apply `custom-scrollbar` CSS class to enable styled scrollbars
+
+#### LumexUI Usage Rules
+- **ALWAYS** use LumexUI components (`LumexCard`, `LumexChip`, `LumexButton`, `LumexSpinner`, `LumexSkeleton`, etc.) — never build UI primitives from scratch when LumexUI has them
+- **NEVER** write Tailwind utility classes directly in `.razor` markup — Tailwind is only used internally by LumexUI
+- All custom styling goes in **`.razor.css` scoped files** as named CSS classes, not inline Tailwind
+- To customise a LumexUI component, use its `Class=` parameter to attach a scoped CSS class, then write the overrides in `.razor.css`
+- Use `--lumex-*` CSS variables for all colors, radii, shadows, and spacing to stay theme-aware (light/dark)
 
 #### Icon Requirements
 - **ALWAYS** use RemixIcon CSS classes for icons: `<i class="ri-iconname-style"></i>`
@@ -178,19 +191,28 @@ Before writing code for ANY new component/service/function, ask yourself:
 ### Component Completion Checklist
 - [ ] CSS variables used instead of hardcoded values
 - [ ] All 3 component files created (.razor, .razor.cs, .razor.css)
-- [ ] Menu item added to NavMenu.razor with correct route and icon
+- [ ] New page: add route to `Routes.Pages`, add nav item in `MainLayout.razor`
 
-## Security Guidelines
+## WebAssembly Conventions
 
-### Data Protection
-- Never hardcode credentials, API keys, or sensitive data
-- Use configuration providers for sensitive settings
-- Validate all input parameters and user data
-- Sanitize data before database operations
-- Use parameterized queries to prevent SQL injection
+### BasePageComponent
+All pages **and** components that need common UI logic must inherit from `BasePageComponent` (not `ComponentBase`). It provides:
+- `GetRelationshipColor(RelationshipType)` → `ThemeColor` — **use this everywhere**, do not invent new color mappings
+- `DeleteEntity(name, action)` — deletion with toast notification
+- `OpenInNewTab(url)` — JS interop helper
+- `NotificationService` (Blazor.Sonner toasts) and `JsRuntime` already injected
 
-### Authentication & Authorization
-- Implement proper authentication mechanisms
-- Use role-based authorization where appropriate
-- Validate user permissions before sensitive operations
-- Log security-related events for auditing
+### RelationshipType → ThemeColor mapping
+Always use `GetRelationshipColor()` from `BasePageComponent`. The canonical mapping is:
+| RelationshipType | ThemeColor |
+|---|---|
+| Family | Warning |
+| Friend | Success |
+| Mate | Secondary |
+| Coworker | Primary |
+| Unknown | Default |
+
+This mapping is used for avatars, chips, chart colours, and everything else — keep it consistent.
+
+### HTTP client
+Use `HttpClientFactory.CreateClient("ApiClient")` — the named client is pre-configured with the API base URL.
