@@ -24,8 +24,7 @@ public class GetPersonsServiceTests
         var request = new GetPersonsRequest();
         var expectedResponse = new GetPersonsResponse
         {
-            TodayBirthdays = [new PersonModel { FirstName = "John" }],
-            UpcomingBirthdays = [new PersonModel { FirstName = "Jane" }]
+            People = [new PersonModel { FirstName = "John" }]
         };
         _personRepository.GetPersonsAsync(request).Returns(expectedResponse);
 

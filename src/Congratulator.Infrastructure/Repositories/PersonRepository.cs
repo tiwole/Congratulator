@@ -65,8 +65,7 @@ public class PersonRepository(CongratulatorDbContext context, IMapper mapper, ID
 
         return new GetPersonsResponse
         {
-            TodayBirthdays = mapper.Map<List<PersonModel>>(persons.Where(x => x.BirthDate.Day == today.Day && x.BirthDate.Month == today.Month)),
-            UpcomingBirthdays = mapper.Map<List<PersonModel>>(persons.Where(x => !(x.BirthDate.Day == today.Day && x.BirthDate.Month == today.Month)))
+            People = mapper.Map<List<PersonModel>>(persons)
         };
     }
 

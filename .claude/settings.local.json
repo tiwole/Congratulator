@@ -53,7 +53,17 @@
       "WebFetch(domain:github.com)",
       "Bash(xargs grep *)",
       "mcp__chrome-devtools__list_pages",
-      "mcp__chrome-devtools__evaluate_script"
+      "mcp__chrome-devtools__evaluate_script",
+      "Read(//c/Users/tiwole/.claude/projects/C--Users-tiwole-RiderProjects-Congratulator/ddd4625c-a4fb-46c1-a9f1-ba6869c6b69f/tool-results//**)",
+      "Bash(gunzip -c webfetch-1777110944491-611rwn.bin)",
+      "Bash(tar -x --to-stdout congratulator/chats/chat1.md)",
+      "Bash(tar -t)",
+      "Bash(grep -v \"^congratulator/$\")",
+      "Bash(tar -x --to-stdout congratulator/project/src/year-chart.jsx)",
+      "Bash(tar -x --to-stdout congratulator/project/src/year-data.jsx)",
+      "Bash(tar -x --to-stdout congratulator/project/src/year-nav.jsx)",
+      "Bash(xargs cat *)",
+      "Bash(xargs ls *)"
     ]
   }
 }

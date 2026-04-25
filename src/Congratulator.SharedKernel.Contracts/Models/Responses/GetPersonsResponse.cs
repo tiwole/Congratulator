@@ -2,6 +2,5 @@
 
 public class  GetPersonsResponse
 {
-    public List<PersonModel> TodayBirthdays { get; set; } = [];
-    public List<PersonModel> UpcomingBirthdays { get; set; } = [];
+    public List<PersonModel> People { get; set; } = [];
 }
