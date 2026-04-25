@@ -63,7 +63,8 @@
       "Bash(tar -x --to-stdout congratulator/project/src/year-data.jsx)",
       "Bash(tar -x --to-stdout congratulator/project/src/year-nav.jsx)",
       "Bash(xargs cat *)",
-      "Bash(xargs ls *)"
+      "Bash(xargs ls *)",
+      "mcp__chrome-devtools__navigate_page"
     ]
   }
 }

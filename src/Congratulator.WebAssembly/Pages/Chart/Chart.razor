@@ -10,19 +10,32 @@
     <header class="chart-header">
         <div class="chart-year-label">Year overview · @DateTime.Now.Year</div>
         <h1 class="chart-title">Birthdays at a glance</h1>
-        @if (!_isLoading && _perMonth.Count > 0)
-        {
-            <p class="chart-subtitle">
-                Distribution across all twelve months — busiest in
-                <strong class="chart-highlight">@_busiestMonth</strong>, quietest in
-                <strong class="chart-highlight">@_quietestMonth</strong>.
-            </p>
-        }
+        <p class="chart-subtitle">
+            Distribution across all twelve months — busiest in
+            @if (_isLoading)
+            {
+                <LumexSkeleton Class="skeleton-month-name" />
+            }
+            else
+            {
+                <strong class="chart-highlight">@_busiestMonth</strong>
+            }
+            , quietest in
+            @if (_isLoading)
+            {
+                <LumexSkeleton Class="skeleton-month-name" />
+            }
+            else
+            {
+                <strong class="chart-highlight">@_quietestMonth</strong>
+            }.
+        </p>
     </header>
 
-    @if (true)
+    @if (_isLoading)
     {
-        <div class="chart-skeleton-card">
+        <LumexCard Class="chart-card">
+        <div class="chart-card-inner">
             <div class="chart-skeleton-legend-row">
                 <div class="chart-skeleton-legend-left">
                     <LumexSkeleton Class="skeleton-label-line" />
@@ -56,6 +69,7 @@
                 }
             </div>
         </div>
+        </LumexCard>
     }
     else
     {
