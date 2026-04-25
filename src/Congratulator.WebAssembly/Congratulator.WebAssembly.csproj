@@ -18,38 +18,6 @@
     </ItemGroup>
 
     <ItemGroup>
-      <_ContentIncludedByDefault Remove="Components\Button\Button.razor" />
-      <_ContentIncludedByDefault Remove="Components\ConfirmDialog\ConfirmDialog.razor" />
       <_ContentIncludedByDefault Remove="Components\PersonCard\PersonCard.razor" />
-      <_ContentIncludedByDefault Remove="Components\NotificationContainer\NotificationContainer.razor" />
     </ItemGroup>
-
-    <ItemGroup>
-      <Content Remove="wwwroot\lib\bootstrap\dist\js\bootstrap.esm.min.js.map" />
-      <Content Remove="wwwroot\lib\bootstrap\dist\js\bootstrap.js" />
-      <Content Remove="wwwroot\lib\bootstrap\dist\js\bootstrap.min.js.map" />
-      <Content Remove="wwwroot\lib\bootstrap\dist\js\bootstrap.min.js" />
-      <Content Remove="wwwroot\lib\bootstrap\dist\js\bootstrap.esm.js.map" />
-      <Content Remove="wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.css" />
-      <Content Remove="wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.css.map" />
-      <Content Remove="wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.min.css" />
-      <Content Remove="wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.min.css" />
-      <Content Remove="wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js" />
-      <Content Remove="wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js.map" />
-      <Content Remove="wwwroot\lib\bootstrap\dist\js\bootstrap.esm.min.js" />
-      <Content Remove="wwwroot\lib\bootstrap\dist\css\bootstrap-grid.min.css.map" />
-      <Content Remove="wwwroot\lib\bootstrap\dist\css\bootstrap.min.css" />
-      <Content Remove="wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.css" />
-      <Content Remove="wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.min.css" />
-      <Content Remove="wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.css.map" />
-      <Content Remove="wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.min.css.map" />
-      <Content Remove="wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css" />
-      <Content Remove="wwwroot\lib\bootstrap\dist\css\bootstrap-grid.min.css" />
-      <Content Remove="wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css.map" />
-      <Content Remove="wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.css.map" />
-      <Content Remove="wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.css" />
-      <Content Remove="wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.min.css" />
-      <Content Remove="wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.min.css.map" />
-    </ItemGroup>
-    
 </Project>

@@ -1,0 +1,29 @@
+@using LumexUI.Common
+
+<nav class="pagination" aria-label="Page navigation" @attributes="AdditionalAttributes">
+    <LumexButton IconOnly="@true"
+                 Size="@Size.Small"
+                 Variant="@Variant.Flat"
+                 Disabled="@IsFirstPage"
+                 OnClick="@(() => GoToPage(CurrentPage - 1))">
+        <i class="ri-arrow-left-s-line"></i>
+    </LumexButton>
+
+    @foreach (var p in GetPageNumbers().Where(page => page != -1))
+    {
+        <LumexButton Size="@Size.Small"
+                     Variant="@(CurrentPage == p ? Variant.Solid : Variant.Flat)"
+                     OnClick="@(() => GoToPage(p))"
+                     IconOnly="@true">
+            @p
+        </LumexButton>
+    }
+
+    <LumexButton IconOnly="@true"
+                 Size="@Size.Small"
+                 Variant="@Variant.Flat"
+                 Disabled="@IsLastPage"
+                 OnClick="@(() => GoToPage(CurrentPage + 1))">
+        <i class="ri-arrow-right-s-line"></i>
+    </LumexButton>
+</nav>

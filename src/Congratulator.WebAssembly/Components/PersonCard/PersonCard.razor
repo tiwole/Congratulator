@@ -1,46 +1,57 @@
+﻿@using System.Globalization
 @using LumexUI.Common
-<div class="person-card @(IsBirthdayToday ? "person-card--today" : "")">
-    <LumexCard Classes="@_cardClasses" >
-        <LumexCardHeader Class="gap-3 pb-1">
-            <LumexAvatar Src="@Person.PhotoPath"
-                         Name="@FullName"
-                         Size="@Size.Large"
-                         Classes="@_avatarClasses"/>
 
-            <div class="person-info">
-                <h3 class="person-name">@FullName</h3>
-                <LumexChip Size="@Size.Small"
-                           Variant="@ChipVariant.Flat"
-                           Classes="@RelationshipChipClasses">
-                    <StartContent>
-                        <i class="@RelationshipIcon person-card-icon"></i>
-                    </StartContent>
-                    <ChildContent>@Person.RelationshipType.ToString()</ChildContent>
-                </LumexChip>
-            </div>
-            
-            <svg>
-                
-            </svg>
-        </LumexCardHeader>
+@inherits BasePageComponent
 
-        <LumexCardBody Class="py-2 gap-1.5">
-            <div class="detail">
-                <i class="ri-cake-2-line detail-icon"></i>
-                <span class="detail-text">@FormattedBirthDate</span>
+<div class="card">
+    <LumexCard>
+        <div class="card-content">
+            <div class="header">
+                <div class="card-avatar">
+                    <LumexAvatar Src="@Person.PhotoPath"
+                                 Size="Size.Small"
+                                 Bordered="@true"
+                                 Color="@GetRelationshipColor(Person.RelationshipType)"/>
+                </div>
+                <div class="name">
+                    <span class="name-card-cell">@Person.FirstName @Person.LastName</span>
+                    <LumexChip Size="Size.Small"
+                               Color="@GetRelationshipColor(Person.RelationshipType)"
+                               Variant="ChipVariant.Flat">
+                        @Person.RelationshipType
+                    </LumexChip>
+                </div>
+                <div class="counter">
+                    <LumexButton Disabled="@true"
+                                 Variant="@(Person.DaysUntilBirthday < 1 ? Variant.Solid : Variant.Flat)">
+                        @if (Person.DaysUntilBirthday < 1)
+                        {
+                            <span>Today</span>
+                        }
+                        else
+                        {
+                            <div class="counter-content">
+                                <span>@Person.DaysUntilBirthday</span>
+                                <span>@(Person.DaysUntilBirthday < 2 ? "DAY" : "DAYS")</span>
+                            </div>
+                        }
+                    </LumexButton>
+                </div>
             </div>
 
-            <div class="detail">
-                <i class="ri-timer-line detail-icon"></i>
-                <span class="detail-text">@AgeText</span>
-            </div>
-        </LumexCardBody>
+            <LumexDivider></LumexDivider>
 
-        <LumexCardFooter Class="pt-1">
-            <div class="countdown @CountdownModifier">
-                <i class="@(IsBirthdayToday ? "ri-gift-2-fill" : "ri-calendar-event-line") countdown-icon"></i>
-                <span class="countdown-text">@CountdownText</span>
+            <div class="footer">
+                <div class="date">
+                    <i class="ri-cake-line color-grey"></i>
+                    <span>@Person.BirthDate.ToString("M", CultureInfo.InvariantCulture)</span>
+                </div>
+                <div class="age">
+                    @* example: turns 20 *@
+                    <span class="color-grey">turns</span>
+                    <span style="font-weight: var(--font-weight-bold)">@(Person.Age + 1)</span>
+                </div>
             </div>
-        </LumexCardFooter>
+        </div>
     </LumexCard>
 </div>

@@ -2,6 +2,6 @@ namespace Congratulator.WebAssembly.Services;
 
 public class DateTimeProvider
 {
-    public DateOnly Today => DateOnly.FromDateTime(DateTime.Today);
-    public DateTime UtcNow => DateTime.UtcNow;
+    public static DateOnly Today => DateOnly.FromDateTime(DateTime.Today);
+    public static DateTime UtcNow => DateTime.UtcNow;
 }

@@ -1,0 +1,17 @@
+.pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--pagination-gap);
+}
+
+.pagination__ellipsis {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: var(--pagination-number-size);
+    height: var(--pagination-number-size);
+    font-size: var(--pagination-btn-font-size);
+    color: var(--color-text-secondary);
+    user-select: none;
+}

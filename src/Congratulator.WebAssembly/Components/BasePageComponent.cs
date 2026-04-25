@@ -1,5 +1,7 @@
 ﻿using Blazor.Sonner.Services;
+using Congratulator.SharedKernel.Contracts.Enums;
 using Congratulator.WebAssembly.Models;
+using LumexUI.Common;
 using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
 
@@ -65,4 +67,14 @@ public class BasePageComponent : ComponentBase
     {
         await JsRuntime.InvokeVoidAsync("window.open", url, "_blank");
     }
+    
+    protected static ThemeColor GetRelationshipColor(RelationshipType type)
+        => type switch
+        {
+            RelationshipType.Friend => ThemeColor.Success,
+            RelationshipType.Mate => ThemeColor.Secondary,
+            RelationshipType.Coworker => ThemeColor.Primary,
+            RelationshipType.Family => ThemeColor.Warning,
+            /* RelationshipType.Unknown */ _ => ThemeColor.Default
+        };
 }

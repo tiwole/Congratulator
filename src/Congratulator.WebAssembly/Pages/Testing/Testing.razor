@@ -1,5 +1,8 @@
+@using Congratulator.SharedKernel.Contracts.Enums
+@using Congratulator.WebAssembly.Components.PersonCard
 @using LumexUI.Common
 @using LumexUI.Shared.Icons
+@using Congratulator.WebAssembly.Services
 
 @inherits BasePageComponent
 
@@ -19,27 +22,57 @@
                 <div class="grid-toolbar">
                     <LumexTextbox Placeholder="Search by name..."
                                   Behavior="@InputBehavior.OnInput"
-                                  Class=""
                                   @bind-Value="@_nameFilterInput"
                                   @onkeydown="@KeyPressHandler">
                         <StartContent>
                             <SearchIcon Size="20"/>
                         </StartContent>
                     </LumexTextbox>
+                    
                     <LumexButton OnClick="@SearchClick">
                         Search
                     </LumexButton>
+                    
+                    <LumexDropdown OpenChanged="@(value => _isDropdownOpened = value)">
+                        <LumexDropdownTrigger>
+                            <LumexButton Variant="@Variant.Flat">
+                                <div class="dropdown-button-container">
+                                    <span>@GetDropdownLabel(ActiveRelationshipTypes.Count)</span>
+                                    <i class="@(_isDropdownOpened ? "ri-arrow-up-s-line" : "ri-arrow-down-s-line")"></i>
+                                </div>
+                            </LumexButton>
+                        </LumexDropdownTrigger>
+                        <LumexDropdownMenu>
+                            <LumexDropdownItem Class="no-hover">
+                                <LumexCheckboxGroup>
+                                    @foreach (var type in AvailableRelationshipTypes)
+                                    {
+                                        var t = type;
+                                        <LumexCheckbox Value="@ActiveRelationshipTypes.Contains(t)"
+                                                       Color="@GetRelationshipColor(t)"
+                                                       ValueChanged="@(() => ToggleRelationship(t))">
+                                            @t
+                                        </LumexCheckbox>
+                                    }
+                                </LumexCheckboxGroup>
+                            </LumexDropdownItem>
+                        </LumexDropdownMenu>
+                    </LumexDropdown>
+                    
                     <LumexButton OnClick="@ResetGrid" IconOnly="@true" Variant="Variant.Flat">
                         <i class="ri-refresh-line grid-icon"></i>
                     </LumexButton>
                 </div>
             </ToolbarContent>
             <ChildContent>
-                <div class="grid-row">
+                <div class="grid-rows">
                     <TemplateColumn Title="Name" Sortable="@true"
                                     SortBy="@(SortBuilder<PersonModel>.ByAscending(p => p.FirstName))">
                         <div class="name-cell">
-                            <LumexAvatar Src="@context.PhotoPath" Size="Size.Small"/>
+                            <LumexAvatar Src="@context.PhotoPath" 
+                                         Size="Size.Small" 
+                                         Bordered="@true" 
+                                         Color="@GetRelationshipColor(context.RelationshipType)"/>
                             <span>@context.FirstName @context.LastName</span>
                         </div>
                     </TemplateColumn>
@@ -56,7 +89,7 @@
                     </TemplateColumn>
                     <TemplateColumn Title="Relationship">
                         <LumexChip Size="Size.Small"
-                                   Color="@GetChipColor(context.RelationshipType)"
+                                   Color="@GetRelationshipColor(context.RelationshipType)"
                                    Variant="ChipVariant.Outlined">
                             @context.RelationshipType
                         </LumexChip>
@@ -77,5 +110,45 @@
                 </div>
             </ChildContent>
         </LumexDataGrid>
+
+        @if (_totalPages > 1)
+        {
+            <Congratulator.WebAssembly.Components.Pagination.Pagination
+                CurrentPage="@_currentPage"
+                TotalPages="@_totalPages"
+                OnPageChanged="@OnPageChangedAsync"/>
+        }
     </div>
 </div>
+
+<div style="display:flex; align-items:flex-start; gap:1rem; margin:1rem">
+    <PersonCard Person="@testperson"></PersonCard>
+    <PersonCard Person="@testperson2"></PersonCard>
+</div>
+
+@code {
+
+    private PersonModel testperson = new()
+    {
+        Id = Guid.NewGuid(),
+        FirstName = "Test",
+        LastName = "Person",
+        BirthDate = DateTimeProvider.Today,
+        RelationshipType = RelationshipType.Family,
+        Age = 33,
+        NextBirthday = DateTimeProvider.Today.AddYears(1),
+        DaysUntilBirthday = 0
+    };
+
+    private PersonModel testperson2 = new()
+    {
+        Id = Guid.NewGuid(),
+        FirstName = "Test",
+        LastName = "Person2",
+        BirthDate = DateTimeProvider.Today.AddDays(-5),
+        RelationshipType = RelationshipType.Family,
+        Age = 21,
+        NextBirthday = DateTimeProvider.Today.AddYears(1).AddDays(-5),
+        DaysUntilBirthday = 5
+    };
+}

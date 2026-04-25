@@ -40,6 +40,14 @@ public partial class Testing : BasePageComponent
     private LumexDataGrid<PersonModel> _grid = null!;
     private string? _nameFilter;
     private string? _nameFilterInput;
+    private int _currentPage = 1;
+    private int _totalPages = 1;
+    private const int PageSize = 8;
+
+    private bool _isDropdownOpened;
+    private HashSet<RelationshipType> ActiveRelationshipTypes { get; set; } = new();
+    private static List<RelationshipType> AvailableRelationshipTypes 
+        => Enum.GetValues<RelationshipType>().ToList();
 
     #endregion
 
@@ -48,6 +56,7 @@ public partial class Testing : BasePageComponent
     private async Task ApplyFiltersAsync()
     {
         _nameFilter = _nameFilterInput;
+        _currentPage = 1;
         await _grid.RefreshDataAsync();
     }
 
@@ -63,6 +72,14 @@ public partial class Testing : BasePageComponent
     {
         _nameFilter = null;
         _nameFilterInput = null;
+        ActiveRelationshipTypes.Clear();
+        _currentPage = 1;
+        await _grid.RefreshDataAsync();
+    }
+
+    private async Task OnPageChangedAsync(int page)
+    {
+        _currentPage = page;
         await _grid.RefreshDataAsync();
     }
 
@@ -78,8 +95,13 @@ public partial class Testing : BasePageComponent
         var queryParams = new List<string> { "all=true" };
 
         // Paging
-        var page = request.Count > 0 ? (request.StartIndex / request.Count) + 1 : 1;
-        queryParams.Add($"page={page}");
+        queryParams.Add($"page={_currentPage}");
+        
+        // RelationshipTypes
+        if (ActiveRelationshipTypes.Count != 0)
+        {
+            queryParams.AddRange(ActiveRelationshipTypes.Select(t => $"relationshipTypes={t}"));
+        }
 
         // Sort
         var sortDescriptors = request.GetSortDescriptors();
@@ -104,13 +126,16 @@ public partial class Testing : BasePageComponent
         var client = HttpClientFactory.CreateClient("ApiClient");
         var response = await client.GetFromJsonAsync<PagedResponse<PersonModel>>(url, JsonOptions, request.CancellationToken);
 
+        var totalCount = response?.TotalCount ?? 0;
+        _totalPages = Math.Max(1, (int)Math.Ceiling((double)totalCount / PageSize));
+
         IsLoading = false;
         StateHasChanged();
 
         return new DataSourceResult<PersonModel>
         {
             Items = response?.Data ?? [],
-            TotalItemCount = response?.TotalCount ?? 0
+            TotalItemCount = totalCount
         };
     }
     
@@ -131,6 +156,14 @@ public partial class Testing : BasePageComponent
         if (deleted)
             await _grid.RefreshDataAsync();
     }
+    
+    private async Task ToggleRelationship(RelationshipType type)
+    {
+        if (!ActiveRelationshipTypes.Remove(type))
+            ActiveRelationshipTypes.Add(type);
+
+        await _grid.RefreshDataAsync();
+    }
 
     #endregion
 
@@ -149,14 +182,12 @@ public partial class Testing : BasePageComponent
             : $"{person.DaysUntilBirthday} {GetDaysWord(person.DaysUntilBirthday)}";
     }
 
-    private static ThemeColor GetChipColor(RelationshipType type)
-        => type switch
+    private string GetDropdownLabel(int selectedCount)
+        => selectedCount switch
         {
-            RelationshipType.Friend => ThemeColor.Success,
-            RelationshipType.Mate => ThemeColor.Secondary,
-            RelationshipType.Coworker => ThemeColor.Primary,
-            RelationshipType.Family => ThemeColor.Warning,
-            /* RelationshipType.Unknown */ _ => ThemeColor.Default
+            0 => "Relationships",
+            1 => ActiveRelationshipTypes.First().ToString(),
+            _ => $"{selectedCount} Selected"
         };
 
     #endregion

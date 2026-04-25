@@ -48,7 +48,10 @@
       "Bash(dotnet test:*)",
       "Bash(dotnet clean:*)",
       "Bash(dotnet restore:*)",
-      "mcp__jetbrains__get_all_open_file_paths"
+      "mcp__jetbrains__get_all_open_file_paths",
+      "WebFetch(domain:lumexui.org)",
+      "WebFetch(domain:github.com)",
+      "Bash(xargs grep *)"
     ]
   }
 }

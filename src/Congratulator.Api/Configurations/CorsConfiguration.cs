@@ -10,7 +10,7 @@ public static class CorsConfiguration
     /// </summary>
     /// <param name="services">Collection of services from the API</param>
     /// <returns></returns>
-    public static IServiceCollection AddCorsConfiguration(this IServiceCollection services)
+    public static void AddCorsConfiguration(this IServiceCollection services)
     {
         services.AddCors(options =>
         {
@@ -28,7 +28,5 @@ public static class CorsConfiguration
                     .AllowAnyHeader();
             });
         });
-
-        return services;
     }
 }
