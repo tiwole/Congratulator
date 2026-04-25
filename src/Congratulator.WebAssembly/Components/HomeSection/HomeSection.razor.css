@@ -34,6 +34,10 @@
     gap: 1rem;
 }
 
+.cards-placeholder {
+    width: 100%;
+}
+
 .mono {
     font-family: 'IBM Plex Mono', 'Courier New', monospace;
 }
