@@ -1,0 +1,118 @@
+.home-section {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.home-section-header {
+    display: flex;
+    align-items: baseline;
+    gap: 0.75rem;
+}
+
+.home-section-title {
+    margin: 0;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    letter-spacing: 0.1rem;
+    text-transform: uppercase;
+    color: var(--lumex-default-600);
+}
+
+.home-section-title--today {
+    color: color-mix(in oklab, var(--lumex-primary-500) 78%, black);
+}
+
+.home-section-count {
+    font-size: 0.875rem;
+    color: var(--lumex-default-400);
+}
+
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(18.75rem, 1fr));
+    gap: 1rem;
+}
+
+.cards-placeholder {
+    width: 100%;
+}
+
+.mono {
+    font-family: 'IBM Plex Mono', 'Courier New', monospace;
+}
+
+/* ── Card skeleton ──────────────────────────────────────────── */
+
+.card-skeleton-wrap {
+    width: 100%;
+}
+
+.card-skeleton-content {
+    padding: 1.125rem 1.25rem 1rem;
+}
+
+.card-skeleton-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding-bottom: 0.875rem;
+}
+
+.card-skeleton-name {
+    display: flex;
+    flex-direction: column;
+    gap: 0.375rem;
+    flex: 1;
+}
+
+.card-skeleton-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 0.75rem;
+}
+
+.card-skeleton-content ::deep .skel-avatar {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.card-skeleton-content ::deep .skel-name {
+    width: 7rem;
+    height: 0.625rem;
+    border-radius: 0.25rem;
+}
+
+.card-skeleton-content ::deep .skel-chip {
+    width: 4rem;
+    height: 0.625rem;
+    border-radius: 0.25rem;
+}
+
+.card-skeleton-content ::deep .skel-badge {
+    width: 4rem;
+    height: 3.5rem;
+    border-radius: var(--lumex-radius-medium);
+    flex-shrink: 0;
+}
+
+.card-skeleton-content ::deep .skel-date {
+    width: 5rem;
+    height: 0.625rem;
+    border-radius: 0.25rem;
+}
+
+.card-skeleton-content ::deep .skel-age {
+    width: 4rem;
+    height: 0.625rem;
+    border-radius: 0.25rem;
+}
+
+.home-section-header ::deep .skel-count {
+    width: 1.5rem;
+    height: 0.875rem;
+    border-radius: 0.25rem;
+}

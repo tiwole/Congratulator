@@ -5,8 +5,10 @@
 
 <LumexNavbar Bordered="true" Sticky="true">
     <LumexNavbarBrand>
-        <div class="navbar-logo">@char.ToUpper(Title[0])</div>
-        <p class="font-bold text-xl">@Title</p>
+        <div class="navbar-brand" @ref="_brandRef" @onclick="@OnBrandClick">
+            <div class="navbar-logo">@char.ToUpper(Title[0])</div>
+            <p class="font-bold text-xl">@Title</p>
+        </div>
     </LumexNavbarBrand>
 
     <LumexNavbarContent Align="@Align.Center">

@@ -9,8 +9,13 @@
     justify-content: center;
     font-weight: 700;
     font-size: 0.875rem;
-    margin-right: 0.5rem;
     flex-shrink: 0;
+}
+
+.navbar-brand {
+    display: flex;
+    cursor: pointer;
+    gap: 0.5rem;
 }
 
 .navbar-item {

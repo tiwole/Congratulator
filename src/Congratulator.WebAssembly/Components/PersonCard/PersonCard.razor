@@ -1,55 +1,48 @@
-﻿@using System.Globalization
+@using System.Globalization
 @using LumexUI.Common
 
 @inherits BasePageComponent
 
 <div class="card">
-    <LumexCard>
+    <LumexCard Class="card-inner">
         <div class="card-content">
-            <div class="header">
-                <div class="card-avatar">
-                    <LumexAvatar Src="@Person.PhotoPath"
-                                 Size="Size.Small"
-                                 Bordered="@true"
-                                 Color="@GetRelationshipColor(Person.RelationshipType)"/>
-                </div>
-                <div class="name">
-                    <span class="name-card-cell">@Person.FirstName @Person.LastName</span>
+            <div class="card-header">
+                <LumexAvatar Src="@Person.PhotoPath"
+                             Size="Size.Medium"
+                             Bordered="@true"
+                             Color="@GetRelationshipColor(Person.RelationshipType)" />
+                <div class="card-name">
+                    <span class="card-name-text">@Person.FirstName @Person.LastName</span>
                     <LumexChip Size="Size.Small"
                                Color="@GetRelationshipColor(Person.RelationshipType)"
                                Variant="ChipVariant.Flat">
                         @Person.RelationshipType
                     </LumexChip>
                 </div>
-                <div class="counter">
-                    <LumexButton Disabled="@true"
-                                 Variant="@(Person.DaysUntilBirthday < 1 ? Variant.Solid : Variant.Flat)">
-                        @if (Person.DaysUntilBirthday < 1)
-                        {
-                            <span>Today</span>
-                        }
-                        else
-                        {
-                            <div class="counter-content">
-                                <span>@Person.DaysUntilBirthday</span>
-                                <span>@(Person.DaysUntilBirthday < 2 ? "DAY" : "DAYS")</span>
-                            </div>
-                        }
-                    </LumexButton>
+                <div class="days-badge @(Person.DaysUntilBirthday < 1 ? "days-badge--today" : "")">
+                    @if (Person.DaysUntilBirthday < 1)
+                    {
+                        <span class="days-badge-today-label">TODAY</span>
+                    }
+                    else
+                    {
+                        <span class="days-badge-num mono">@Person.DaysUntilBirthday</span>
+                        <span class="days-badge-label">@(Person.DaysUntilBirthday == 1 ? "day" : "days")</span>
+                    }
                 </div>
             </div>
 
             <LumexDivider></LumexDivider>
 
-            <div class="footer">
-                <div class="date">
-                    <i class="ri-cake-line color-grey"></i>
-                    <span>@Person.BirthDate.ToString("M", CultureInfo.InvariantCulture)</span>
+            <div class="card-footer">
+                <div class="card-date">
+                    <i class="ri-cake-line card-footer-icon"></i>
+                    <span class="mono card-date-text">@Person.BirthDate.ToString("M", CultureInfo.InvariantCulture)</span>
                 </div>
-                <div class="age">
+                <div class="card-age">
                     @* example: turns 20 *@
-                    <span class="color-grey">turns</span>
-                    <span style="font-weight: var(--font-weight-bold)">@(Person.Age + 1)</span>
+                    <span class="card-age-label">turns</span>
+                    <span class="card-age-num">@(Person.DaysUntilBirthday == 0 ? Person.Age : Person.Age + 1)</span>
                 </div>
             </div>
         </div>
