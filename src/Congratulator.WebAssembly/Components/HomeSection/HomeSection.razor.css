@@ -1,0 +1,39 @@
+.home-section {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.home-section-header {
+    display: flex;
+    align-items: baseline;
+    gap: 0.75rem;
+}
+
+.home-section-title {
+    margin: 0;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    letter-spacing: 0.1rem;
+    text-transform: uppercase;
+    color: var(--lumex-default-600);
+}
+
+.home-section-title--today {
+    color: color-mix(in oklab, var(--lumex-primary-500) 78%, black);
+}
+
+.home-section-count {
+    font-size: 0.875rem;
+    color: var(--lumex-default-400);
+}
+
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(18.75rem, 1fr));
+    gap: 1rem;
+}
+
+.mono {
+    font-family: 'IBM Plex Mono', 'Courier New', monospace;
+}

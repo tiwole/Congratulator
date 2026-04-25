@@ -1,4 +1,7 @@
-﻿@using Congratulator.WebAssembly.Components.PersonCard
+@using System.Globalization
+@using Congratulator.WebAssembly.Components.HomeSection
+@using Congratulator.WebAssembly.Services
+@using LumexUI.Common
 
 @inherits BasePageComponent
 
@@ -6,28 +9,63 @@
 
 <PageTitle>Congratulator</PageTitle>
 
-@if (Persons != null)
-{
-    <div class="space-y-4">
-        
-        <h3 class="text-2xl font-bold text-center mb-4">Today birthdays:</h3>
+<div class="home-page">
 
-        <div class="cards-container">
-            @foreach (var person in Persons.People)
+    <header class="home-header">
+        <div>
+            <div class="home-year-label mono">@DateTimeProvider.Today.ToString("dddd, MMMM d", CultureInfo.InvariantCulture)</div>
+            <h1 class="home-title">Upcoming birthdays</h1>
+            <p class="home-subtitle">
+                @if (_totalCount > 0)
+                {
+                    <span>@_totalCount @(_totalCount == 1 ? "person" : "people")</span>
+                    @if (_today.Count > 0)
+                    {
+                        <span> · </span>
+                        <span class="home-subtitle-today">@_today.Count celebrating today</span>
+                    }
+                }
+            </p>
+        </div>
+        <LumexButton Color="@ThemeColor.Primary" Size="Size.Medium">
+            <i class="ri-add-line"></i>
+            Add person
+        </LumexButton>
+    </header>
+
+    @if (_isLoading)
+    {
+        <div class="skeleton-grid">
+            @for (var i = 0; i < 6; i++)
             {
-                <PersonCard
-                    Person="@person"/>
+                <div class="card-skeleton-wrap">
+                    <LumexCard>
+                        <div class="card-skeleton-content">
+                            <div class="card-skeleton-header">
+                                <LumexSkeleton Class="skel-avatar" />
+                                <div class="card-skeleton-name">
+                                    <LumexSkeleton Class="skel-name" />
+                                    <LumexSkeleton Class="skel-chip" />
+                                </div>
+                                <LumexSkeleton Class="skel-badge" />
+                            </div>
+                            <LumexDivider />
+                            <div class="card-skeleton-footer">
+                                <LumexSkeleton Class="skel-date" />
+                                <LumexSkeleton Class="skel-age" />
+                            </div>
+                        </div>
+                    </LumexCard>
+                </div>
             }
         </div>
+    }
+    else
+    {
+        <HomeSection Title="Today" People="_today" />
+        <HomeSection Title="This week" People="_thisWeek" />
+        <HomeSection Title="This month" People="_thisMonth" />
+        <HomeSection Title="Upcoming" People="_upcoming" />
+    }
+</div>
 
-        <h3 class="text-2xl font-bold text-center mb-4">Upcoming Birthdays:</h3>
-
-        <div class="cards-container">
-            @foreach (var person in Persons.People)
-            {
-                <PersonCard
-                    Person="@person"/>
-            }
-        </div>
-    </div>
-}

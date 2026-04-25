@@ -65,7 +65,12 @@
       "Bash(xargs cat *)",
       "Bash(xargs ls *)",
       "mcp__chrome-devtools__navigate_page",
-      "Bash(grep -v \"^$\")"
+      "Bash(grep -v \"^$\")",
+      "WebFetch(domain:api.anthropic.com)",
+      "Bash(gunzip -c webfetch-1777122389265-wf86wq.bin)",
+      "Bash(tar -x --to-stdout congratulator/project/src/cards.jsx)",
+      "Bash(gunzip -c /tmp/design.gz)",
+      "Bash(tar -xO congratulator/project/src/cards.jsx)"
     ]
   }
 }

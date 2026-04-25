@@ -1,5 +1,6 @@
-﻿using System.Net.Http.Json;
+using System.Net.Http.Json;
 using System.Text.Json;
+using Congratulator.SharedKernel.Contracts.Models;
 using Congratulator.SharedKernel.Contracts.Models.Responses;
 using Congratulator.WebAssembly.Components;
 using Microsoft.AspNetCore.Components;
@@ -8,24 +9,29 @@ namespace Congratulator.WebAssembly.Pages.Home;
 
 public partial class Home : BasePageComponent
 {
-    #region Dependencies
-    [Inject] 
-    public IHttpClientFactory HttpClientFactory { get; set; } = null!;
+    [Inject] public IHttpClientFactory HttpClientFactory { get; set; } = null!;
 
-    [Inject] 
-    private JsonSerializerOptions JsonOptions { get; set; } = null!;
-    #endregion
-    
-    #region Properties
-    private GetPersonsResponse? Persons { get; set; }
-    #endregion
-    
-    #region Lifecycle
+    [Inject] private JsonSerializerOptions JsonOptions { get; set; } = null!;
+
+    private bool _isLoading = true;
+    private int _totalCount;
+    private List<PersonModel> _today = [];
+    private List<PersonModel> _thisWeek = [];
+    private List<PersonModel> _thisMonth = [];
+    private List<PersonModel> _upcoming = [];
+
     protected override async Task OnInitializedAsync()
     {
         var client = HttpClientFactory.CreateClient("ApiClient");
-        Persons = await client.GetFromJsonAsync<GetPersonsResponse>(Routes.Api.Persons, JsonOptions, CancellationToken.None);
-        StateHasChanged();
+        var response = await client.GetFromJsonAsync<GetPersonsResponse>(Routes.Api.Persons, JsonOptions);
+
+        var people = response?.People ?? [];
+        _totalCount = people.Count;
+        _today = people.Where(p => p.DaysUntilBirthday == 0).ToList();
+        _thisWeek = people.Where(p => p.DaysUntilBirthday is >= 1 and <= 7).ToList();
+        _thisMonth = people.Where(p => p.DaysUntilBirthday is >= 8 and <= 30).ToList();
+        _upcoming = people.Where(p => p.DaysUntilBirthday > 30).ToList();
+
+        _isLoading = false;
     }
-    #endregion
 }
