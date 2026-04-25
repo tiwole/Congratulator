@@ -2,7 +2,42 @@
 
 @inherits BasePageComponent
 
-@if (People is { Count: > 0 })
+@if (IsLoading)
+{
+    var isToday = Title == "Today";
+    <section class="home-section">
+        <div class="home-section-header">
+            <h2 class="home-section-title @(isToday ? "home-section-title--today" : "")">@Title</h2>
+            <LumexSkeleton Class="skel-count" />
+        </div>
+        <LumexDivider />
+        <div class="cards-grid">
+            @for (var i = 0; i < _skeletonCount; i++)
+            {
+                <div class="card-skeleton-wrap">
+                    <LumexCard>
+                        <div class="card-skeleton-content">
+                            <div class="card-skeleton-header">
+                                <LumexSkeleton Class="skel-avatar" />
+                                <div class="card-skeleton-name">
+                                    <LumexSkeleton Class="skel-name" />
+                                    <LumexSkeleton Class="skel-chip" />
+                                </div>
+                                <LumexSkeleton Class="skel-badge" />
+                            </div>
+                            <LumexDivider />
+                            <div class="card-skeleton-footer">
+                                <LumexSkeleton Class="skel-date" />
+                                <LumexSkeleton Class="skel-age" />
+                            </div>
+                        </div>
+                    </LumexCard>
+                </div>
+            }
+        </div>
+    </section>
+}
+else if (People is { Count: > 0 })
 {
     var isToday = Title == "Today";
     <section class="home-section">

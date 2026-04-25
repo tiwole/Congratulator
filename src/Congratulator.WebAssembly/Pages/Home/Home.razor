@@ -16,7 +16,11 @@
             <div class="home-year-label mono">@DateTimeProvider.Today.ToString("dddd, MMMM d", CultureInfo.InvariantCulture)</div>
             <h1 class="home-title">Upcoming birthdays</h1>
             <p class="home-subtitle">
-                @if (_totalCount > 0)
+                @if (_isLoading)
+                {
+                    <LumexSkeleton Class="skel-subtitle" />
+                }
+                else if (_totalCount > 0)
                 {
                     <span>@_totalCount @(_totalCount == 1 ? "person" : "people")</span>
                     @if (_today.Count > 0)
@@ -33,39 +37,9 @@
         </LumexButton>
     </header>
 
-    @if (_isLoading)
-    {
-        <div class="skeleton-grid">
-            @for (var i = 0; i < 6; i++)
-            {
-                <div class="card-skeleton-wrap">
-                    <LumexCard>
-                        <div class="card-skeleton-content">
-                            <div class="card-skeleton-header">
-                                <LumexSkeleton Class="skel-avatar" />
-                                <div class="card-skeleton-name">
-                                    <LumexSkeleton Class="skel-name" />
-                                    <LumexSkeleton Class="skel-chip" />
-                                </div>
-                                <LumexSkeleton Class="skel-badge" />
-                            </div>
-                            <LumexDivider />
-                            <div class="card-skeleton-footer">
-                                <LumexSkeleton Class="skel-date" />
-                                <LumexSkeleton Class="skel-age" />
-                            </div>
-                        </div>
-                    </LumexCard>
-                </div>
-            }
-        </div>
-    }
-    else
-    {
-        <HomeSection Title="Today" People="_today" />
-        <HomeSection Title="This week" People="_thisWeek" />
-        <HomeSection Title="This month" People="_thisMonth" />
-        <HomeSection Title="Upcoming" People="_upcoming" />
-    }
+    <HomeSection Title="Today" People="_today" IsLoading="_isLoading" />
+    <HomeSection Title="This week" People="_thisWeek" IsLoading="_isLoading" />
+    <HomeSection Title="This month" People="_thisMonth" IsLoading="_isLoading" />
+    <HomeSection Title="Upcoming" People="_upcoming" IsLoading="_isLoading" />
 </div>
 
