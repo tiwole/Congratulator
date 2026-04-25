@@ -6964,7 +6964,7 @@ h1:focus {
   outline: none;
 }
 a {
-  color: #0071c1;
+  color: var(--lumex-foreground);
 }
 #app:has(.app-spinner) {
   display: flex;

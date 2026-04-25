@@ -5,6 +5,7 @@
 
 <LumexNavbar Bordered="true" Sticky="true">
     <LumexNavbarBrand>
+        <div class="navbar-logo">@char.ToUpper(Title[0])</div>
         <p class="font-bold text-xl">@Title</p>
     </LumexNavbarBrand>
 
@@ -13,7 +14,10 @@
         {
             <LumexNavbarItem>
                 <LumexLink Href="@item.Href" Match="@item.Match" Color="ThemeColor.None">
-                    <i class="@item.Icon navbar-icon"></i> @item.Title
+                    <div class="navbar-item">
+                        <i class="@item.Icon navbar-icon"></i>
+                        <span class="page-title">@item.Title</span>
+                    </div>
                 </LumexLink>
             </LumexNavbarItem>
         }
@@ -24,8 +28,12 @@
             <ThemeColorToggle />
         </LumexNavbarItem>
         <LumexNavbarItem>
-            <LumexLink @onclick="@(() => OpenInNewTab("https://github.com/tiwole/Congratulator"))" Color="ThemeColor.None">
-                <GithubIcon Size="16" /> <span class="about-label">About</span>
+            <LumexLink @onclick="@(() => OpenInNewTab("https://github.com/tiwole/Congratulator"))"
+                       Color="ThemeColor.None">
+                <div class="navbar-item">
+                    <span style="margin-bottom:0.1rem"><GithubIcon Size="14"/></span>
+                    <span class="about-label">About</span>
+                </div>
             </LumexLink>
         </LumexNavbarItem>
     </LumexNavbarContent>

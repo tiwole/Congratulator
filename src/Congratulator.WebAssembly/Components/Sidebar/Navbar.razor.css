@@ -1,8 +1,28 @@
+.navbar-logo {
+    width: 1.75rem;
+    height: 1.75rem;
+    border-radius: 0.5rem;
+    background: linear-gradient(135deg, rgba(139, 92, 246, 1), rgba(79, 70, 229, 1));
+    color: rgba(255, 255, 255, 1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.875rem;
+    margin-right: 0.5rem;
+    flex-shrink: 0;
+}
+
+.navbar-item {
+    display: flex;
+    align-items: center;
+}
+
 .navbar-icon {
-    font-size: 1rem;
     padding-right: 0.3rem;
 }
 
 .about-label {
     padding-left: 0.3rem;
+    line-height: 1.5rem;
 }

@@ -51,7 +51,9 @@
       "mcp__jetbrains__get_all_open_file_paths",
       "WebFetch(domain:lumexui.org)",
       "WebFetch(domain:github.com)",
-      "Bash(xargs grep *)"
+      "Bash(xargs grep *)",
+      "mcp__chrome-devtools__list_pages",
+      "mcp__chrome-devtools__evaluate_script"
     ]
   }
 }

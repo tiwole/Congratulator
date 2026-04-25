@@ -5,166 +5,140 @@ using Congratulator.SharedKernel.Contracts.Models;
 using Congratulator.SharedKernel.Contracts.Models.Responses;
 using Congratulator.WebAssembly.Components;
 using Congratulator.WebAssembly.Models;
+using LumexUI;
+using LumexUI.Common;
 using Microsoft.AspNetCore.Components;
-using Timer = System.Timers.Timer;
 
 namespace Congratulator.WebAssembly.Pages.All;
 
 public partial class All : BasePageComponent
 {
-    #region Injected Services
-    
-    [Inject] 
-    public IHttpClientFactory HttpClientFactory { get; set; } = null!;
-
-    [Inject] 
-    private JsonSerializerOptions JsonOptions { get; set; } = null!;
-    
-    #endregion
-    
-    #region State
-    
-    private bool IsLoading { get; set; }
-    private int CurrentPage { get; set; } = 1;
-    private string _searchQuery = string.Empty;
-    private Timer? _debounceTimer;
-    private string SearchQuery
+    private static readonly Dictionary<string, string> SortPropertyMap = new()
     {
-        get => _searchQuery;
-        set
-        {
-            _searchQuery = value;
-            
-            _debounceTimer?.Stop();
-            _debounceTimer?.Dispose();
-            
-            _debounceTimer = new Timer(500);
-            _debounceTimer.Elapsed += async (sender, e) => await OnSearch();
-            _debounceTimer.AutoReset = false;
-            _debounceTimer.Start();
-        }
-    }
-    private string CurrentSort { get; set; } = "birthday"; // birthday, name, age
-    private HashSet<RelationshipType> ActiveRelationshipTypes { get; set; } = new();
-    private bool IsDescending { get; set; }
-    private bool IsAddModalVisible { get; set; }
-    
+        ["FirstName"] = "name",
+        ["BirthDate"] = "birthday",
+        ["Age"] = "age",
+    };
+
+    #region Injected Services
+
+    [Inject] public IHttpClientFactory HttpClientFactory { get; set; } = null!;
+
+    [Inject] private JsonSerializerOptions JsonOptions { get; set; } = null!;
+
     #endregion
 
-    #region Data
+    #region State
+
+    private bool IsLoading { get; set; }
+    private DataSource<PersonModel> PeopleProvider => LoadPeopleAsync;
+
+    #endregion
     
-    private PagedResponse<PersonModel> People { get; set; } = new();
+    #region Fields
+    
+    private LumexDataGrid<PersonModel> _grid = null!;
+    private string? _nameFilter;
+    private string? _nameFilterInput;
+    private int _currentPage = 1;
+    private int _totalPages = 1;
+    private const int PageSize = 8;
+
+    private bool _isDropdownOpened;
+    private HashSet<RelationshipType> ActiveRelationshipTypes { get; set; } = new();
     private static List<RelationshipType> AvailableRelationshipTypes 
         => Enum.GetValues<RelationshipType>().ToList();
-    
+
     #endregion
-    
-    #region Lifecycle
-    protected override async Task OnInitializedAsync()
+
+    #region Handlers
+
+    private async Task ApplyFiltersAsync()
     {
-        await LoadPeople();
+        _nameFilter = _nameFilterInput;
+        _currentPage = 1;
+        await _grid.RefreshDataAsync();
     }
+
+    private async Task SearchClick() => await ApplyFiltersAsync();
     
-    private async Task LoadPeople()
+    private async Task KeyPressHandler(Microsoft.AspNetCore.Components.Web.KeyboardEventArgs args)
+    {
+        if (args.Key == "Enter")
+            await ApplyFiltersAsync();
+    }
+
+    private async Task ResetGrid()
+    {
+        _nameFilter = null;
+        _nameFilterInput = null;
+        ActiveRelationshipTypes.Clear();
+        _currentPage = 1;
+        await _grid.RefreshDataAsync();
+    }
+
+    private async Task OnPageChangedAsync(int page)
+    {
+        _currentPage = page;
+        await _grid.RefreshDataAsync();
+    }
+
+    #endregion
+
+    #region DataSource
+
+    private async ValueTask<DataSourceResult<PersonModel>> LoadPeopleAsync(DataSourceRequest<PersonModel> request)
     {
         IsLoading = true;
-        
-        var queryParams = new List<string>();
+        StateHasChanged();
 
+        var queryParams = new List<string> { "all=true" };
+
+        // Paging
+        queryParams.Add($"page={_currentPage}");
+        
         // RelationshipTypes
         if (ActiveRelationshipTypes.Count != 0)
         {
             queryParams.AddRange(ActiveRelationshipTypes.Select(t => $"relationshipTypes={t}"));
         }
 
-        // Search
-        if (!string.IsNullOrWhiteSpace(SearchQuery))
-        {
-            queryParams.Add($"search={Uri.EscapeDataString(SearchQuery)}");
-        }
-
         // Sort
-        queryParams.Add($"sort={CurrentSort}");
-
-        // Sort Descending
-        if (IsDescending)
+        var sortDescriptors = request.GetSortDescriptors();
+        if (sortDescriptors.Any())
         {
-            queryParams.Add($"sortDesc={IsDescending}");
+            var sort = sortDescriptors.First();
+            if (SortPropertyMap.TryGetValue(sort.PropertyName, out var apiSort))
+            {
+                queryParams.Add($"sort={apiSort}");
+                if (sort.Direction == SortDirection.Descending)
+                    queryParams.Add("sortDesc=true");
+            }
+        }
+        
+        // Search
+        if (!string.IsNullOrEmpty(_nameFilter))
+        {
+            queryParams.Add($"search={_nameFilter}");
         }
 
-        // Always all=true
-        queryParams.Add("all=true");
-        
-        queryParams.Add($"page={CurrentPage}");
-
-        var queryString = string.Join("&", queryParams);
-        var url = $"{Routes.Api.Persons}?{queryString}";
-        
+        var url = $"{Routes.Api.Persons}?{string.Join("&", queryParams)}";
         var client = HttpClientFactory.CreateClient("ApiClient");
-        People = (await client.GetFromJsonAsync<PagedResponse<PersonModel>>(url, JsonOptions, CancellationToken.None))!;
+        var response = await client.GetFromJsonAsync<PagedResponse<PersonModel>>(url, JsonOptions, request.CancellationToken);
+
+        var totalCount = response?.TotalCount ?? 0;
+        _totalPages = Math.Max(1, (int)Math.Ceiling((double)totalCount / PageSize));
 
         IsLoading = false;
         StateHasChanged();
-    }
-    
-    private async Task OnSearch()
-    {
-        await InvokeAsync(async () =>
+
+        return new DataSourceResult<PersonModel>
         {
-            await LoadPeople();
-            StateHasChanged();
-        });
+            Items = response?.Data ?? [],
+            TotalItemCount = totalCount
+        };
     }
     
-    private async Task OnPageChanged(int page)
-    {
-        CurrentPage = page;
-        await LoadPeople();
-        StateHasChanged();
-    }
-    #endregion
-
-    #region Handlers
-    private void OnSortChanged(ChangeEventArgs e)
-    {
-        CurrentSort = e.Value?.ToString() ?? "birthday";
-        
-        _ = LoadPeople();
-    }
-
-    private void ToggleTag(RelationshipType tag)
-    {
-        if (!ActiveRelationshipTypes.Remove(tag))
-        {
-            ActiveRelationshipTypes.Add(tag);
-        }
-
-        _ = LoadPeople();
-    }
-    
-    private void OnToggleDescending()
-    {
-        IsDescending = !IsDescending;
-        _ = LoadPeople();
-    }
-
-    private void OnAddClick()
-    {
-        IsAddModalVisible = true;
-    }
-    
-    private async Task OnPersonAdded()
-    {
-        IsAddModalVisible = false;
-        await LoadPeople();
-        StateHasChanged();
-    }
-
-    private void OnEditClick(PersonModel person)
-    {
-        // TODO: Navigate to edit page or open modal
-    }
-
     private async Task OnDeleteClick(PersonModel person)
     {
         var client = HttpClientFactory.CreateClient("ApiClient");
@@ -180,46 +154,41 @@ public partial class All : BasePageComponent
             });
 
         if (deleted)
-            await LoadPeople();
-        
-        StateHasChanged();
+            await _grid.RefreshDataAsync();
     }
+    
+    private async Task ToggleRelationship(RelationshipType type)
+    {
+        if (!ActiveRelationshipTypes.Remove(type))
+            ActiveRelationshipTypes.Add(type);
+
+        await _grid.RefreshDataAsync();
+    }
+
     #endregion
 
     #region Helpers
-    private static string GetRowClass(PersonModel person)
-    {
-        return person.DaysUntilBirthday switch
-        {
-            0 => "row-today",
-            <= 7 => "row-soon",
-            _ => ""
-        };
-    }
 
-    private static string GetDaysBadgeClass(int days)
-    {
-        return days switch
-        {
-            0 => "badge-today",
-            <= 7 => "badge-soon",
-            <= 30 => "badge-month",
-            _ => "badge-default"
-        };
-    }
-
-    private static string GetAgeWord(int age) 
+    private static string GetAgeWord(int age)
         => age == 1 ? "year old" : "years old";
 
-    private static string GetDaysWord(int days) 
+    private static string GetDaysWord(int days)
         => days == 1 ? "day" : "days";
 
     private static string GetDaysCell(PersonModel person)
     {
-        return person.DaysUntilBirthday == 0 
-            ? "Today!" 
-            : person.DaysUntilBirthday + " " + GetDaysWord(person.DaysUntilBirthday);
+        return person.DaysUntilBirthday == 0
+            ? "Today!"
+            : $"{person.DaysUntilBirthday} {GetDaysWord(person.DaysUntilBirthday)}";
     }
-    
+
+    private string GetDropdownLabel(int selectedCount)
+        => selectedCount switch
+        {
+            0 => "Relationships",
+            1 => ActiveRelationshipTypes.First().ToString(),
+            _ => $"{selectedCount} Selected"
+        };
+
     #endregion
 }
