@@ -49,12 +49,22 @@ public partial class All : BasePageComponent
     private HashSet<RelationshipType> ActiveRelationshipTypes { get; set; } = new();
     private static List<RelationshipType> AvailableRelationshipTypes 
         => Enum.GetValues<RelationshipType>().ToList();
+    
+    private static readonly string[] DissatisfactionEmojis =
+    [
+        "(；￣Д￣)", "(￢_￢;)", "o(TヘTo)", "o(〒﹏〒)o", "(￣︿￣)", "(>_<)", "(」＞ ＜)」",
+        "(｡•́︿•̀｡)", "(ᗒᗣᗕ)՞", "(︶︹︺)", "(＞﹏＜)", "(⇀‸↼‶)", "(눈_눈)", "(--_--)"
+    ];
+
+    private string _currentEmoji = ResetEmoji();
 
     private int _gridKey;
 
     #endregion
 
     #region Handlers
+    
+    private static string ResetEmoji() => DissatisfactionEmojis[Random.Shared.Next(0, DissatisfactionEmojis.Length)];
 
     private async Task ApplyFiltersAsync()
     {
@@ -139,9 +149,12 @@ public partial class All : BasePageComponent
         var url = $"{Routes.Api.Persons}?{string.Join("&", queryParams)}";
         var client = HttpClientFactory.CreateClient("ApiClient");
         var response = await client.GetFromJsonAsync<PagedResponse<PersonModel>>(url, JsonOptions, request.CancellationToken);
-
+        
         _totalCount = response?.TotalCount ?? 0;
         _totalPages = Math.Max(1, (int)Math.Ceiling((double)_totalCount / PageSize));
+
+        if (_totalCount == 0)
+            _currentEmoji = ResetEmoji();
 
         IsLoading = false;
         StateHasChanged();

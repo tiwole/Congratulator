@@ -35,10 +35,20 @@
             Add person
         </LumexButton>
     </header>
-
-    <HomeSection Title="Today" People="_today" IsLoading="_isLoading" />
-    <HomeSection Title="This week" People="_thisWeek" IsLoading="_isLoading" />
-    <HomeSection Title="This month" People="_thisMonth" IsLoading="_isLoading" />
-    <HomeSection Title="Upcoming" People="_upcoming" IsLoading="_isLoading" />
+    @if (true)
+    {
+        @* !_isLoading && _totalCount == 0 *@
+        <div class="empty-state">
+            <span class="empty-state-emoji">@SadEmojis[Random.Shared.Next(0, SadEmojis.Length)]</span>
+            <span>No people with upcoming birthdays</span>
+        </div>
+    }
+    else
+    {
+        <HomeSection Title="Today" People="_today" IsLoading="_isLoading" />
+        <HomeSection Title="This week" People="_thisWeek" IsLoading="_isLoading" />
+        <HomeSection Title="This month" People="_thisMonth" IsLoading="_isLoading" />
+        <HomeSection Title="Upcoming" People="_upcoming" IsLoading="_isLoading" />   
+    }
 </div>
 

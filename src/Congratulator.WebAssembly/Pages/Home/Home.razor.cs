@@ -20,6 +20,12 @@ public partial class Home : BasePageComponent
     private List<PersonModel> _thisMonth = [];
     private List<PersonModel> _upcoming = [];
 
+    private static readonly string[] SadEmojis =
+    [
+        "(ノ_<。)", "(μ_μ)", "o(TヘTo)", "o(〒﹏〒)o", "(｡T ω T｡)", "(>_<)", 
+        "(｡•́︿•̀｡)", "(╥_╥)", "(╥﹏╥)", "(っ˘̩╭╮˘̩)っ", "(ಡ‸ಡ)", "(ﾉД`)", "(ಥ﹏ಥ)"
+    ];
+
     protected override async Task OnInitializedAsync()
     {
         var client = HttpClientFactory.CreateClient("ApiClient");

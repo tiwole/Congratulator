@@ -131,6 +131,14 @@
                 </ChildContent>
             </LumexDataGrid>
 
+            @if (_totalCount == 0 && !IsLoading)
+            {
+                <div class="empty-state">
+                    <span class="empty-state-emoji">@_currentEmoji</span>
+                    <span>No results found</span>
+                </div>
+            }
+
             @if (_totalPages > 1)
             {
                 <Congratulator.WebAssembly.Components.Pagination.Pagination

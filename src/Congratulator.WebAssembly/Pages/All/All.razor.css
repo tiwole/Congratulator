@@ -95,6 +95,20 @@
     font-size: 0.9375rem;
 }
 
+.empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 3rem 1rem;
+    color: var(--lumex-default-500);
+    font-size: 0.9375rem;
+}
+
+.empty-state-emoji {
+    font-size: 1.875rem;
+}
+
 .all-subtitle ::deep .skel-subtitle {
     display: inline-block;
     width: 5rem;

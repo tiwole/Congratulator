@@ -13,12 +13,16 @@ public class CreatePersonService(IPersonRepository personRepository, IStorageSer
 {
     public async Task<CreatePersonResponse> RunAsync(CreatePersonRequest request)
     {
+        var relationshipType = Enum.TryParse<RelationshipType>(request.RelationshipType, true, out var parsed)
+                ? parsed
+                : RelationshipType.Unknown;
+        
         var person = new Person
         {
             FirstName = request.FirstName,
             LastName = request.LastName,
             BirthDate = request.BirthDate,
-            RelationshipType = request.RelationshipType ?? RelationshipType.Unknown
+            RelationshipType = relationshipType
         };
 
         if (!string.IsNullOrEmpty(request.Photo))
