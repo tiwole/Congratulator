@@ -14,5 +14,6 @@ public static class Routes
         public const string All = "/all/";
         public const string Testing = "/testing/";
         public const string UiKitIcons = "/icons/";
+        public const string Chart = "/chart/";
     }
 }

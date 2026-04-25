@@ -1,0 +1,210 @@
+@using LumexUI.Common
+
+@inherits BasePageComponent
+@namespace Congratulator.WebAssembly.Pages.Chart
+
+@attribute [Route(Routes.Pages.Chart)]
+
+<div class="chart-page">
+
+    <header class="chart-header">
+        <div class="chart-year-label">Year overview · @DateTime.Now.Year</div>
+        <h1 class="chart-title">Birthdays at a glance</h1>
+        <p class="chart-subtitle">
+            Distribution across all twelve months — busiest in 
+            @RenderMonthName(_busiestMonth),
+            quietest in 
+            @RenderMonthName(_quietestMonth).
+        </p>
+    </header>
+
+    @if (_isLoading)
+    {
+        <LumexCard Class="chart-card">
+        <div class="chart-card-inner">
+            <div class="chart-skeleton-legend-row">
+                <div class="chart-skeleton-legend-left">
+                    <LumexSkeleton Class="skeleton-label-line" />
+                    <LumexSkeleton Class="skeleton-count-line" />
+                </div>
+                <div class="chart-skeleton-legend-chips">
+                    @for (var i = 0; i < 5; i++)
+                    {
+                        <LumexSkeleton Class="skeleton-chip" />
+                    }
+                </div>
+            </div>
+
+            <div class="chart-skeleton-bars">
+                @foreach (var h in new[] { 55, 80, 40, 65, 90, 30, 70, 45, 85, 60, 35, 75 })
+                {
+                    var heightStyle = $"height: {h}%";
+                    <div class="chart-skeleton-bar-col">
+                        <LumexSkeleton Class="skeleton-bar-count" />
+                        <div class="skeleton-bar-wrap" style="@heightStyle">
+                            <LumexSkeleton Class="skeleton-bar" />
+                        </div>
+                    </div>
+                }
+            </div>
+
+            <div class="chart-skeleton-xaxis">
+                @for (var i = 0; i < 12; i++)
+                {
+                    <LumexSkeleton Class="skeleton-x-label" />
+                }
+            </div>
+        </div>
+        </LumexCard>
+    }
+    else
+    {
+        <LumexCard Class="chart-card">
+            <div class="chart-card-inner">
+
+                <div class="chart-legend-row">
+                    <div>
+                        <div class="chart-legend-title">Birthdays per month</div>
+                        <div class="chart-legend-total">
+                            <span class="mono">@_totalPeople</span> people across the year
+                        </div>
+                    </div>
+                    <div class="chart-legend-chips">
+                        @foreach (var rel in AllRelations)
+                        {
+                            <span class="legend-item">
+                                <span class="legend-dot legend-dot--@rel.ToString().ToLower()"></span>
+                                <span class="legend-item-label">@rel</span>
+                            </span>
+                        }
+                    </div>
+                </div>
+
+                <div class="chart-area">
+                    <div class="y-ticks">
+                        @foreach (var tick in _yTicks)
+                        {
+                            var pct = tick / _niceMax * 100.0;
+                            <div class="y-tick" style="bottom: @pct.ToString("F1", System.Globalization.CultureInfo.InvariantCulture)%">
+                                <span class="mono y-tick-num">@((int)tick)</span>
+                                <div class="y-tick-line"></div>
+                            </div>
+                        }
+                    </div>
+
+                    <div class="bars-grid">
+                        @for (var mi = 0; mi < 12; mi++)
+                        {
+                            var monthIdx = mi;
+                            var m = _perMonth[monthIdx];
+                            var isCurrent = monthIdx == _currentMonth;
+                            var isHover = _hoverMonthIdx == monthIdx;
+                            var heightPct = m.Total == 0 ? 0.0 : m.Total / _niceMax * 100.0;
+
+                            <div class="bar-column @(isCurrent ? "bar-column--current" : "") @(isHover ? "bar-column--hover" : "")"
+                                 @onmouseenter="@((e) => OnBarMouseEnter(monthIdx, e))"
+                                 @onmouseleave="@OnBarMouseLeave">
+
+                                <div class="bar-count mono @(isHover ? "bar-count--active" : "")">
+                                    @m.Total
+                                </div>
+
+                                <div class="bar @(m.Total == 0 ? "bar--empty" : "") @(isCurrent ? "bar--current" : "") @(isHover ? "bar--hover" : "")"
+                                     style="height: @heightPct.ToString("F1", System.Globalization.CultureInfo.InvariantCulture)%">
+                                    @if (m.Total > 0)
+                                    {
+                                        @foreach (var rel in AllRelations)
+                                        {
+                                            @if (m.ByRelation.TryGetValue(rel, out var cnt) && cnt > 0)
+                                            {
+                                                var segPct = (double)cnt / m.Total * 100.0;
+                                                <div class="bar-segment bar-segment--@rel.ToString().ToLower()"
+                                                     style="height: @segPct.ToString("F1", System.Globalization.CultureInfo.InvariantCulture)%">
+                                                </div>
+                                            }
+                                        }
+                                    }
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+
+                <div class="x-axis">
+                    @for (var mi = 0; mi < 12; mi++)
+                    {
+                        var monthIdx = mi;
+                        var isCurrent = monthIdx == _currentMonth;
+                        var isHover = _hoverMonthIdx == monthIdx;
+                        <div class="x-label @(isCurrent ? "x-label--current" : "") @(isHover ? "x-label--hover" : "")">
+                            @MonthsShort[monthIdx]
+                            @if (isCurrent)
+                            {
+                                <div class="x-now">now</div>
+                            }
+                        </div>
+                    }
+                </div>
+
+            </div>
+        </LumexCard>
+    }
+
+</div>
+
+@if (_hoverMonthIdx.HasValue && _perMonth.Count > 0)
+{
+    var m = _perMonth[_hoverMonthIdx.Value];
+    @if (m.Total > 0)
+    {
+        <div class="chart-tooltip" style="left: @(_tooltipX.ToString("F0", System.Globalization.CultureInfo.InvariantCulture))px; top: @(_tooltipY.ToString("F0", System.Globalization.CultureInfo.InvariantCulture))px">
+            <div class="tooltip-header">
+                <span class="tooltip-month-name">@MonthsLong[_hoverMonthIdx.Value]</span>
+                <span class="mono tooltip-total">@m.Total @(m.Total == 1 ? "birthday" : "birthdays")</span>
+            </div>
+
+            <div class="tooltip-relations">
+                @foreach (var rel in AllRelations)
+                {
+                    @if (m.ByRelation.TryGetValue(rel, out var cnt) && cnt > 0)
+                    {
+                        <LumexChip Size="@Size.Small" Color="@GetRelationshipColor(rel)" Variant="@ChipVariant.Flat">
+                            @rel <span class="mono tooltip-rel-num">@cnt</span>
+                        </LumexChip>
+                    }
+                }
+            </div>
+
+            <LumexDivider />
+
+            <div class="tooltip-people">
+                @foreach (var person in m.People.Take(6))
+                {
+                    <div class="tooltip-person">
+                        <span class="tooltip-person-dot tooltip-person-dot--@person.RelationshipType.ToString().ToLower()"></span>
+                        <span class="tooltip-person-name">@person.FirstName @person.LastName</span>
+                        <span class="mono tooltip-person-day">@person.BirthDate.Day.ToString("D2")</span>
+                    </div>
+                }
+                @if (m.People.Count > 6)
+                {
+                    <div class="tooltip-more">+@(m.People.Count - 6) more</div>
+                }
+            </div>
+        </div>
+    }
+}
+
+@code {
+    private RenderFragment RenderMonthName(string? monthName) => __builder =>
+    {
+        if (_isLoading)
+        {
+            <LumexSkeleton Class="skeleton-month-name" />
+        }
+        else
+        {
+            <strong class="chart-highlight">@monthName</strong>
+        }
+    };
+}
