@@ -1,37 +1,3 @@
-@using Congratulator.SharedKernel.Contracts.Enums
-@using Congratulator.WebAssembly.Components.PersonCard
-@using Congratulator.WebAssembly.Services
 @inherits BasePageComponent
 
 @attribute [Route(Routes.Pages.Testing)]
-
-<div style="margin-left:2rem; gap:1rem; display: flex">
-    <PersonCard Person="_person1"></PersonCard>
-    <PersonCard Person="_person2"></PersonCard>
-</div>
-
-@code {
-    PersonModel _person1 = new()
-    {
-        FirstName = "John",
-        LastName = "Smith",
-        Age = 30,
-        BirthDate = DateTimeProvider.Today.AddDays(-10000),
-        DaysUntilBirthday = 44,
-        Id = Guid.NewGuid(),
-        NextBirthday = DateTimeProvider.Today.AddDays(-9956),
-        RelationshipType = RelationshipType.Coworker
-    };
-    
-    PersonModel _person2 = new()
-    {
-        FirstName = "John",
-        LastName = "Smith",
-        Age = 30,
-        BirthDate = DateTimeProvider.Today.AddDays(-10000),
-        DaysUntilBirthday = 0,
-        Id = Guid.NewGuid(),
-        NextBirthday = DateTimeProvider.Today.AddDays(-9956),
-        RelationshipType = RelationshipType.Coworker
-    };
-}

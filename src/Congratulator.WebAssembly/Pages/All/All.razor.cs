@@ -43,6 +43,7 @@ public partial class All : BasePageComponent
     private int _currentPage = 1;
     private int _totalPages = 1;
     private const int PageSize = 8;
+    private int _totalCount;
 
     private bool _isDropdownOpened;
     private HashSet<RelationshipType> ActiveRelationshipTypes { get; set; } = new();
@@ -129,8 +130,8 @@ public partial class All : BasePageComponent
         var client = HttpClientFactory.CreateClient("ApiClient");
         var response = await client.GetFromJsonAsync<PagedResponse<PersonModel>>(url, JsonOptions, request.CancellationToken);
 
-        var totalCount = response?.TotalCount ?? 0;
-        _totalPages = Math.Max(1, (int)Math.Ceiling((double)totalCount / PageSize));
+        _totalCount = response?.TotalCount ?? 0;
+        _totalPages = Math.Max(1, (int)Math.Ceiling((double)_totalCount / PageSize));
 
         IsLoading = false;
         StateHasChanged();
@@ -138,7 +139,7 @@ public partial class All : BasePageComponent
         return new DataSourceResult<PersonModel>
         {
             Items = response?.Data ?? [],
-            TotalItemCount = totalCount
+            TotalItemCount = _totalCount
         };
     }
     
