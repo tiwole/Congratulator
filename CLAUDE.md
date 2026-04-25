@@ -55,7 +55,7 @@ XUnitTests (repository tests with InMemory EF provider)
 - **Infrastructure** — `CongratulatorDbContext` (PostgreSQL via Npgsql), `PersonRepository` with complex filtering/sorting, `YandexS3Service` for photo storage, AutoMapper profiles. Auto-registered via reflection in `AddInfrastructure`
 - **SharedKernel** — `Person` entity, repository/service interfaces
 - **SharedKernel.Contracts** — Request/response DTOs, `PersonModel` (with computed `Age`, `NextBirthday`, `DaysUntilBirthday`), enums (`RelationshipType`, `SortVariants`)
-- **WebAssembly** — Blazor WASM client with components (`AddPersonModal`, `BirthdayCard`, `Pagination`, `PersonCard`), pages (`Home`, `All`, `Chart`, `Testing`, `UiKitIcons`)
+- **WebAssembly** — Blazor WASM client with components (`AddPersonModal`, `Pagination`, `PersonCard`), pages (`Home`, `All`, `Chart`, `Testing`, `UiKitIcons`)
 
 ## Key Technical Details
 
