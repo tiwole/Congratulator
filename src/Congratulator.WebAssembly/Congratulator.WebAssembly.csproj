@@ -16,8 +16,4 @@
     <ItemGroup>
       <ProjectReference Include="..\Congratulator.SharedKernel.Contracts\Congratulator.SharedKernel.Contracts.csproj" />
     </ItemGroup>
-
-    <ItemGroup>
-      <_ContentIncludedByDefault Remove="Components\PersonCard\PersonCard.razor" />
-    </ItemGroup>
 </Project>
