@@ -4,6 +4,8 @@ using Congratulator.SharedKernel.Contracts.Enums;
 using Congratulator.SharedKernel.Contracts.Models.Requests;
 using Congratulator.SharedKernel.Entities;
 using Congratulator.SharedKernel.Interfaces.Repositories;
+using Congratulator.SharedKernel.Interfaces.Services;
+using Microsoft.Extensions.Logging;
 using NSubstitute;
 using Xunit;
 
@@ -12,11 +14,13 @@ namespace Congratulator.XUnitTests.Services;
 public class UpdatePersonServiceTests
 {
     private readonly IPersonRepository _personRepository = Substitute.For<IPersonRepository>();
+    private readonly IStorageService _storageService = Substitute.For<IStorageService>();
+    private readonly ILogger<UpdatePersonService> _logger = Substitute.For<ILogger<UpdatePersonService>>();
     private readonly UpdatePersonService _service;
 
     public UpdatePersonServiceTests()
     {
-        _service = new UpdatePersonService(_personRepository);
+        _service = new UpdatePersonService(_personRepository, _storageService, _logger);
     }
 
     private static Person CreateTestPerson() => new()

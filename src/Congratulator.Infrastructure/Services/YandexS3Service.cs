@@ -1,5 +1,6 @@
 ﻿using Amazon.S3;
 using Amazon.S3.Model;
+using Congratulator.Core.Exceptions;
 using Congratulator.SharedKernel.Contracts.Options;
 using Congratulator.SharedKernel.Interfaces.Services;
 using Microsoft.Extensions.Logging;
@@ -36,5 +37,29 @@ public class YandexS3Service(IOptions<YandexS3Options> options, ILogger<YandexS3
         logger.LogInformation("Successfully uploaded {FileName} to S3", uniqueFileName);
 
         return uniqueFileName;
+    }
+    
+    public async Task DeleteFileAsync(string photoPath)
+    {
+        if (string.IsNullOrEmpty(photoPath))
+            throw new ImageException("Photo name cannot be null or empty");
+        
+        var config = new AmazonS3Config
+        {
+            ServiceURL = options.Value.ServiceUrl,
+            AuthenticationRegion = options.Value.Region
+        };
+
+        using var client = new AmazonS3Client(options.Value.AccessKey, options.Value.SecretKey, config);
+        
+        var request = new DeleteObjectRequest
+        {
+            BucketName = options.Value.BucketName,
+            Key = photoPath
+        };
+
+        await client.DeleteObjectAsync(request);
+        
+        logger.LogInformation("Successfully deleted {FileName} from S3", photoPath);
     }
 }

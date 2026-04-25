@@ -37,4 +37,8 @@
       <ProjectReference Include="..\Congratulator.Infrastructure\Congratulator.Infrastructure.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="logs\" />
+    </ItemGroup>
+
 </Project>

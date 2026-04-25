@@ -31,12 +31,14 @@ public class CreatePersonService(IPersonRepository personRepository, IStorageSer
             }
             catch (Exception e)
             {
-                logger.LogError(e.Message);
+                logger.LogError("Error during uploading image: {error}", e.Message);
                 throw new ImageException($"Error during uploading image: {e.Message}");
             }
         }
 
         await personRepository.CreatePersonAsync(person);
+        
+        logger.LogInformation("Person {PersonId} created: {FirstName} {LastName}", person.Id, person.FirstName, person.LastName);
 
         return new CreatePersonResponse
         {

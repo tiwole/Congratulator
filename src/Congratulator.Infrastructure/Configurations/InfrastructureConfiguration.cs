@@ -10,7 +10,7 @@ namespace Congratulator.Infrastructure.Configurations;
 
 public static class InfrastructureConfiguration
 {
-    public static IServiceCollection AddInfrastructure(this IServiceCollection services)
+    public static void AddInfrastructure(this IServiceCollection services)
     {
         Assembly assembly = typeof(DbContextFactory).Assembly;
 
@@ -35,7 +35,5 @@ public static class InfrastructureConfiguration
                 services.AddScoped(interfaceType, implType);
             }
         }
-
-        return services;
     }
 }

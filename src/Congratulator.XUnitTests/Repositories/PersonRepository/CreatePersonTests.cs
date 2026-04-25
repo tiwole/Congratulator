@@ -25,7 +25,7 @@ public class CreatePersonTests : IDisposable
         var mapper = Substitute.For<IMapper>();
         var dateTimeProvider = Substitute.For<IDateTimeProvider>();
         var logger = Substitute.For<ILogger<PersonRepo>>();
-        _repository = new PersonRepo(_context, mapper, dateTimeProvider, logger);
+        _repository = new PersonRepo(_context, mapper, dateTimeProvider);
     }
 
     [Fact]

@@ -2,6 +2,8 @@ using Congratulator.Core.Exceptions;
 using Congratulator.Core.Services;
 using Congratulator.SharedKernel.Entities;
 using Congratulator.SharedKernel.Interfaces.Repositories;
+using Congratulator.SharedKernel.Interfaces.Services;
+using Microsoft.Extensions.Logging;
 using NSubstitute;
 using Xunit;
 
@@ -10,11 +12,13 @@ namespace Congratulator.XUnitTests.Services;
 public class DeletePersonServiceTests
 {
     private readonly IPersonRepository _personRepository = Substitute.For<IPersonRepository>();
+    private readonly IStorageService _storageService = Substitute.For<IStorageService>();
+    private readonly ILogger<CreatePersonService> _logger = Substitute.For<ILogger<CreatePersonService>>();
     private readonly DeletePersonService _service;
 
     public DeletePersonServiceTests()
     {
-        _service = new DeletePersonService(_personRepository);
+        _service = new DeletePersonService(_personRepository, _storageService, _logger);
     }
 
     [Fact]

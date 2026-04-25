@@ -13,13 +13,12 @@ using Microsoft.Extensions.Logging;
 
 namespace Congratulator.Infrastructure.Repositories;
 
-public class PersonRepository(CongratulatorDbContext context, IMapper mapper, IDateTimeProvider dateTimeProvider, ILogger<PersonRepository> logger) : IPersonRepository
+public class PersonRepository(CongratulatorDbContext context, IMapper mapper, IDateTimeProvider dateTimeProvider) : IPersonRepository
 {
     public async Task CreatePersonAsync(Person person)
     {
         context.Persons.Add(person);
         await context.SaveChangesAsync();
-        logger.LogInformation("Person {PersonId} created: {FirstName}", person.Id, person.FirstName);
     }
 
     public async Task<Person?> GetPersonByIdAsync(Guid id)
@@ -33,14 +32,12 @@ public class PersonRepository(CongratulatorDbContext context, IMapper mapper, ID
     {
         context.Persons.Update(person);
         await context.SaveChangesAsync();
-        logger.LogInformation("Person {PersonId} updated", person.Id);
     }
 
     public async Task DeletePersonAsync(Person person)
     {
         context.Persons.Remove(person);
         await context.SaveChangesAsync();
-        logger.LogInformation("Person {PersonId} deleted", person.Id);
     }
     
     public async Task<GetPersonsResponse> GetPersonsAsync(GetPersonsRequest request)

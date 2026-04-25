@@ -8,4 +8,5 @@ public class UpdatePersonRequest
     public string? LastName { get; set; }
     public DateOnly? BirthDate { get; set; }
     public RelationshipType? RelationshipType { get; set; }
+    public string? Photo { get; set; }
 }
