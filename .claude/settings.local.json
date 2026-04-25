@@ -64,7 +64,8 @@
       "Bash(tar -x --to-stdout congratulator/project/src/year-nav.jsx)",
       "Bash(xargs cat *)",
       "Bash(xargs ls *)",
-      "mcp__chrome-devtools__navigate_page"
+      "mcp__chrome-devtools__navigate_page",
+      "Bash(grep -v \"^$\")"
     ]
   }
 }

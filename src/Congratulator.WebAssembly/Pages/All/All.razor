@@ -8,7 +8,8 @@
 
 <div class="person-page-container">
     <div class="person-grid">
-        <LumexDataGrid @ref="_grid"
+        <LumexDataGrid @ref="@_grid"
+                       @key="@_gridKey"
                        DataSource="@PeopleProvider"
                        Loading="@IsLoading"
                        Hoverable="@true">

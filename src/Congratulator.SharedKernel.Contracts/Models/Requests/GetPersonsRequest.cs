@@ -4,7 +4,7 @@ namespace Congratulator.SharedKernel.Contracts.Models.Requests;
 
 public class GetPersonsRequest : PagedRequest
 {
-    public int? Upcoming { get; set; } = 3;
+    public int? Upcoming { get; set; } = 64;
     public bool? All { get; set; } = false;
     
     

@@ -49,6 +49,8 @@ public partial class All : BasePageComponent
     private static List<RelationshipType> AvailableRelationshipTypes 
         => Enum.GetValues<RelationshipType>().ToList();
 
+    private int _gridKey;
+
     #endregion
 
     #region Handlers
@@ -74,6 +76,7 @@ public partial class All : BasePageComponent
         _nameFilterInput = null;
         ActiveRelationshipTypes.Clear();
         _currentPage = 1;
+        _gridKey++; // Recreate the grid, resetting its state
         await _grid.RefreshDataAsync();
     }
 
