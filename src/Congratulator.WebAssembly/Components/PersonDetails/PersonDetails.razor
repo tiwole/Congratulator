@@ -1,1 +1,33 @@
-<h3>@Person.FirstName @Person.LastName</h3>
+@using LumexUI.Common
+@inherits BasePageComponent
+
+<div class="card-body">
+    <LumexAvatar Src="@Person.PhotoPath"
+                 Size="Size.Large"
+                 Bordered="@true"
+                 Color="@GetRelationshipColor(Person.RelationshipType)"/>
+    <span class="card-title">@GetName(Person)</span>
+    <LumexChip Size="Size.Medium"
+               Color="@GetRelationshipColor(Person.RelationshipType)"
+               Variant="ChipVariant.Outlined">
+        @Person.RelationshipType
+    </LumexChip>
+    <span class="days-to">
+                @(Person.DaysUntilBirthday > 0 ? $"{Person.DaysUntilBirthday}" : "Happy birthday!")
+            </span>
+    <span class="days-to-subtitle">
+        @(Person.DaysUntilBirthday > 0 ? "DAYS UNTIL" : "TODAY") · @Person.NextBirthday
+    </span>
+</div>
+<LumexDivider/>
+<div class="footer">
+    <div class="footer-cell">
+        <span class="cell-title mono">BIRTH DATE</span>
+        <span class="birthdate">@Person.BirthDate</span>
+    </div>
+    <LumexDivider Orientation="Orientation.Vertical"/>
+    <div class="footer-cell">
+        <span class="cell-title mono">AGE</span>
+        <span class="age">@Person.Age years</span>
+    </div>
+</div>

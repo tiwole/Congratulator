@@ -3,8 +3,10 @@ using Microsoft.AspNetCore.Components;
 
 namespace Congratulator.WebAssembly.Components.PersonDetails;
 
-public partial class PersonDetails : ComponentBase
+public partial class PersonDetails : BasePageComponent
 {
     [Parameter]
     public PersonModel Person { get; set; } = null!;
+
+    private string GetName(PersonModel person) => person.LastName is null ? person.FirstName : $"{person.FirstName} {person.LastName}";
 }

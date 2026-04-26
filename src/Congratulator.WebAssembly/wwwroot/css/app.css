@@ -94,3 +94,7 @@ li.no-hover:hover {
 li.no-hover .group:hover *::before {
     background-color: transparent !important;
 }
+
+.mono {
+    font-family: 'IBM Plex Mono', 'Courier New', monospace;
+}
