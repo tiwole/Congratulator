@@ -7460,4 +7460,5 @@ li.no-hover label:hover span::before {
 
 html {
   scrollbar-gutter: stable;
+  scrollbar-width: thin;
 }

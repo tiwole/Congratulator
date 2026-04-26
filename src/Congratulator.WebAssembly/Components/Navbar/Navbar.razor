@@ -2,6 +2,7 @@
 @inherits BasePageComponent
 @using LumexUI.Common
 @using LumexUI.Shared.Icons
+@inject NavigationManager Nav
 
 <LumexNavbar Bordered="true" Sticky="true">
     <LumexNavbarBrand>
@@ -12,22 +13,28 @@
     </LumexNavbarBrand>
 
     <LumexNavbarContent Align="@Align.Center">
-        @foreach (var item in Items)
-        {
-            <LumexNavbarItem>
-                <LumexLink Href="@item.Href" Match="@item.Match" Color="ThemeColor.None">
-                    <div class="navbar-item">
-                        <i class="@item.Icon navbar-icon"></i>
-                        <span class="page-title">@item.Title</span>
-                    </div>
-                </LumexLink>
-            </LumexNavbarItem>
-        }
+        <LumexTabs Variant="TabVariant.Light">
+            @foreach (var item in Items)
+            {
+                <LumexTab>
+                    <TitleContent>
+                        <span class="navbar-item" style="position: relative;">
+                            <i class="@item.Icon navbar-icon"></i>
+                            <span class="page-title">@item.Title</span>
+                            <a href="@item.Href"
+                               style="position: absolute; inset: 0; z-index: 10;"
+                               aria-label="@item.Title">
+                            </a>
+                        </span>
+                    </TitleContent>
+                </LumexTab>
+            }
+        </LumexTabs>
     </LumexNavbarContent>
 
     <LumexNavbarContent Align="@Align.End">
         <LumexNavbarItem>
-            <ThemeColorToggle />
+            <ThemeColorToggle/>
         </LumexNavbarItem>
         <LumexNavbarItem>
             <LumexLink @onclick="@(() => OpenInNewTab("https://github.com/tiwole/Congratulator"))"
