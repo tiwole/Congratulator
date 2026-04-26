@@ -21,7 +21,7 @@
         <span class="days-to days-to-secondary">Happy birthday!</span>
     }
     <span class="days-to-subtitle">
-        @(Person.DaysUntilBirthday > 0 ? "DAYS UNTIL" : "TODAY") · @Person.NextBirthday
+        @(Person.DaysUntilBirthday > 0 ? "DAYS UNTIL" : "TODAY") · @Person.NextBirthday.ToString("dd MMMM")
     </span>
 </div>
 <LumexDivider/>

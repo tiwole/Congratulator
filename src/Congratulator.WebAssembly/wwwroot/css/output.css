@@ -7439,6 +7439,10 @@ code {
   }
 }
 
+.person-modal-body.py-2 {
+    padding-block: 0 !important;
+}
+
 li.no-hover:hover {
     background-color: transparent !important;
     color: inherit !important;

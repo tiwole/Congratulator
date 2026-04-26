@@ -1,19 +1,23 @@
 @using Congratulator.WebAssembly.Components.PersonDetails
 @using LumexUI.Common
+@inject IJSRuntime Js
 
 <LumexModal Size="ModalSize.Large" @ref="@_modal">
     <LumexModalContent>
-        <LumexModalBody>
-            @if (_person != null)
-            {
-                <PersonDetails Person="@_person" />
-            }
+        <LumexModalBody Class="person-modal-body">
+            <div @ref="@_bodyRef">
+                @if (_person != null)
+                {
+                    <PersonDetails Person="@_person"/>
+                }
+            </div>
         </LumexModalBody>
     </LumexModalContent>
 </LumexModal>
 
 @code {
     private LumexModal _modal = null!;
+    private ElementReference _bodyRef;
     private PersonModel? _person;
 
     public async Task Open(PersonModel person)
@@ -21,5 +25,8 @@
         _person = person;
         StateHasChanged();
         await _modal.OpenAsync();
+
+        if (person.DaysUntilBirthday == 0)
+            await Js.InvokeVoidAsync("fallingConfetti", _bodyRef);
     }
 }
