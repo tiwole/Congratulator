@@ -1,4 +1,5 @@
 @using System.Globalization
+@using Congratulator.WebAssembly.Components.AddPersonModal
 @using Congratulator.WebAssembly.Components.HomeSection
 @using Congratulator.WebAssembly.Services
 @using LumexUI.Common
@@ -7,7 +8,7 @@
 
 @attribute [Route(Routes.Pages.Home)]
 
-<PageTitle>Congratulator</PageTitle>
+<AddPersonModal @ref="_modal" IsVisible="@false"></AddPersonModal>
 
 <div class="home-page">
     <header class="home-header">
@@ -35,9 +36,8 @@
             Add person
         </LumexButton>
     </header>
-    @if (true)
+    @if (!_isLoading && _totalCount == 0)
     {
-        @* !_isLoading && _totalCount == 0 *@
         <div class="empty-state">
             <span class="empty-state-emoji">@SadEmojis[Random.Shared.Next(0, SadEmojis.Length)]</span>
             <span>No people with upcoming birthdays</span>

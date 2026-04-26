@@ -24,7 +24,7 @@ public class CreatePersonValidatorTests
         FirstName = "John",
         LastName = "Doe",
         BirthDate = new DateOnly(1990, 1, 1),
-        RelationshipType = RelationshipType.Friend
+        RelationshipType = RelationshipType.Friend.ToString()
     };
 
     [Fact]

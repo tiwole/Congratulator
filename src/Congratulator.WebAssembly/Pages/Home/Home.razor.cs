@@ -3,6 +3,7 @@ using System.Text.Json;
 using Congratulator.SharedKernel.Contracts.Models;
 using Congratulator.SharedKernel.Contracts.Models.Responses;
 using Congratulator.WebAssembly.Components;
+using Congratulator.WebAssembly.Components.AddPersonModal;
 using Microsoft.AspNetCore.Components;
 
 namespace Congratulator.WebAssembly.Pages.Home;
@@ -19,6 +20,8 @@ public partial class Home : BasePageComponent
     private List<PersonModel> _thisWeek = [];
     private List<PersonModel> _thisMonth = [];
     private List<PersonModel> _upcoming = [];
+
+    private AddPersonModal _modal;
 
     private static readonly string[] SadEmojis =
     [

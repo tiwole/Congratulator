@@ -46,7 +46,7 @@ public partial class All : BasePageComponent
     private int _totalCount;
 
     private bool _isDropdownOpened;
-    private HashSet<RelationshipType> ActiveRelationshipTypes { get; set; } = new();
+    private HashSet<RelationshipType> ActiveRelationshipTypes { get; set; } = [];
     private static List<RelationshipType> AvailableRelationshipTypes 
         => Enum.GetValues<RelationshipType>().ToList();
     
@@ -105,6 +105,16 @@ public partial class All : BasePageComponent
     {
         _currentPage = page;
         await _grid.RefreshDataAsync();
+    }
+
+    private async Task OnDropdownStateChanged(bool value)
+    {
+        _isDropdownOpened = value;
+
+        if (!_isDropdownOpened)
+        {
+            await _grid.RefreshDataAsync();
+        }
     }
 
     #endregion
@@ -184,12 +194,10 @@ public partial class All : BasePageComponent
             await _grid.RefreshDataAsync();
     }
     
-    private async Task ToggleRelationship(RelationshipType type)
+    private void ToggleRelationship(RelationshipType type)
     {
         if (!ActiveRelationshipTypes.Remove(type))
             ActiveRelationshipTypes.Add(type);
-
-        await _grid.RefreshDataAsync();
     }
 
     #endregion

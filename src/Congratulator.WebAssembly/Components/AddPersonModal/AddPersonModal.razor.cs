@@ -110,7 +110,7 @@ public partial class AddPersonModal : ComponentBase
             FirstName = FirstName.Trim(),
             LastName = LastName ?? string.Empty,
             BirthDate = BirthDate!.Value,
-            RelationshipType = relationship,
+            RelationshipType = relationship.ToString(),
             Photo = photo
         };
 
