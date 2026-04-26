@@ -72,7 +72,9 @@
       "Bash(gunzip -c /tmp/design.gz)",
       "Bash(tar -xO congratulator/project/src/cards.jsx)",
       "Bash(gh api *)",
-      "Bash(python3 -c \"import sys,json; [print\\(i['path']\\) for i in json.load\\(sys.stdin\\).get\\('tree',[]\\) if 'DataGrid' in i['path']]\")"
+      "Bash(python3 -c \"import sys,json; [print\\(i['path']\\) for i in json.load\\(sys.stdin\\).get\\('tree',[]\\) if 'DataGrid' in i['path']]\")",
+      "Bash(powershell.exe -Command ' *)",
+      "Bash(powershell.exe *)"
     ]
   }
 }

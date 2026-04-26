@@ -3,7 +3,7 @@
 
 @inherits BasePageComponent
 
-<div class="card">
+<div class="card" @onclick="@(() => OnClick.InvokeAsync(Person))">
     <LumexCard Class="card-inner">
         <div class="card-content">
             <div class="card-header">

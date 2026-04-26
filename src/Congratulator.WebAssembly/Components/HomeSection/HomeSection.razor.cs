@@ -9,6 +9,7 @@ public partial class HomeSection : BasePageComponent, IDisposable
     [Parameter, EditorRequired] public string Title { get; set; } = null!;
     [Parameter] public List<PersonModel> People { get; set; } = [];
     [Parameter] public bool IsLoading { get; set; }
+    [Parameter] public EventCallback<PersonModel> OnPersonClick { get; set; }
 
     private readonly int _skeletonCount = Random.Shared.Next(1, 7);
     private bool _isVisible;

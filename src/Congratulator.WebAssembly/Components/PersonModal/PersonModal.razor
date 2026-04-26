@@ -1,0 +1,25 @@
+@using Congratulator.WebAssembly.Components.PersonDetails
+@using LumexUI.Common
+
+<LumexModal Size="ModalSize.Large" @ref="@_modal">
+    <LumexModalContent>
+        <LumexModalBody>
+            @if (_person != null)
+            {
+                <PersonDetails Person="@_person" />
+            }
+        </LumexModalBody>
+    </LumexModalContent>
+</LumexModal>
+
+@code {
+    private LumexModal _modal = null!;
+    private PersonModel? _person;
+
+    public async Task Open(PersonModel person)
+    {
+        _person = person;
+        StateHasChanged();
+        await _modal.OpenAsync();
+    }
+}

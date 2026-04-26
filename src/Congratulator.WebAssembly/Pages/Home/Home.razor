@@ -1,6 +1,7 @@
 @using System.Globalization
 @using Congratulator.WebAssembly.Components.AddPersonModal
 @using Congratulator.WebAssembly.Components.HomeSection
+@using Congratulator.WebAssembly.Components.PersonModal
 @using Congratulator.WebAssembly.Services
 @using LumexUI.Common
 
@@ -8,7 +9,7 @@
 
 @attribute [Route(Routes.Pages.Home)]
 
-<AddPersonModal @ref="_modal" IsVisible="@false"></AddPersonModal>
+<PersonModal @ref="_personModal" />
 
 <div class="home-page">
     <header class="home-header">
@@ -45,10 +46,10 @@
     }
     else
     {
-        <HomeSection Title="Today" People="_today" IsLoading="_isLoading" />
-        <HomeSection Title="This week" People="_thisWeek" IsLoading="_isLoading" />
-        <HomeSection Title="This month" People="_thisMonth" IsLoading="_isLoading" />
-        <HomeSection Title="Upcoming" People="_upcoming" IsLoading="_isLoading" />   
+        <HomeSection Title="Today" People="_today" IsLoading="_isLoading" OnPersonClick="OpenPersonModal" />
+        <HomeSection Title="This week" People="_thisWeek" IsLoading="_isLoading" OnPersonClick="OpenPersonModal" />
+        <HomeSection Title="This month" People="_thisMonth" IsLoading="_isLoading" OnPersonClick="OpenPersonModal" />
+        <HomeSection Title="Upcoming" People="_upcoming" IsLoading="_isLoading" OnPersonClick="OpenPersonModal" />   
     }
 </div>
 

@@ -4,6 +4,7 @@ using Congratulator.SharedKernel.Contracts.Models;
 using Congratulator.SharedKernel.Contracts.Models.Responses;
 using Congratulator.WebAssembly.Components;
 using Congratulator.WebAssembly.Components.AddPersonModal;
+using Congratulator.WebAssembly.Components.PersonModal;
 using Microsoft.AspNetCore.Components;
 
 namespace Congratulator.WebAssembly.Pages.Home;
@@ -21,13 +22,18 @@ public partial class Home : BasePageComponent
     private List<PersonModel> _thisMonth = [];
     private List<PersonModel> _upcoming = [];
 
-    private AddPersonModal _modal;
+    private PersonModal _personModal = null!;
 
     private static readonly string[] SadEmojis =
     [
         "(ノ_<。)", "(μ_μ)", "o(TヘTo)", "o(〒﹏〒)o", "(｡T ω T｡)", "(>_<)", 
         "(｡•́︿•̀｡)", "(╥_╥)", "(╥﹏╥)", "(っ˘̩╭╮˘̩)っ", "(ಡ‸ಡ)", "(ﾉД`)", "(ಥ﹏ಥ)"
     ];
+
+    private async Task OpenPersonModal(PersonModel person)
+    {
+        await _personModal.Open(person);
+    }
 
     protected override async Task OnInitializedAsync()
     {

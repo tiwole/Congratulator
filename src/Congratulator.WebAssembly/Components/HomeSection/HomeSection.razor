@@ -52,7 +52,7 @@ else if (People is { Count: > 0 })
             <div class="cards-grid">
                 @foreach (var person in People)
                 {
-                    <PersonCard @key="person.Id" Person="person" />
+                    <PersonCard @key="person.Id" Person="person" OnClick="@OnPersonClick" />
                 }
             </div>
         }

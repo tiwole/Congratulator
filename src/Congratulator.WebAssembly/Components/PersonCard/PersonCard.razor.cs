@@ -5,6 +5,9 @@ namespace Congratulator.WebAssembly.Components.PersonCard;
 
 public partial class PersonCard : BasePageComponent
 {
-    [Parameter] 
+    [Parameter]
     public PersonModel Person { get; set; } = null!;
+
+    [Parameter]
+    public EventCallback<PersonModel> OnClick { get; set; }
 }

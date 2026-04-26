@@ -22,6 +22,8 @@ public class BasePageComponent : ComponentBase
     [Inject]
     protected IJSRuntime JsRuntime { get; set; } = null!;
 
+    protected PersonModal.PersonModal PersonModal = null!;
+
     /// <summary>
     /// Executes a delete operation and shows a success or failure notification.
     /// </summary>
