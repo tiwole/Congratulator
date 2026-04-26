@@ -1,7 +1,7 @@
 @using LumexUI.Common
 @inherits BasePageComponent
 
-<div class="card-body">
+<div class="card-body" style="--relationship-color: var(@GetRelationshipColorVar());">
     <LumexAvatar Src="@Person.PhotoPath"
                  Size="Size.Large"
                  Bordered="@true"
@@ -12,9 +12,14 @@
                Variant="ChipVariant.Outlined">
         @Person.RelationshipType
     </LumexChip>
-    <span class="days-to">
-                @(Person.DaysUntilBirthday > 0 ? $"{Person.DaysUntilBirthday}" : "Happy birthday!")
-            </span>
+    @if (Person.DaysUntilBirthday > 0)
+    {
+        <span class="days-to days-to-primary">@Person.DaysUntilBirthday</span>
+    }
+    else
+    {
+        <span class="days-to days-to-secondary">Happy birthday!</span>
+    }
     <span class="days-to-subtitle">
         @(Person.DaysUntilBirthday > 0 ? "DAYS UNTIL" : "TODAY") · @Person.NextBirthday
     </span>

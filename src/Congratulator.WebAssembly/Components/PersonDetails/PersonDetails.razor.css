@@ -5,6 +5,11 @@
     justify-content: center;
     align-items: center;
     padding: 1.5rem 1rem 1.25rem;
+    background: radial-gradient(ellipse at top, color-mix(in srgb, var(--relationship-color) 20%, transparent) 0%, transparent 70%);
+}
+
+.accent-color {
+    color: color-mix(in oklab, var(--lumex-primary-500) 78%, black);
 }
 
 .card-title {
@@ -14,11 +19,18 @@
 }
 
 .days-to {
-    font-size: 5rem;
     font-weight: 700;
     line-height: 1;
     color: var(--lumex-foreground);
     margin-top: 0.5rem;
+}
+
+.days-to-primary {
+    font-size: 5rem;
+}
+
+.days-to-secondary {
+    font-size: 3.5rem;
 }
 
 .days-to-subtitle {
