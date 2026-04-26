@@ -4,6 +4,7 @@ using Congratulator.SharedKernel.Contracts.Enums;
 using Congratulator.SharedKernel.Contracts.Models;
 using Congratulator.SharedKernel.Contracts.Models.Responses;
 using Congratulator.WebAssembly.Components;
+using Congratulator.WebAssembly.Components.PersonModal;
 using Congratulator.WebAssembly.Models;
 using LumexUI;
 using LumexUI.Common;
@@ -38,6 +39,7 @@ public partial class All : BasePageComponent
     #region Fields
     
     private LumexDataGrid<PersonModel> _grid = null!;
+    private PersonModal _personModal = null!;
     private string? _nameFilter;
     private string? _nameFilterInput;
     private int _currentPage = 1;
@@ -74,6 +76,11 @@ public partial class All : BasePageComponent
     }
 
     private async Task SearchClick() => await ApplyFiltersAsync();
+
+    private async Task OnRowClickHandler(DataGridRowClickEventArgs<PersonModel> args)
+    {
+        await _personModal.Open(args.Item);
+    }
     
     private async Task KeyPressHandler(Microsoft.AspNetCore.Components.Web.KeyboardEventArgs args)
     {

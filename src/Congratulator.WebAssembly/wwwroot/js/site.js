@@ -1,14 +1,24 @@
+window.stopFallingConfetti = (element) => {
+    if (element._confettiCanvas) {
+        element._confettiCanvas.remove();
+        element._confettiCanvas = null;
+    }
+};
+
 window.fallingConfetti = (element) => {
+    window.stopFallingConfetti(element);
+
     const canvas = document.createElement('canvas');
     canvas.style.cssText = 'position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;';
     element.style.position = 'relative';
     element.appendChild(canvas);
+    element._confettiCanvas = canvas;
     const myConfetti = confetti.create(canvas, { resize: true });
 
     const palette = ['#ff4d6d', '#ffd166', '#06d6a0', '#a78bfa', '#38bdf8', '#fb923c', '#f472b6'];
 
     const fire = () => {
-        if (!element.isConnected) { canvas.remove(); return; }
+        if (element._confettiCanvas !== canvas) { canvas.remove(); return; }
 
         const color = palette[Math.floor(Math.random() * palette.length)];
         myConfetti({

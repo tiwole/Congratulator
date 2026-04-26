@@ -7457,3 +7457,7 @@ li.no-hover label:hover span::before {
 .person-modal button {
   z-index: 1000 !important;
 }
+
+html {
+  scrollbar-gutter: stable;
+}

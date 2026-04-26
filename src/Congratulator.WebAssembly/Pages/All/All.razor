@@ -1,3 +1,4 @@
+@using Congratulator.WebAssembly.Components.PersonModal
 @using LumexUI.Common
 @using LumexUI.Shared.Icons
 @namespace Congratulator.WebAssembly.Pages.All
@@ -5,6 +6,8 @@
 @inherits BasePageComponent
 
 @attribute [Route(Routes.Pages.All)]
+
+<PersonModal @ref="_personModal" />
 
 <div class="all-page">
     <header class="all-header">
@@ -33,7 +36,8 @@
                            @key="@_gridKey"
                            DataSource="@PeopleProvider"
                            Loading="@IsLoading"
-                           Hoverable="@true">
+                           Hoverable="@true"
+                           OnRowClick="@(async (DataGridRowClickEventArgs<PersonModel> v) => await OnRowClickHandler(v))">
                 <LoadingContent>
                     <LumexSpinner Size="@Size.Small" Class="p-3"/>
                     Fetching data...

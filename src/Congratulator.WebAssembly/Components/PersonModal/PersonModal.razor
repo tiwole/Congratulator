@@ -3,7 +3,11 @@
 @using LumexUI.Common
 @inject IJSRuntime Js
 
-<LumexModal Size="ModalSize.Large" @ref="@_modal" Class="person-modal">
+<LumexModal @ref="@_modal"
+            Size="ModalSize.Large"
+            Class="person-modal"
+            Backdrop="Backdrop.Opaque"
+            OnClose="@(() => OnModalClose())">
     <LumexModalContent>
         <div class="modal-body-background" style="--relationship-color: var(@GetRelationshipColorVar());">
             <LumexModalBody>
@@ -29,6 +33,7 @@
         StateHasChanged();
         await _modal.OpenAsync();
 
+        await Js.InvokeVoidAsync("stopFallingConfetti", _bodyRef);
         if (person.DaysUntilBirthday == 0)
             await Js.InvokeVoidAsync("fallingConfetti", _bodyRef);
     }
@@ -42,4 +47,9 @@
         _ => "--lumex-default"
     };
 
+    private void OnModalClose()
+    {
+        _person = null; 
+        StateHasChanged();
+    }
 }
