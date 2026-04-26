@@ -1,7 +1,8 @@
+@using System.Globalization
 @using LumexUI.Common
 @inherits BasePageComponent
 
-<div class="card-body" style="--relationship-color: var(@GetRelationshipColorVar());">
+<div class="card-body">
     <LumexAvatar Src="@Person.PhotoPath"
                  Size="Size.Large"
                  Bordered="@true"
@@ -21,7 +22,7 @@
         <span class="days-to days-to-secondary">Happy birthday!</span>
     }
     <span class="days-to-subtitle">
-        @(Person.DaysUntilBirthday > 0 ? "DAYS UNTIL" : "TODAY") · @Person.NextBirthday.ToString("dd MMMM")
+        @(Person.DaysUntilBirthday > 0 ? "DAYS UNTIL" : "TODAY") · @Person.NextBirthday.ToString("dd MMMM", CultureInfo.InvariantCulture)
     </span>
 </div>
 <LumexDivider/>

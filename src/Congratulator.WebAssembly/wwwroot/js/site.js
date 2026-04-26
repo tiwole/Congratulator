@@ -1,33 +1,32 @@
 window.fallingConfetti = (element) => {
-    element._confettiStopped = false;
+    const canvas = document.createElement('canvas');
+    canvas.style.cssText = 'position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;';
+    element.style.position = 'relative';
+    element.appendChild(canvas);
+    const myConfetti = confetti.create(canvas, { resize: true });
+
+    const palette = ['#ff4d6d', '#ffd166', '#06d6a0', '#a78bfa', '#38bdf8', '#fb923c', '#f472b6'];
 
     const fire = () => {
-        if (element._confettiStopped) return;
+        if (!element.isConnected) { canvas.remove(); return; }
 
-        const rect = element.getBoundingClientRect();
-        if (rect.width === 0) { setTimeout(fire, 200); return; }
-
-        confetti({
-            origin: {
-                x: (rect.left + Math.random() * rect.width) / window.innerWidth,
-                y: rect.top / window.innerHeight,
-            },
-            particleCount: 5,
-            spread: 45,
-            startVelocity: 9,
-            gravity: 0.7,
-            ticks: 90,
-            drift: (Math.random() - 0.5) * 0.4,
+        const color = palette[Math.floor(Math.random() * palette.length)];
+        myConfetti({
+            origin: { x: Math.random(), y: 0 },
+            particleCount: 1,
+            angle: 270,
+            spread: 120,
+            startVelocity: 1,
+            gravity: 0.75,
+            ticks: 60,
+            drift: (Math.random() - 0.5) * 0.3,
+            colors: [color],
         });
 
-        setTimeout(fire, 450);
+        setTimeout(fire, 50);
     };
 
-    setTimeout(fire, 150);
-};
-
-window.stopFallingConfetti = (element) => {
-    element._confettiStopped = true;
+    setTimeout(fire, 50);
 };
 
 window.launchConfetti = (element) => {

@@ -1,0 +1,9 @@
+.modal-body-background {
+    background: radial-gradient(ellipse at top, color-mix(in srgb, var(--relationship-color) 20%, transparent) 0%, transparent 70%);
+    animation: glow-pulse 3s ease-in-out infinite;
+}
+
+@keyframes glow-pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.85; }
+}

@@ -1,17 +1,20 @@
+@using Congratulator.SharedKernel.Contracts.Enums
 @using Congratulator.WebAssembly.Components.PersonDetails
 @using LumexUI.Common
 @inject IJSRuntime Js
 
-<LumexModal Size="ModalSize.Large" @ref="@_modal">
+<LumexModal Size="ModalSize.Large" @ref="@_modal" Class="person-modal">
     <LumexModalContent>
-        <LumexModalBody Class="person-modal-body">
-            <div @ref="@_bodyRef">
-                @if (_person != null)
-                {
-                    <PersonDetails Person="@_person"/>
-                }
-            </div>
-        </LumexModalBody>
+        <div class="modal-body-background" style="--relationship-color: var(@GetRelationshipColorVar());">
+            <LumexModalBody>
+                <div @ref="@_bodyRef">
+                    @if (_person != null)
+                    {
+                        <PersonDetails Person="@_person"/>
+                    }
+                </div>
+            </LumexModalBody>
+        </div>
     </LumexModalContent>
 </LumexModal>
 
@@ -29,4 +32,14 @@
         if (person.DaysUntilBirthday == 0)
             await Js.InvokeVoidAsync("fallingConfetti", _bodyRef);
     }
+
+    private string GetRelationshipColorVar() => _person?.RelationshipType switch
+    {
+        RelationshipType.Family => "--lumex-warning",
+        RelationshipType.Friend => "--lumex-success",
+        RelationshipType.Mate => "--lumex-secondary",
+        RelationshipType.Coworker => "--lumex-primary",
+        _ => "--lumex-default"
+    };
+
 }

@@ -7439,10 +7439,6 @@ code {
   }
 }
 
-.person-modal-body.py-2 {
-    padding-block: 0 !important;
-}
-
 li.no-hover:hover {
     background-color: transparent !important;
     color: inherit !important;
@@ -7456,4 +7452,8 @@ li.no-hover:hover span::before {
 
 li.no-hover label:hover span::before {
     background-color: var(--lumex-default-100) !important;
+}
+
+.person-modal button {
+  z-index: 1000 !important;
 }
