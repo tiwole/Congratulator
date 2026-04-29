@@ -1,4 +1,8 @@
-﻿<Router AppAssembly="@typeof(App).Assembly">
+﻿@using LumexUI.Common
+
+@inject NavigationManager Nav
+
+<Router AppAssembly="@typeof(App).Assembly">
     <Found Context="routeData">
         <RouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)"/>
         <FocusOnNavigate RouteData="@routeData" Selector="h1"/>
@@ -6,7 +10,17 @@
     <NotFound>
         <PageTitle>Not found</PageTitle>
         <LayoutView Layout="@typeof(MainLayout)">
-            <p role="alert">Sorry, there's nothing at this address.</p>
+            <div class="not-found">
+                <p class="not-found__code">404</p>
+                <h1 class="not-found__title">Page not found</h1>
+                <p class="not-found__description">Sorry, we couldn’t find the page you’re looking for.</p>
+                <div class="not-found__actions">
+                    <LumexButton Color="ThemeColor.Secondary"
+                                 OnClick="@(() => Nav.NavigateTo(Routes.Pages.Home))">
+                        Go back home
+                    </LumexButton>
+                </div>
+            </div>
         </LayoutView>
     </NotFound>
 </Router>

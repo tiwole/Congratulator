@@ -1,0 +1,39 @@
+.not-found {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 2rem;
+    min-height: 60vh;
+}
+
+.not-found__code {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: rgba(139, 92, 246, 1);
+    margin: 0 0 1rem;
+}
+
+.not-found__title {
+    font-size: 3rem;
+    font-weight: 800;
+    color: rgba(255, 255, 255, 1);
+    margin: 0 0 1.25rem;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+}
+
+.not-found__description {
+    font-size: 1.125rem;
+    font-weight: 500;
+    color: rgba(156, 163, 175, 1);
+    margin: 0 0 2.5rem;
+}
+
+.not-found__actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+}
