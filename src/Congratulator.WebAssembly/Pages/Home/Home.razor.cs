@@ -3,7 +3,7 @@ using System.Text.Json;
 using Congratulator.SharedKernel.Contracts.Models;
 using Congratulator.SharedKernel.Contracts.Models.Responses;
 using Congratulator.WebAssembly.Components;
-using Congratulator.WebAssembly.Components.AddPersonModal;
+using Congratulator.WebAssembly.Components.PersonFormModal;
 using Congratulator.WebAssembly.Components.PersonModal;
 using Microsoft.AspNetCore.Components;
 
@@ -23,6 +23,7 @@ public partial class Home : BasePageComponent
     private List<PersonModel> _upcoming = [];
 
     private PersonModal _personModal = null!;
+    private PersonFormModal _personFormModal = null!;
 
     private static readonly string[] SadEmojis =
     [
@@ -35,8 +36,21 @@ public partial class Home : BasePageComponent
         await _personModal.Open(person);
     }
 
+    private async Task RefreshAsync()
+    {
+        await LoadDataAsync();
+    }
+
     protected override async Task OnInitializedAsync()
     {
+        await base.OnInitializedAsync();
+        await LoadDataAsync();
+    }
+    
+    private async Task LoadDataAsync()
+    {
+        _isLoading = true;
+        
         var client = HttpClientFactory.CreateClient("ApiClient");
         var response = await client.GetFromJsonAsync<GetPersonsResponse>(Routes.Api.Persons, JsonOptions);
 
@@ -48,5 +62,6 @@ public partial class Home : BasePageComponent
         _upcoming = people.Where(p => p.DaysUntilBirthday > 30).ToList();
 
         _isLoading = false;
+        StateHasChanged();
     }
 }

@@ -1,3 +1,4 @@
+@using Congratulator.WebAssembly.Components.PersonFormModal
 @using Congratulator.WebAssembly.Components.PersonModal
 @using LumexUI.Common
 @using LumexUI.Shared.Icons
@@ -8,6 +9,7 @@
 @attribute [Route(Routes.Pages.All)]
 
 <PersonModal @ref="_personModal" />
+<PersonFormModal @ref="_personFormModal" OnPersonSaved="@OnPersonSavedAsync" />
 
 <div class="all-page">
     <header class="all-header">
@@ -25,7 +27,7 @@
                 }
             </p>
         </div>
-        <LumexButton Color="@ThemeColor.Primary" Size="Size.Medium">
+        <LumexButton Color="@ThemeColor.Primary" Size="Size.Medium" OnClick="@(() => _personFormModal.OpenCreate())">
             <i class="ri-add-line"></i>
             Add person
         </LumexButton>
@@ -119,17 +121,24 @@
                             </LumexChip>
                         </TemplateColumn>
                         <TemplateColumn Title="Actions" Align="@Align.Center">
-                            <LumexButton IconOnly="@true"
-                                         Size="@Size.Small"
-                                         Variant="@Variant.Flat">
-                                <i class="ri-edit-line actions-icon"></i>
-                            </LumexButton>
-                            <LumexButton IconOnly="@true"
-                                         Size="@Size.Small"
-                                         Variant="@Variant.Flat"
-                                         OnClick="@(() => OnDeleteClick(context))">
-                                <i class="ri-delete-bin-line actions-icon"></i>
-                            </LumexButton>
+                            <div class="grid-actions">
+                                <div @onclick:stopPropagation="true">
+                                    <LumexButton IconOnly="@true"
+                                                 Size="@Size.Small"
+                                                 Variant="@Variant.Flat"
+                                                 OnClick="@(() => OnEditClick(context))">
+                                        <i class="ri-edit-line actions-icon"></i>
+                                    </LumexButton>
+                                </div>
+                                <div @onclick:stopPropagation="true">
+                                    <LumexButton IconOnly="@true"
+                                                 Size="@Size.Small"
+                                                 Variant="@Variant.Flat"
+                                                 OnClick="@(() => OnDeleteClick(context))">
+                                        <i class="ri-delete-bin-line actions-icon"></i>
+                                    </LumexButton>
+                                </div>
+                            </div>
                         </TemplateColumn>
                     </div>
                 </ChildContent>

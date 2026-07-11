@@ -4,9 +4,7 @@ obj/
 riderModule.iml
 /_ReSharper.Caches/
 
-appsettings.json
-appsettings.*.json
-launchSettings.json
+
 
 logs/
 .idea

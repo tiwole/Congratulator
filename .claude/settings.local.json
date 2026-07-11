@@ -74,7 +74,8 @@
       "Bash(gh api *)",
       "Bash(python3 -c \"import sys,json; [print\\(i['path']\\) for i in json.load\\(sys.stdin\\).get\\('tree',[]\\) if 'DataGrid' in i['path']]\")",
       "Bash(powershell.exe -Command ' *)",
-      "Bash(powershell.exe *)"
+      "Bash(powershell.exe *)",
+      "Bash(python *)"
     ]
   }
 }

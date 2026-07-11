@@ -1,6 +1,6 @@
 @using System.Globalization
-@using Congratulator.WebAssembly.Components.AddPersonModal
 @using Congratulator.WebAssembly.Components.HomeSection
+@using Congratulator.WebAssembly.Components.PersonFormModal
 @using Congratulator.WebAssembly.Components.PersonModal
 @using Congratulator.WebAssembly.Services
 @using LumexUI.Common
@@ -10,6 +10,7 @@
 @attribute [Route(Routes.Pages.Home)]
 
 <PersonModal @ref="_personModal" />
+<PersonFormModal @ref="_personFormModal" OnPersonSaved="@RefreshAsync" />
 
 <div class="home-page">
     <header class="home-header">
@@ -32,7 +33,7 @@
                 }
             </p>
         </div>
-        <LumexButton Color="@ThemeColor.Primary" Size="Size.Medium">
+        <LumexButton Color="@ThemeColor.Primary" Size="Size.Medium" OnClick="@(() => _personFormModal.OpenCreate())">
             <i class="ri-add-line"></i>
             Add person
         </LumexButton>

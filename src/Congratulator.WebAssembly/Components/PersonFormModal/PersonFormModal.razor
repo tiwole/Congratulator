@@ -1,0 +1,134 @@
+@using Congratulator.SharedKernel.Contracts.Enums
+@using Congratulator.WebAssembly.Services
+@using LumexUI.Common
+
+@inherits BasePageComponent
+
+<LumexModal @ref="_modal" Size="ModalSize.Medium" Class="person-form-modal" OnClose="@OnModalClosed">
+    <LumexModalContent>
+        <LumexModalBody Class="pfm-modal-body">
+
+            <div class="pfm-header">
+                <div>
+                    <div class="pfm-mode-label">@(_isEditMode ? "Edit person" : "New person")</div>
+                    <h3 class="pfm-title">@(_isEditMode ? $"Edit {_firstName}" : "Add a person")</h3>
+                </div>
+                <LumexButton IconOnly="@true"
+                             Variant="@Variant.Light"
+                             Size="@Size.Small"
+                             Class="pfm-close-btn"
+                             OnClick="@(() => CloseAsync())">
+                    <i class="ri-close-line"></i>
+                </LumexButton>
+            </div>
+
+            <div class="pfm-body">
+
+                <div class="pfm-top-row">
+
+                    <div class="pfm-avatar-col">
+                        <label class="@(_photo != null ? "pfm-avatar-label pfm-avatar-label--has-photo" : "pfm-avatar-label")"
+                               style="@(_photo != null ? $"background-image: url({_photo});" : "")">
+                            <InputFile OnChange="@HandleFileSelected" accept="image/*" style="display:none" />
+                            @if (_photo == null)
+                            {
+                                <i class="ri-user-line pfm-avatar-icon"></i>
+                            }
+                        </label>
+                        @if (_photo != null)
+                        {
+                            <LumexButton Variant="@Variant.Light"
+                                         Color="@ThemeColor.Danger"
+                                         Size="@Size.Small"
+                                         Class="pfm-avatar-delete"
+                                         OnClick="@(() => _photo = null)">
+                                Delete
+                            </LumexButton>
+                            
+                        }
+                    </div>
+
+                    <div class="pfm-name-grid">
+                        <div class="pfm-field">
+                            <div class="pfm-label">
+                                First name<span class="pfm-required"> *</span>
+                            </div>
+                            <LumexTextbox Placeholder="Eleanor"
+                                          Behavior="@InputBehavior.OnInput"
+                                          Class="@(HasError("FirstName") ? "pfm-textbox pfm-textbox--error" : "pfm-textbox")"
+                                          @bind-Value="_firstName"
+                                          @onfocus="@(() => ClearError("FirstName"))" />
+                            @if (HasError("FirstName"))
+                            {
+                                <span class="pfm-error">@GetError("FirstName")</span>
+                            }
+                        </div>
+
+                        <div class="pfm-field">
+                            <div class="pfm-label">
+                                Last name<span class="pfm-hint"> · optional</span>
+                            </div>
+                            <LumexTextbox Label="First name"
+                                          Behavior="@InputBehavior.OnInput"
+                                          Class="pfm-textbox"
+                                          @bind-Value="_lastName" />
+                        </div>
+
+                        <div class="pfm-field pfm-field--span">
+                            <div class="pfm-label">
+                                Birth date<span class="pfm-required"> *</span>
+                            </div>
+                            <input type="date"
+                                   class="@(HasError("BirthDate") ? "pfm-date-input pfm-date-input--error" : "pfm-date-input")"
+                                   max="@DateTimeProvider.Today.ToString("yyyy-MM-dd")"
+                                   @bind="_birthDate"
+                                   @onfocus="@(() => ClearError("BirthDate"))" />
+                            @if (HasError("BirthDate"))
+                            {
+                                <span class="pfm-error">@GetError("BirthDate")</span>
+                            }
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="pfm-field">
+                    <div class="pfm-label">
+                        Relationship<span class="pfm-required"> *</span>
+                    </div>
+                    <div class="pfm-pills">
+                        @foreach (var rel in Enum.GetValues<RelationshipType>())
+                        {
+                            var r = rel;
+                            var isActive = _relationship == r;
+                            <div class="pfm-chip-wrapper" @onclick="@(() => _relationship = r)">
+                                <LumexChip Color="@GetRelationshipColor(r)"
+                                           Variant="@(isActive ? ChipVariant.Flat : ChipVariant.Outlined)"
+                                           Size="@Size.Medium"
+                                           Class="pfm-rel-chip">
+                                    <span class="pfm-pill-dot"></span>
+                                    @r
+                                </LumexChip>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+
+            <div class="pfm-footer">
+                <LumexButton Variant="@Variant.Flat"
+                             Class="pfm-cancel-btn"
+                             OnClick="@(() => CloseAsync())">
+                    Cancel
+                </LumexButton>
+                <LumexButton Color="@ThemeColor.Primary"
+                             Class="pfm-submit-btn"
+                             Disabled="@(!IsFormValid)"
+                             OnClick="@(() => SubmitAsync())">
+                    @(_isEditMode ? "Save changes" : "Add person")
+                </LumexButton>
+            </div>
+
+        </LumexModalBody>
+    </LumexModalContent>
+</LumexModal>

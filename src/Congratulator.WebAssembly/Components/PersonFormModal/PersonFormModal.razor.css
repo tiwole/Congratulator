@@ -1,0 +1,229 @@
+/* ===== Modal size override ===== */
+::deep .person-form-modal {
+    max-width: 35rem;
+}
+
+/* ===== Strip LumexModalBody default padding ===== */
+::deep .pfm-modal-body {
+    padding: 0 !important;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ===== Header ===== */
+
+.pfm-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.25rem 1.75rem;
+    border-bottom: 1px solid var(--lumex-divider);
+    flex-shrink: 0;
+}
+
+.pfm-mode-label {
+    font-size: 0.6875rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--lumex-default-500);
+    font-weight: 600;
+}
+
+.pfm-title {
+    margin: 0.25rem 0 0;
+    font-size: 1.25rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    color: var(--lumex-foreground);
+}
+
+::deep .pfm-close-btn {
+    color: var(--lumex-default-500);
+    font-size: 1rem;
+}
+
+/* ===== Body ===== */
+
+.pfm-body {
+    padding: 1.375rem 1.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    flex: 1;
+}
+
+/* ===== Top row: avatar + name grid ===== */
+
+.pfm-top-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.25rem;
+}
+
+/* ===== Avatar (custom placeholder) ===== */
+
+.pfm-avatar-col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.25rem;
+    flex-shrink: 0;
+}
+
+.pfm-avatar-label {
+    width: 6.875rem;
+    height: 6.875rem;
+    border-radius: 999px;
+    background-color: var(--lumex-content2);
+    background-size: cover;
+    background-position: center;
+    border: 1.5px dashed var(--lumex-divider);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    overflow: hidden;
+    transition: border-color 0.15s ease;
+    box-sizing: border-box;
+}
+
+.pfm-avatar-label:hover {
+    border-color: var(--lumex-primary-500);
+}
+
+.pfm-avatar-label--has-photo {
+    border-style: solid;
+}
+
+.pfm-avatar-icon {
+    font-size: 2.5rem;
+    color: var(--lumex-default-400);
+    pointer-events: none;
+}
+
+::deep .pfm-avatar-delete {
+    font-size: 0.75rem;
+}
+
+/* ===== Name + date grid ===== */
+
+.pfm-name-grid {
+    flex: 1;
+    min-width: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+}
+
+.pfm-field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.375rem;
+}
+
+.pfm-field--span {
+    grid-column: 1 / -1;
+}
+
+.pfm-label {
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--lumex-default-600);
+    display: flex;
+    align-items: baseline;
+    gap: 0.25rem;
+}
+
+.pfm-required {
+    color: var(--lumex-danger-500);
+}
+
+.pfm-hint {
+    font-size: 0.6875rem;
+    color: var(--lumex-default-400);
+}
+
+.pfm-error {
+    font-size: 0.75rem;
+    color: var(--lumex-danger-500);
+    font-weight: 500;
+}
+
+/* ===== LumexTextbox overrides ===== */
+
+::deep .pfm-textbox {
+    width: 100%;
+}
+
+::deep .pfm-textbox--error [data-slot="input-wrapper"] {
+    border-color: var(--lumex-danger-500) !important;
+}
+
+/* ===== Native date input (LumexUI date picker N/A) ===== */
+
+.pfm-date-input {
+    width: 100%;
+    background: var(--lumex-content2);
+    border: 1px solid var(--lumex-divider);
+    border-radius: var(--lumex-radius-small);
+    color: var(--lumex-foreground);
+    font-family: inherit;
+    font-size: 0.875rem;
+    padding: 0.625rem 0.75rem;
+    outline: none;
+    box-sizing: border-box;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+    cursor: pointer;
+}
+
+.pfm-date-input:focus {
+    border-color: var(--lumex-primary-500);
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
+}
+
+.pfm-date-input--error {
+    border-color: var(--lumex-danger-500) !important;
+}
+
+.pfm-date-input::-webkit-calendar-picker-indicator {
+    filter: invert(0.5);
+    cursor: pointer;
+}
+
+/* ===== Relationship chips ===== */
+
+.pfm-pills {
+    display: flex;
+    gap: 0.375rem;
+    flex-wrap: wrap;
+}
+
+.pfm-chip-wrapper {
+    cursor: pointer;
+}
+
+::deep .pfm-rel-chip {
+    pointer-events: none;
+    user-select: none;
+}
+
+.pfm-pill-dot {
+    width: 0.4375rem;
+    height: 0.4375rem;
+    border-radius: 999px;
+    background: currentColor;
+    flex-shrink: 0;
+    display: inline-block;
+}
+
+/* ===== Footer ===== */
+
+.pfm-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.625rem;
+    padding: 1rem 1.75rem;
+    border-top: 1px solid var(--lumex-divider);
+    background: var(--lumex-content2);
+    flex-shrink: 0;
+}

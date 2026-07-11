@@ -4,6 +4,7 @@ using Congratulator.SharedKernel.Contracts.Enums;
 using Congratulator.SharedKernel.Contracts.Models;
 using Congratulator.SharedKernel.Contracts.Models.Responses;
 using Congratulator.WebAssembly.Components;
+using Congratulator.WebAssembly.Components.PersonFormModal;
 using Congratulator.WebAssembly.Components.PersonModal;
 using Congratulator.WebAssembly.Models;
 using LumexUI;
@@ -40,6 +41,7 @@ public partial class All : BasePageComponent
     
     private LumexDataGrid<PersonModel> _grid = null!;
     private PersonModal _personModal = null!;
+    private PersonFormModal _personFormModal = null!;
     private string? _nameFilter;
     private string? _nameFilterInput;
     private int _currentPage = 1;
@@ -183,6 +185,16 @@ public partial class All : BasePageComponent
         };
     }
     
+    private async Task OnEditClick(PersonModel person)
+    {
+        await _personFormModal.OpenEdit(person);
+    }
+
+    private async Task OnPersonSavedAsync()
+    {
+        await _grid.RefreshDataAsync();
+    }
+
     private async Task OnDeleteClick(PersonModel person)
     {
         var client = HttpClientFactory.CreateClient("ApiClient");

@@ -45,6 +45,12 @@
     cursor: pointer;
 }
 
+.grid-actions {
+    display: flex;
+    gap: 0.3rem;
+    justify-content: center;
+}
+
 .dropdown-button-container {
     display: flex;
     gap: 0.3rem;
